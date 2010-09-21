@@ -4,7 +4,7 @@
 
 board::board (std::string board){
     
-    
+    //hej
 
 
 }
