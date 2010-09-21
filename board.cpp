@@ -4,7 +4,6 @@
 #include <vector>
 #include "board.h"
 
-
 board::board (std::string board1){
 
  std::vector< std::string > result;
