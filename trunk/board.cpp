@@ -1,10 +1,12 @@
 
-
+#include <iostream>
 #include "board.h"
 
 board::board (std::string board){
     
-    //hej
+ int cols = board.find_first_of('\n');
+ std::cout << "cols = " + cols;
+ //hej
 
 
 }
