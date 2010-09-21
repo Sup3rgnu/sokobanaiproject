@@ -15,14 +15,10 @@ class board{
 public:
 
     board(std::string board);
-
 private:
     
     int size; 
-
-
 };
-
 
 #endif	/* BOARD_H */
 

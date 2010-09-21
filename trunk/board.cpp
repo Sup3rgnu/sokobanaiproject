@@ -1,29 +1,53 @@
 
+#include "board.h"
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include "board.h"
 
-board::board (std::string board1){
+using namespace std;
 
-std::vector< std::string > result;
-int cols = 0;
-int rows = 0;
-int current = 0;
- std::stringstream ss(board1);
- std::string item;
+board::board (string board1){
 
- while(std::getline(ss, item, '\n')) {
-	current = item.size();
-	if(current > cols) {
-		cols = current;
+	vector<string> vecstrtokens;
+	int cols = 0;
+	int rows = 0;
+	int current = 0;
+	stringstream ss(board1);
+	string token;
+
+	cout << board1 << endl;
+
+	// Split input board string board1 into a string for each row
+	// so we can count board row and width.
+	while(getline(ss, token, '\n')) {
+		current = token.size();
+		if(current > cols) {
+			cols = current;
+		}
+		vecstrtokens.push_back(token);
 	}
-    result.push_back(item);
- }
+	rows = vecstrtokens.size();
 
- std::cout << "rows = " << result.size() << " cols = " << cols << '\n';
+	//cout << "rows = " << rows << " cols = " << cols << '\n';
 
+	// Load strings to 2d char array.
+	char board[rows][cols];
+	for (int i = 0; i < rows; i++) {
+		const char *strp = vecstrtokens[i].c_str();
+		int j = 0;
+		while(*strp != '\0') {
+			board[i][j++] = *strp++;
+			}
+	}
 
+	// Print 2d char array.
+	for(int i = 0; i < rows; i++) {
+		cout << i+1 << "[";
+		for(int j = 0; j < cols; j++) {
+			cout << board[i][j] << ",";
+		}
+		cout << "]" << endl;
+	}
 }
 
 
