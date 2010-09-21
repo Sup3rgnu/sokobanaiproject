@@ -13,6 +13,8 @@
 #include <boost/asio.hpp>
 #include <unistd.h>
 
+#include "board.h"
+
 using boost::asio::ip::tcp;
 
 int main(int argc, char* argv[])
@@ -78,6 +80,8 @@ int main(int argc, char* argv[])
             std::string lBoardAsString(buf.data(),len);
 
 //            sleep(10);
+
+            board b1(buf.data());
 
 			std::string lMySol=("U R R D U U L D L L U L L D R R R R L D D R U R U D L L U R");
             //std::string lMySol("0 3 3 1 0 0 2 1 2 2 0 2 2 1 3 3 3 3 2 1 1 3 0 3 0 1 2 2 0 3"); // first sample board

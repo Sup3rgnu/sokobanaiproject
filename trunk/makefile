@@ -1,2 +1,2 @@
 all:
-		g++ client.cc -lboost_system -o client_cc
+		g++ client.cc board.cpp -lboost_system -o client_cc
