@@ -6,6 +6,7 @@
  */
 
 #include <string>
+#include <iostream>
 
 #ifndef BOARD_H
 #define	BOARD_H
