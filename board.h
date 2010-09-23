@@ -1,6 +1,6 @@
 /* 
  * File:   board.h
- * Author: kungen
+ * Author: Voddlerdoods
  *
  * Created on September 21, 2010, 3:00 PM
  */
@@ -15,9 +15,14 @@ class board{
 public:
 
     board(std::string board);
+    boolean goalTest();
+    boolean validateMove(char);
+    boost::tuple move(char);
+    void updateBoard(boost::tuple move);
+    void solve();
+
 private:
     
-    int size; 
 };
 
 #endif	/* BOARD_H */
