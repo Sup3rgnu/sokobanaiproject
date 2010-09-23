@@ -1,3 +1,9 @@
+/*
+ * File:   board.h
+ * Author: Voddlerdoods
+ *
+ * Created on September 21, 2010, 3:00 PM
+ */
 
 #include "board.h"
 #include <iostream>
@@ -47,6 +53,26 @@ board::board (string board1){
 			cout << board[i][j] << ",";
 		}
 		cout << "]" << endl;
+	}
+
+	boolean goalTest() {
+
+	}
+
+	boolean validateMove(char) {
+
+	}
+
+	boost::tuple move(char) {
+
+	}
+
+	void updateBoard(boost::tuple move) {
+
+	}
+
+	void solve() {
+
 	}
 }
 
