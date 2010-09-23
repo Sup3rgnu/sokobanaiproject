@@ -61,10 +61,12 @@ bool goalTest() {
 }
 
 bool validateMove(char) {
+	// Robert jobbar på denna.
 
 }
 
 boost::tuple<char,bool> move(char) {
+	// Robert jobbar på denna.
 
 }
 
