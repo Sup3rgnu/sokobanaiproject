@@ -6,6 +6,7 @@
  */
 
 #include <string>
+#include <boost/tuple/tuple.hpp>
 
 #ifndef BOARD_H
 #define	BOARD_H
@@ -15,10 +16,10 @@ class board{
 public:
 
     board(std::string board);
-    boolean goalTest();
-    boolean validateMove(char);
-    boost::tuple move(char);
-    void updateBoard(boost::tuple move);
+    bool goalTest();
+    bool validateMove(char);
+    boost::tuple<char,bool> move(char);
+    void updateBoard(boost::tuple<char,bool> move);
     void solve();
 
 private:

@@ -54,26 +54,26 @@ board::board (string board1){
 		}
 		cout << "]" << endl;
 	}
+}
 
-	boolean goalTest() {
+bool goalTest() {
 
-	}
+}
 
-	boolean validateMove(char) {
+bool validateMove(char) {
 
-	}
+}
 
-	boost::tuple move(char) {
+boost::tuple<char,bool> move(char) {
 
-	}
+}
 
-	void updateBoard(boost::tuple move) {
+void updateBoard(boost::tuple<char,bool> move) {
 
-	}
+}
 
-	void solve() {
+void solve() {
 
-	}
 }
 
 
