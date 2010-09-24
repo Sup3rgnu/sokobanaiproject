@@ -31,5 +31,11 @@ int main() {
 
 	board b1(s1);
 
+	/* Robert som bygger sina medlemsfunktioner och kör lite blaj som kan tas bort om man vill */
+	b1.printBoard();
+	//b1.move('U');
+
+	/* slut på blajjet */
+
 	return 0;
 }
