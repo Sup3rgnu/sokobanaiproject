@@ -9,6 +9,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <utility>
 
 using namespace std;
 
@@ -65,12 +66,12 @@ bool validateMove(char) {
 
 }
 
-boost::tuple<char,bool> move(char) {
+pair<char, bool> move(char c) {
 	// Robert jobbar på denna.
 
 }
 
-void updateBoard(boost::tuple<char,bool> move) {
+void updateBoard(pair<char, bool> m) {
 
 }
 
