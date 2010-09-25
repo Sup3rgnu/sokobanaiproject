@@ -291,8 +291,10 @@ void board::solve() {
 	 for(i = 0; moves[i]; i++) {
 		if(validateMove(moves[i])) {
 			solution.push_back(move(moves[i]));
-			break;
+			i = 0;
 		}
+	 //backtracking
+
 	 }
 	}
 }
