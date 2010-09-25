@@ -56,7 +56,11 @@ void board::printBoard() {
 }
 
 bool board::goalTest() {
-
+	for(int i = 0; i < theboard.size(); i++)
+			for(int j = 0; j < theboard[i].size(); j++)
+				if (theboard[i][j] == '$')
+					return false;
+		return true;
 }
 
 bool board::validateMove(char) {
