@@ -23,7 +23,7 @@ board::board (string board1){
 	ppos = make_pair(3,3);
 	vector<char> newrow;
 
-	/* LŠser indata via en stringstream och splittar pŒ rad
+	/* Lï¿½ser indata via en stringstream och splittar pï¿½ rad
 	 * och sedan per char som stoppas i en 2d vector.
 	 */
 	while(getline(ss, token, '\n')) {
@@ -39,7 +39,7 @@ board::board (string board1){
 		newrow.clear();
 		token.clear();
 	}
-
+	printBoard();
 }
 
 void board::printBoard() {
@@ -60,13 +60,13 @@ bool board::goalTest() {
 }
 
 bool board::validateMove(char) {
-	// Robert jobbar pŒ denna.
+	// Robert jobbar pï¿½ denna.
 
 }
 
-/* validateMove skall alltid anropas fšre move(). */
+/* validateMove skall alltid anropas fï¿½re move(). */
 pair<char, bool> board::move(char c) {
-	// Robert jobbar pŒ denna.
+	// Robert jobbar pï¿½ denna.
 
 }
 
