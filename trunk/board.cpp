@@ -22,8 +22,8 @@ board::board (string board1){
 	stringstream ss(board1);
 	string token;
 
-	/* Dessa behšvs fšr att hŒlla reda pŒ var i vectormatrisen vi Šr nŠr vi stšter pŒ
-	 * spelare sŒ den kan sparas i ppos
+	/* Dessa behï¿½vs fï¿½r att hï¿½lla reda pï¿½ var i vectormatrisen vi ï¿½r nï¿½r vi stï¿½ter pï¿½
+	 * spelare sï¿½ den kan sparas i ppos
 	 */
 	int row = 0;
 	int col = 0;
@@ -85,7 +85,7 @@ bool board::validateMove(char c) {
 	assert(c == 'U' || c == 'D' || c == 'L' || c == 'R');
 
 	if(c == 'U') {
-		// Kolla om vi trŠffar en box.
+		// Kolla om vi trï¿½ffar en box.
 		if(theboard[(ppos.first)-1][ppos.second] == '$' || theboard[(ppos.first)-1][ppos.second] == '*') {
 			if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "Box will be affected." << endl; }
 
@@ -193,7 +193,7 @@ pair<char, bool> board::move(char c) {
 
 	if(c == 'U') {
 		if(DEBUG_MOVE == 1 && true) { cout << "Input was: U" << endl; }
-		// Kolla om vi pŒverkar en lŒda.
+		// Kolla om vi pï¿½verkar en lï¿½da.
 		if(theboard[(ppos.first)-1][ppos.second] == '$' || theboard[(ppos.first)-1][ppos.second] == '*') {
 			if(DEBUG_MOVE == 1 && true) { cout << "Box was hit by player!" << endl; }
 
@@ -202,16 +202,16 @@ pair<char, bool> board::move(char c) {
 			theboard[ppos.first][ppos.second] = ' ';
 			boxaffected = true;
 		}
-		else { // Om vi inte pŒverkar lŒdan.
+		else { // Om vi inte pï¿½verkar lï¿½dan.
 			theboard[((ppos.first)-1)][ppos.second] = '@';
 			theboard[ppos.first][ppos.second] = ' ';
 		}
-		ppos = make_pair((ppos.first-1), ppos.second); // Nya spelarpositionen pŒ brŠdan.
+		ppos = make_pair((ppos.first-1), ppos.second); // Nya spelarpositionen pï¿½ brï¿½dan.
 	}
 
 	else if(c == 'D') {
 	if(DEBUG_MOVE == 1 && true) { cout << "Input was: D" << endl; }
-		// Kolla om vi pŒverkar en lŒda.
+		// Kolla om vi pï¿½verkar en lï¿½da.
 		if(theboard[((ppos.first)+1)][ppos.second] == '$' || theboard[(ppos.first)+1][ppos.second] == '*') {
 			if(DEBUG_MOVE == 1 && true) { cout << "Box was hit by player!" << endl; }
 
@@ -220,16 +220,16 @@ pair<char, bool> board::move(char c) {
 			theboard[(ppos.first)][ppos.second] = ' ';
 			boxaffected = true;
 		}
-		else { // Om vi inte pŒverkar lŒdan.
+		else { // Om vi inte pï¿½verkar lï¿½dan.
 					theboard[(ppos.first+1)][ppos.second] = '@';
 					theboard[ppos.first][ppos.second] = ' ';
 		}
-		ppos = make_pair((ppos.first+1), ppos.second); // Nya spelarpositionen pŒ brŠdan.
+		ppos = make_pair((ppos.first+1), ppos.second); // Nya spelarpositionen pï¿½ brï¿½dan.
 	}
 
 	else if(c == 'L') {
 	if(DEBUG_MOVE == 1 && true) { cout << "Input was: L" << endl; }
-		// Kolla om vi pŒverkar en lŒda.
+		// Kolla om vi pï¿½verkar en lï¿½da.
 		if(theboard[ppos.first][(ppos.second)-1] == '$' || theboard[ppos.first][(ppos.second)-1] == '*') {
 			if(DEBUG_MOVE == 1 && true) { cout << "Box was hit by player!" << endl; }
 
@@ -238,16 +238,16 @@ pair<char, bool> board::move(char c) {
 			theboard[(ppos.first)][ppos.second] = ' ';
 			boxaffected = true;
 		}
-		else { // Om vi inte pŒverkar lŒdan.
+		else { // Om vi inte pï¿½verkar lï¿½dan.
 					theboard[ppos.first][(ppos.second-1)] = '@';
 					theboard[ppos.first][ppos.second] = ' ';
 		}
-		ppos = make_pair(ppos.first, (ppos.second-1)); // Nya spelarpositionen pŒ brŠdan.
+		ppos = make_pair(ppos.first, (ppos.second-1)); // Nya spelarpositionen pï¿½ brï¿½dan.
 	}
 
 	else if(c == 'R') {
 		if(DEBUG_MOVE == 1 && true) { cout << "Input was: R" << endl; }
-			// Kolla om vi pŒverkar en lŒda.
+			// Kolla om vi pï¿½verkar en lï¿½da.
 			if(theboard[ppos.first][(ppos.second)+1] == '$' || theboard[ppos.first][(ppos.second)+1] == '*') {
 				if(DEBUG_MOVE == 1 && true) { cout << "Box was hit by player!" << endl; }
 
@@ -256,11 +256,11 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)][ppos.second] = ' ';
 				boxaffected = true;
 			}
-			else { // Om vi inte pŒverkar lŒdan.
+			else { // Om vi inte pï¿½verkar lï¿½dan.
 						theboard[ppos.first][(ppos.second+1)] = '@';
 						theboard[ppos.first][ppos.second] = ' ';
 			}
-			ppos = make_pair(ppos.first, (ppos.second+1)); // Nya spelarpositionen pŒ brŠdan.
+			ppos = make_pair(ppos.first, (ppos.second+1)); // Nya spelarpositionen pï¿½ brï¿½dan.
 		}
 
 	if(DEBUG_MOVE == 1 && true) { cout << "move() result:" << endl; printBoard(); }
@@ -269,11 +269,32 @@ pair<char, bool> board::move(char c) {
 }
 
 void board::updateBoard(pair<char, bool> m) {
+	switch(m.first) {
+	case 'U':
+		break;
+	case 'D':
+		break;
+	case 'L':
+		break;
+	case 'R':
+		break;
 
+	}
 }
 
 void board::solve() {
 
+	char moves[]= {'U','L','D', 'R', 0};
+	int i;
+
+	while(1) {
+	 for(i = 0; moves[i]; i++) {
+		if(validateMove(moves[i])) {
+			solution.push_back(move(moves[i]));
+			break;
+		}
+	 }
+	}
 }
 
 
