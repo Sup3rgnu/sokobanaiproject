@@ -28,8 +28,6 @@ public:
 private:
 
     char currentMove;						// Det move vi just nu beaktar. Skall vara VERSAL.
-    int rows;								// rows och cols till 2d arrayen board de
-    int cols;								// behövs för att printBoard() ska fungera smidigt.
     pair<int, int> ppos;					// ppos håller spelarmarkörens aktuella position på brädan.
     pair<char, bool> move_result;			// Varje move genererar en riktning U/D/L/R samt talar om ifall en låda påverkats.
     vector< pair <char, bool> > solution;	// Vektorn håller samtliga aktuella move_result pairs.
