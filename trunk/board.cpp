@@ -300,14 +300,13 @@ void board::solve() {
 		}
 		//backtracking
 		while(1) {
-			//pair<char, bool> last_move = (pair<char, bool>)solution.pop_back();
 			pair<char, bool> last_move = solution.back();
 			solution.pop_back();
 			moveBack(last_move);
 			int j;
 			for(j = 0; last_move.first != moves[j]; j++)
 				;
-			if(moves[j]) {
+			if(moves[j+1]) {
 				i = j + 1;
 				break;
 			}
