@@ -560,12 +560,15 @@ void board::solve() {
 	string m;
 
 	while(1) {
-		for(i; moves[i]; i++) {
+		for(i; moves[i];) {
 			if(validateMove(moves[i])) {
 				solution.push_back(move(moves[i]));
 				i = 0;
-getline(cin, m, '\n');
+				getline(cin, m, '\n');
+			} else {
+				i++;
 			}
+
 		}
 		//backtracking
 		while(1) {
