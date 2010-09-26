@@ -7,8 +7,12 @@ using namespace std;
 
 int main(int argc, char *arv[]) {
 
-	std::string s1 = "########\n#......#\n#@$##$ #\n#  ##  #\n# $$ $$#\n#      #\n#   #  #\n########\n";
+	//string s1 = "########\n#......#\n#@$##$ #\n#  ##  #\n# $$ $$#\n#      #\n#...#  #\n########\n";
+	string s1 = "##########\n#   @    #\n#   $    #\n#  ...   #\n# $...$  #\n#  ...   #\n#   $    #\n#        #\n##########";
 	board b1(s1);
+
+	/* kod fšr att kšra solve */
+	/*
 	cout << (b1.goalTest() ? "Solved" : "Not solved") << endl;
 
 	b1.printBoard();
@@ -18,6 +22,7 @@ int main(int argc, char *arv[]) {
 		b1.solve();
 		return 0;
 	}
+	*/
 
 	/* Kod fï¿½r att spela med tangentbordet */
 	string m;
@@ -31,7 +36,7 @@ int main(int argc, char *arv[]) {
 			cout << "Move not allowed, please try again." << endl;
 			b1.printBoard();
 		}
-		b1.printBoard();
+		//b1.printBoard();
 	}
 	/* tangentbord */
 
