@@ -416,8 +416,8 @@ pair<char, bool> board::move(char c) {
 			// Kolla om vi skjuter runt lådan på det vanliga golvet.
 			if(theboard[ppos.first][ppos.second-1] == '$' || theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "L: Player moves a box outside of goal squares." << endl; }
-				theboard[(ppos.first+2)][ppos.second] = '$';
-				theboard[(ppos.first+1)][ppos.second] = '@';
+				theboard[(ppos.first)][ppos.second-2] = '$';
+				theboard[(ppos.first)][ppos.second-1] = '@';
 				theboard[ppos.first][ppos.second] = ' ';
 			}
 		}
@@ -501,8 +501,8 @@ pair<char, bool> board::move(char c) {
 			// Kolla om vi skjuter runt lådan på det vanliga golvet.
 			if(theboard[ppos.first][ppos.second+1] == '$' || theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "R: Player moves a box outside of goal squares." << endl; }
-				theboard[(ppos.first+2)][ppos.second] = '$';
-				theboard[(ppos.first+1)][ppos.second] = '@';
+				theboard[(ppos.first)][ppos.second+2] = '$';
+				theboard[(ppos.first)][ppos.second+1] = '@';
 				theboard[ppos.first][ppos.second] = ' ';
 			}
 		}
