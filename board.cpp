@@ -54,6 +54,10 @@ board::board (string board1){
 	printBoard();
 }
 
+void board::moveBack(pair<char,bool> move)
+{
+}
+
 void board::printBoard() {
 
 	for(int i = 0; i < theboard.size(); i++) {
@@ -68,10 +72,10 @@ void board::printBoard() {
 
 bool board::goalTest() {
 	for(int i = 0; i < theboard.size(); i++)
-			for(int j = 0; j < theboard[i].size(); j++)
-				if (theboard[i][j] == '$')
-					return false;
-		return true;
+		for(int j = 0; j < theboard[i].size(); j++)
+			if (theboard[i][j] == '$')
+				return false;
+	return true;
 }
 
 bool board::validateMove(char c) {
@@ -288,13 +292,26 @@ void board::solve() {
 	int i;
 
 	while(1) {
-	 for(i = 0; moves[i]; i++) {
-		if(validateMove(moves[i])) {
-			solution.push_back(move(moves[i]));
-			i = 0;
+		for(i = 0; moves[i]; i++) {
+			if(validateMove(moves[i])) {
+				solution.push_back(move(moves[i]));
+				i = 0;
+			}
 		}
-	 }
-	 //backtracking
+		//backtracking
+		while(1) {
+			//pair<char, bool> last_move = (pair<char, bool>)solution.pop_back();
+			pair<char, bool> last_move = solution.back();
+			solution.pop_back();
+			moveBack(last_move);
+			int j;
+			for(j = 0; last_move.first != moves[j]; j++)
+				;
+			if((j + 1) <= (sizeof(moves)/sizeof(int) - 1)) {
+				i = j + 1;
+				break;
+			}
+		}
 	}
 }
 

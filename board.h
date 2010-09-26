@@ -21,6 +21,7 @@ public:
     bool goalTest();
     bool validateMove(char);
     pair<char, bool> move(char);
+    void moveBack(pair<char, bool>);
     void updateBoard(pair <char, bool> m);
     void solve();
     void printBoard();
@@ -28,9 +29,9 @@ public:
 private:
 
     char currentMove;						// Det move vi just nu beaktar. Skall vara VERSAL.
-    pair<int, int> ppos;					// ppos hŒller spelarmarkšrens aktuella position pŒ brŠdan.
-    pair<char, bool> move_result;			// Varje move genererar en riktning U/D/L/R samt talar om ifall en lŒda pŒverkats.
-    vector< pair <char, bool> > solution;	// Vektorn hŒller samtliga aktuella move_result pairs.
+    pair<int, int> ppos;					// ppos hï¿½ller spelarmarkï¿½rens aktuella position pï¿½ brï¿½dan.
+    pair<char, bool> move_result;			// Varje move genererar en riktning U/D/L/R samt talar om ifall en lï¿½da pï¿½verkats.
+    vector< pair <char, bool> > solution;	// Vektorn hï¿½ller samtliga aktuella move_result pairs.
     vector< vector<char> > theboard;			// Arren blev en vektor.
 };
 
