@@ -13,7 +13,7 @@
 #include <assert.h>
 
 const int DEBUG_MOVE = 1;
-const int DEBUG_VALIDATEMOVE = 0;
+const int DEBUG_VALIDATEMOVE = 1;
 
 using namespace std;
 
@@ -98,6 +98,11 @@ bool board::validateMove(char c) {
 
 				ok = false;
 			}
+			if(theboard[(ppos.first)-3][ppos.second] == '#' && (theboard[(ppos.first)-2][(ppos.second)-1] == '#' || theboard[(ppos.first)-2][(ppos.second)+1] == '#')){
+				if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "This move would push the box into a corner! Not OK." << endl; }
+
+				ok = false;
+			}
 		}
 		if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "There is no box in the way." << endl; }
 
@@ -116,16 +121,21 @@ bool board::validateMove(char c) {
 			if(theboard[(ppos.first)+2][ppos.second] == '#' || theboard[(ppos.first)+2][ppos.second] == '$'){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "This move would push the box into something! Not OK." << endl; }
 
-					ok = false;
-				}
+				ok = false;
 			}
-			if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "There is no box in the way." << endl; }
-
-			if(theboard[(ppos.first)+1][ppos.second] == '#'){
-				if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "You are trying to go into a wall. Not OK." << endl; }
+			if(theboard[(ppos.first)+3][ppos.second] == '#' && (theboard[(ppos.first)+2][(ppos.second)-1] == '#' || theboard[(ppos.first)+2][(ppos.second)+1] == '#')){
+				if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "This move would push the box into a corner! Not OK." << endl; }
 
 				ok = false;
 			}
+		}
+		if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "There is no box in the way." << endl; }
+
+		if(theboard[(ppos.first)+1][ppos.second] == '#'){
+			if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "You are trying to go into a wall. Not OK." << endl; }
+
+			ok = false;
+		}
 	}
 
 	else if(c == 'L') {
@@ -135,16 +145,21 @@ bool board::validateMove(char c) {
 			if(theboard[ppos.first][(ppos.second)-2] == '#' || theboard[ppos.first][(ppos.second)-2] == '$'){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "This move would push the box into something! Not OK." << endl; }
 
-					ok = false;
-				}
+				ok = false;
 			}
-			if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "There is no box in the way." << endl; }
-
-			if(theboard[ppos.first][(ppos.second)-1] == '#'){
-				if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "You are trying to go into a wall. Not OK." << endl; }
+			if(theboard[(ppos.first)][ppos.second-3] == '#' && (theboard[(ppos.first)-1][(ppos.second)-2] == '#' || theboard[(ppos.first)+1][(ppos.second)-2] == '#')){
+				if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "This move would push the box into a corner! Not OK." << endl; }
 
 				ok = false;
 			}
+		}
+		if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "There is no box in the way." << endl; }
+
+		if(theboard[ppos.first][(ppos.second)-1] == '#'){
+			if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "You are trying to go into a wall. Not OK." << endl; }
+
+			ok = false;
+		}
 	}
 
 	else if(c == 'R') {
@@ -153,6 +168,11 @@ bool board::validateMove(char c) {
 
 			if(theboard[ppos.first][(ppos.second)+2] == '#' || theboard[ppos.first][(ppos.second)+2] == '$'){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "This move would push the box into something! Not OK." << endl; }
+
+				ok = false;
+			}
+			if(theboard[ppos.first][ppos.second+3] == '#' && (theboard[(ppos.first)-1][ppos.second+2] == '#' || theboard[ppos.first+1][ppos.second+2] == '#')){
+				if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "This move would push the box into a corner! Not OK." << endl; }
 
 				ok = false;
 			}
