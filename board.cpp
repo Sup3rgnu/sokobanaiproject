@@ -293,9 +293,8 @@ void board::solve() {
 			solution.push_back(move(moves[i]));
 			i = 0;
 		}
-	 //backtracking
-
 	 }
+	 //backtracking
 	}
 }
 
