@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main() {
+int main(int argc, char *arv[]) {
 
 	std::string s1 = "########\n#......#\n#@$##$ #\n#  ##  #\n# $$ $$#\n#      #\n#   #  #\n########\n";
 	board b1(s1);
@@ -13,7 +13,13 @@ int main() {
 
 	b1.printBoard();
 
-	/* Kod fšr att spela med tangentbordet */
+	if(argc > 1) {
+		cout << "running solve\n";
+		b1.solve();
+		return 0;
+	}
+
+	/* Kod fï¿½r att spela med tangentbordet */
 	string m;
 	while(true) {
 
