@@ -289,10 +289,10 @@ void board::updateBoard(pair<char, bool> m) {
 void board::solve() {
 
 	char moves[]= {'U','L','D', 'R', 0};
-	int i;
+	int i=0;
 
 	while(1) {
-		for(i = 0; moves[i]; i++) {
+		for(i; moves[i]; i++) {
 			if(validateMove(moves[i])) {
 				solution.push_back(move(moves[i]));
 				i = 0;
@@ -307,7 +307,7 @@ void board::solve() {
 			int j;
 			for(j = 0; last_move.first != moves[j]; j++)
 				;
-			if((j + 1) <= (sizeof(moves)/sizeof(int) - 1)) {
+			if(moves[j]) {
 				i = j + 1;
 				break;
 			}
