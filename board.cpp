@@ -197,13 +197,13 @@ pair<char, bool> board::move(char c) {
 
 	if(c == 'U') {
 		if(DEBUG_MOVE == 1 && true) { cout << "Input was: U" << endl; }
-		// Kolla om vi pŒverkar en lŒda.
+		// Kolla om vi pï¿½verkar en lï¿½da.
 		if(theboard[(ppos.first)-1][ppos.second] == '$' || theboard[(ppos.first)-1][ppos.second] == '*') {
 			if(DEBUG_MOVE == 1 && true) { cout << "U: Box was hit by player!" << endl; }
 
 			boxaffected = true;
 
-			// Kolla om spelaren skjuter in en lŒda i goalsquare-omrŒdet
+			// Kolla om spelaren skjuter in en lï¿½da i goalsquare-omrï¿½det
 			if(theboard[(ppos.first)-2][ppos.second] == '.'  && theboard[(ppos.first)-1][ppos.second] == '$'
 				&& theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "U: Player moves a box into goal square area." << endl; }
@@ -211,7 +211,7 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)-1][ppos.second] = '@';
 				theboard[ppos.first][ppos.second] = ' ';
 			}
-			// Kolla om spelaren skjuter in en lŒda i goalsquare-omrŒdet och Œker med in.
+			// Kolla om spelaren skjuter in en lï¿½da i goalsquare-omrï¿½det och ï¿½ker med in.
 			if(theboard[(ppos.first)-2][ppos.second] == '.'  && theboard[(ppos.first)-1][ppos.second] == '*'
 					&& theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "U: Player moves a box into goal square area and enters goal square." << endl; }
@@ -219,7 +219,7 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)-1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = ' ';
 			}
-			// Kolla om spelaren skjuter en lŒda inom goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da inom goalsquare-omrï¿½det
 			if(theboard[(ppos.first)-2][ppos.second] == '.'  && theboard[(ppos.first)-1][ppos.second] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "U: Player moves a box within goal square area." << endl; }
@@ -227,7 +227,7 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)-1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om spelaren skjuter en lŒda inom goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da inom goalsquare-omrï¿½det
 			if(theboard[(ppos.first)-2][ppos.second] == ' '  && theboard[(ppos.first)-1][ppos.second] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "U: Player moves a box within goal square area." << endl; }
@@ -235,7 +235,7 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)-1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om spelaren skjuter en lŒda som ligger vid kanten till goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da som ligger vid kanten till goalsquare-omrï¿½det
 			if(theboard[(ppos.first)-2][ppos.second] == ' '  && theboard[(ppos.first)-1][ppos.second] == '$'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "U: Player moves a box at the border of goal square area." << endl; }
@@ -243,7 +243,7 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)-1][ppos.second] = '@';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om vi skjuter runt lŒdan pŒ det vanliga golvet.
+			// Kolla om vi skjuter runt lï¿½dan pï¿½ det vanliga golvet.
 			if(theboard[(ppos.first)-1][ppos.second] == '$' || theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "U: Player moves a box outside of goal squares." << endl; }
 				theboard[(ppos.first-2)][ppos.second] = '$';
@@ -252,43 +252,43 @@ pair<char, bool> board::move(char c) {
 			}
 		}
 
-		// Kolla om spelarmarkšren gŒr in i goalsquare och ska byta markšr till +.
+		// Kolla om spelarmarkï¿½ren gï¿½r in i goalsquare och ska byta markï¿½r till +.
 		else if(theboard[(ppos.first)-1][ppos.second] == '.'  && theboard[ppos.first][ppos.second] == '@' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "U: Player enters a goal square." << endl; }
 			theboard[(ppos.first)-1][ppos.second] = '+';
 			theboard[ppos.first][ppos.second] = ' ';
 		}
-		// Kolla om spelarmarkšren redan var i goal square och lŠgg tillbaka en . bakom spelaren.
+		// Kolla om spelarmarkï¿½ren redan var i goal square och lï¿½gg tillbaka en . bakom spelaren.
 		else if(theboard[(ppos.first)-1][ppos.second] == '.'  && theboard[ppos.first][ppos.second] == '+' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "U: Player moves from one goal square to another." << endl; }
 			theboard[(ppos.first)-1][ppos.second] = '+';
 			theboard[ppos.first][ppos.second] = '.';
 		}
-		// Kolla om spelarmarkšren lŠmnar goal square omrŒdet. Tillbaka till @ alltsŒ.
+		// Kolla om spelarmarkï¿½ren lï¿½mnar goal square omrï¿½det. Tillbaka till @ alltsï¿½.
 		else if(theboard[(ppos.first)-1][ppos.second] == ' '  && theboard[ppos.first][ppos.second] == '+' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "U: Player moves from one goal square to regular area." << endl; }
 			theboard[(ppos.first)-1][ppos.second] = '@';
 			theboard[ppos.first][ppos.second] = '.';
 		}
-		else { // Om vi inte pŒverkar lŒdan.
+		else { // Om vi inte pï¿½verkar lï¿½dan.
 			if(DEBUG_MOVE == 1 && true) { cout << "U: Player just moves in the regular floor area." << endl; }
 			theboard[((ppos.first)-1)][ppos.second] = '@';
 			theboard[ppos.first][ppos.second] = ' ';
 		}
-		ppos = make_pair((ppos.first-1), ppos.second); // Nya spelarpositionen pŒ brŠdan.
+		ppos = make_pair((ppos.first-1), ppos.second); // Nya spelarpositionen pï¿½ brï¿½dan.
 	}
 
 	/* D D D D D D D D D D D D D D D D D D D D D */
 
 	if(c == 'D') {
 		if(DEBUG_MOVE == 1 && true) { cout << "Input was: D" << endl; }
-		// Kolla om vi pŒverkar en lŒda.
+		// Kolla om vi pï¿½verkar en lï¿½da.
 		if(theboard[(ppos.first)+1][ppos.second] == '$' || theboard[(ppos.first)+1][ppos.second] == '*') {
 			if(DEBUG_MOVE == 1 && true) { cout << "D: Box was hit by player!" << endl; }
 
 			boxaffected = true;
 
-			// Kolla om spelaren skjuter in en lŒda i goalsquare-omrŒdet
+			// Kolla om spelaren skjuter in en lï¿½da i goalsquare-omrï¿½det
 			if(theboard[(ppos.first)+2][ppos.second] == '.'  && theboard[(ppos.first)+1][ppos.second] == '$'
 				&& theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "D: Player moves a box into goal square area." << endl; }
@@ -296,7 +296,7 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)+1][ppos.second] = '@';
 				theboard[ppos.first][ppos.second] = ' ';
 			}
-			// Kolla om spelaren skjuter in en lŒda i goalsquare-omrŒdet och Œker med in.
+			// Kolla om spelaren skjuter in en lï¿½da i goalsquare-omrï¿½det och ï¿½ker med in.
 			if(theboard[(ppos.first)+2][ppos.second] == '.'  && theboard[(ppos.first)+1][ppos.second] == '*'
 					&& theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "D: Player moves a box into goal square area and enters goal square." << endl; }
@@ -304,7 +304,7 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)+1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = ' ';
 			}
-			// Kolla om spelaren skjuter en lŒda inom goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da inom goalsquare-omrï¿½det
 			if(theboard[(ppos.first)+2][ppos.second] == '.'  && theboard[(ppos.first)+1][ppos.second] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "D: Player moves a box within goal square area." << endl; }
@@ -312,7 +312,7 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)+1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om spelaren skjuter en lŒda ut frŒn goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da ut frï¿½n goalsquare-omrï¿½det
 			if(theboard[(ppos.first)+2][ppos.second] == ' '  && theboard[(ppos.first)+1][ppos.second] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "D: Player moves a box within goal square area." << endl; }
@@ -320,7 +320,7 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)+1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om spelaren skjuter en lŒda som ligger vid kanten till goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da som ligger vid kanten till goalsquare-omrï¿½det
 			if(theboard[(ppos.first)+2][ppos.second] == ' '  && theboard[(ppos.first)+1][ppos.second] == '$'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "D: Player moves a box at the border of goal square area." << endl; }
@@ -328,7 +328,7 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)+1][ppos.second] = '@';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om vi skjuter runt lŒdan pŒ det vanliga golvet.
+			// Kolla om vi skjuter runt lï¿½dan pï¿½ det vanliga golvet.
 			if(theboard[(ppos.first)+1][ppos.second] == '$' || theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "D: Player moves a box outside of goal squares." << endl; }
 				theboard[(ppos.first+2)][ppos.second] = '$';
@@ -337,43 +337,43 @@ pair<char, bool> board::move(char c) {
 			}
 		}
 
-		// Kolla om spelarmarkšren gŒr in i goalsquare och ska byta markšr till +.
+		// Kolla om spelarmarkï¿½ren gï¿½r in i goalsquare och ska byta markï¿½r till +.
 		else if(theboard[(ppos.first)+1][ppos.second] == '.'  && theboard[ppos.first][ppos.second] == '@' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "D: Player enters a goal square." << endl; }
 			theboard[(ppos.first)+1][ppos.second] = '+';
 			theboard[ppos.first][ppos.second] = ' ';
 		}
-		// Kolla om spelarmarkšren redan var i goal square och lŠgg tillbaka en . bakom spelaren.
+		// Kolla om spelarmarkï¿½ren redan var i goal square och lï¿½gg tillbaka en . bakom spelaren.
 		else if(theboard[(ppos.first)+1][ppos.second] == '.'  && theboard[ppos.first][ppos.second] == '+' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "D: Player moves from one goal square to another." << endl; }
 			theboard[(ppos.first)+1][ppos.second] = '+';
 			theboard[ppos.first][ppos.second] = '.';
 		}
-		// Kolla om spelarmarkšren lŠmnar goal square omrŒdet. Tillbaka till @ alltsŒ.
+		// Kolla om spelarmarkï¿½ren lï¿½mnar goal square omrï¿½det. Tillbaka till @ alltsï¿½.
 		else if(theboard[(ppos.first)+1][ppos.second] == ' '  && theboard[ppos.first][ppos.second] == '+' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "D: Player moves from one goal square to regular area." << endl; }
 			theboard[(ppos.first)+1][ppos.second] = '@';
 			theboard[ppos.first][ppos.second] = '.';
 		}
-		else { // Om vi inte pŒverkar lŒdan.
+		else { // Om vi inte pï¿½verkar lï¿½dan.
 			if(DEBUG_MOVE == 1 && true) { cout << "D: Player just moves in the regular floor area." << endl; }
 			theboard[((ppos.first)+1)][ppos.second] = '@';
 			theboard[ppos.first][ppos.second] = ' ';
 		}
-		ppos = make_pair((ppos.first+1), ppos.second); // Nya spelarpositionen pŒ brŠdan.
+		ppos = make_pair((ppos.first+1), ppos.second); // Nya spelarpositionen pï¿½ brï¿½dan.
 	}
 
 	/* L L L L L L L L L L L L L L L L L L L L */
 
 	if(c == 'L') {
 		if(DEBUG_MOVE == 1 && true) { cout << "Input was: L" << endl; }
-		// Kolla om vi pŒverkar en lŒda.
+		// Kolla om vi pï¿½verkar en lï¿½da.
 		if(theboard[ppos.first][ppos.second-1] == '$' || theboard[ppos.first][ppos.second-1] == '*') {
 			if(DEBUG_MOVE == 1 && true) { cout << "L: Box was hit by player!" << endl; }
 
 			boxaffected = true;
 
-			// Kolla om spelaren skjuter in en lŒda i goalsquare-omrŒdet
+			// Kolla om spelaren skjuter in en lï¿½da i goalsquare-omrï¿½det
 			if(theboard[ppos.first][ppos.second-2] == '.'  && theboard[ppos.first][ppos.second-1] == '$'
 					&& theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "L: Player moves a box into goal square area." << endl; }
@@ -381,7 +381,7 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second-1] = '@';
 				theboard[ppos.first][ppos.second] = ' ';
 			}
-			// Kolla om spelaren skjuter in en lŒda i goalsquare-omrŒdet och Œker med in.
+			// Kolla om spelaren skjuter in en lï¿½da i goalsquare-omrï¿½det och ï¿½ker med in.
 			if(theboard[ppos.first][ppos.second-2] == '.'  && theboard[ppos.first][ppos.second-1] == '*'
 					&& theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "L: Player moves a box into goal square area and enters goal square." << endl; }
@@ -389,7 +389,7 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second-1] = '+';
 				theboard[ppos.first][ppos.second] = ' ';
 			}
-			// Kolla om spelaren skjuter en lŒda inom goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da inom goalsquare-omrï¿½det
 			if(theboard[ppos.first][ppos.second-2] == '.'  && theboard[ppos.first][ppos.second-1] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "L: Player moves a box within goal square area." << endl; }
@@ -397,7 +397,7 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second-1] = '+';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om spelaren skjuter en lŒda ut frŒn goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da ut frï¿½n goalsquare-omrï¿½det
 			if(theboard[ppos.first][ppos.second-2] == ' '  && theboard[ppos.first][ppos.second-1] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "L: Player moves a box within goal square area." << endl; }
@@ -405,7 +405,7 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second-1] = '+';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om spelaren skjuter en lŒda som ligger vid kanten till goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da som ligger vid kanten till goalsquare-omrï¿½det
 			if(theboard[ppos.first][ppos.second-2] == ' '  && theboard[ppos.first][ppos.second-1] == '$'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "L: Player moves a box at the border of goal square area." << endl; }
@@ -413,7 +413,7 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second-1] = '@';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om vi skjuter runt lŒdan pŒ det vanliga golvet.
+			// Kolla om vi skjuter runt lï¿½dan pï¿½ det vanliga golvet.
 			if(theboard[ppos.first][ppos.second-1] == '$' || theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "L: Player moves a box outside of goal squares." << endl; }
 				theboard[(ppos.first)][ppos.second-2] = '$';
@@ -422,43 +422,43 @@ pair<char, bool> board::move(char c) {
 			}
 		}
 
-		// Kolla om spelarmarkšren gŒr in i goalsquare och ska byta markšr till +.
+		// Kolla om spelarmarkï¿½ren gï¿½r in i goalsquare och ska byta markï¿½r till +.
 		else if(theboard[ppos.first][ppos.second-1] == '.'  && theboard[ppos.first][ppos.second] == '@' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "L: Player enters a goal square." << endl; }
 			theboard[ppos.first][ppos.second-1] = '+';
 			theboard[ppos.first][ppos.second] = ' ';
 		}
-		// Kolla om spelarmarkšren redan var i goal square och lŠgg tillbaka en . bakom spelaren.
+		// Kolla om spelarmarkï¿½ren redan var i goal square och lï¿½gg tillbaka en . bakom spelaren.
 		else if(theboard[ppos.first][ppos.second-1] == '.'  && theboard[ppos.first][ppos.second] == '+' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "L: Player moves from one goal square to another." << endl; }
 			theboard[ppos.first][ppos.second-1] = '+';
 			theboard[ppos.first][ppos.second] = '.';
 		}
-		// Kolla om spelarmarkšren lŠmnar goal square omrŒdet. Tillbaka till @ alltsŒ.
+		// Kolla om spelarmarkï¿½ren lï¿½mnar goal square omrï¿½det. Tillbaka till @ alltsï¿½.
 		else if(theboard[ppos.first][ppos.second-1] == ' '  && theboard[ppos.first][ppos.second] == '+' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "L: Player moves from one goal square to regular area." << endl; }
 			theboard[ppos.first][ppos.second-1] = '@';
 			theboard[ppos.first][ppos.second] = '.';
 		}
-		else { // Om vi inte pŒverkar lŒdan.
+		else { // Om vi inte pï¿½verkar lï¿½dan.
 			if(DEBUG_MOVE == 1 && true) { cout << "L: Player just moves in the regular floor area." << endl; }
 			theboard[(ppos.first)][ppos.second-1] = '@';
 			theboard[ppos.first][ppos.second] = ' ';
 		}
-		ppos = make_pair((ppos.first), ppos.second-1); // Nya spelarpositionen pŒ brŠdan.
+		ppos = make_pair((ppos.first), ppos.second-1); // Nya spelarpositionen pï¿½ brï¿½dan.
 	}
 
 	/* R R R R R R R R R R R R R R R R R R R R */
 
 	if(c == 'R') {
 		if(DEBUG_MOVE == 1 && true) { cout << "Input was: R" << endl; }
-		// Kolla om vi pŒverkar en lŒda.
+		// Kolla om vi pï¿½verkar en lï¿½da.
 		if(theboard[ppos.first][ppos.second+1] == '$' || theboard[ppos.first][ppos.second+1] == '*') {
 			if(DEBUG_MOVE == 1 && true) { cout << "R: Box was hit by player!" << endl; }
 
 			boxaffected = true;
 
-			// Kolla om spelaren skjuter in en lŒda i goalsquare-omrŒdet
+			// Kolla om spelaren skjuter in en lï¿½da i goalsquare-omrï¿½det
 			if(theboard[ppos.first][ppos.second+2] == '.'  && theboard[ppos.first][ppos.second+1] == '$'
 					&& theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "R: Player moves a box into goal square area." << endl; }
@@ -466,7 +466,7 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second+1] = '@';
 				theboard[ppos.first][ppos.second] = ' ';
 			}
-			// Kolla om spelaren skjuter in en lŒda i goalsquare-omrŒdet och Œker med in.
+			// Kolla om spelaren skjuter in en lï¿½da i goalsquare-omrï¿½det och ï¿½ker med in.
 			if(theboard[ppos.first][ppos.second+2] == '.'  && theboard[ppos.first][ppos.second+1] == '*'
 					&& theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "R: Player moves a box into goal square area and enters goal square." << endl; }
@@ -474,7 +474,7 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second+1] = '+';
 				theboard[ppos.first][ppos.second] = ' ';
 			}
-			// Kolla om spelaren skjuter en lŒda inom goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da inom goalsquare-omrï¿½det
 			if(theboard[ppos.first][ppos.second+2] == '.'  && theboard[ppos.first][ppos.second+1] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "R: Player moves a box within goal square area." << endl; }
@@ -482,7 +482,7 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second+1] = '+';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om spelaren skjuter en lŒda ut frŒn goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da ut frï¿½n goalsquare-omrï¿½det
 			if(theboard[ppos.first][ppos.second+2] == ' '  && theboard[ppos.first][ppos.second+1] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "R: Player moves a box within goal square area." << endl; }
@@ -490,7 +490,7 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second+1] = '+';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om spelaren skjuter en lŒda som ligger vid kanten till goalsquare-omrŒdet
+			// Kolla om spelaren skjuter en lï¿½da som ligger vid kanten till goalsquare-omrï¿½det
 			if(theboard[ppos.first][ppos.second+2] == ' '  && theboard[ppos.first][ppos.second+1] == '$'
 					&& theboard[ppos.first][ppos.second] == '+') {
 				if(DEBUG_MOVE == 1 && true) { cout << "R: Player moves a box at the border of goal square area." << endl; }
@@ -498,7 +498,7 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second+1] = '@';
 				theboard[ppos.first][ppos.second] = '.';
 			}
-			// Kolla om vi skjuter runt lŒdan pŒ det vanliga golvet.
+			// Kolla om vi skjuter runt lï¿½dan pï¿½ det vanliga golvet.
 			if(theboard[ppos.first][ppos.second+1] == '$' || theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { cout << "R: Player moves a box outside of goal squares." << endl; }
 				theboard[(ppos.first)][ppos.second+2] = '$';
@@ -507,30 +507,30 @@ pair<char, bool> board::move(char c) {
 			}
 		}
 
-		// Kolla om spelarmarkšren gŒr in i goalsquare och ska byta markšr till +.
+		// Kolla om spelarmarkï¿½ren gï¿½r in i goalsquare och ska byta markï¿½r till +.
 		else if(theboard[ppos.first][ppos.second+1] == '.'  && theboard[ppos.first][ppos.second] == '@' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "R: Player enters a goal square." << endl; }
 			theboard[ppos.first][ppos.second+1] = '+';
 			theboard[ppos.first][ppos.second] = ' ';
 		}
-		// Kolla om spelarmarkšren redan var i goal square och lŠgg tillbaka en . bakom spelaren.
+		// Kolla om spelarmarkï¿½ren redan var i goal square och lï¿½gg tillbaka en . bakom spelaren.
 		else if(theboard[ppos.first][ppos.second+1] == '.'  && theboard[ppos.first][ppos.second] == '+' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "R: Player moves from one goal square to another." << endl; }
 			theboard[ppos.first][ppos.second+1] = '+';
 			theboard[ppos.first][ppos.second] = '.';
 		}
-		// Kolla om spelarmarkšren lŠmnar goal square omrŒdet. Tillbaka till @ alltsŒ.
+		// Kolla om spelarmarkï¿½ren lï¿½mnar goal square omrï¿½det. Tillbaka till @ alltsï¿½.
 		else if(theboard[ppos.first][ppos.second+1] == ' '  && theboard[ppos.first][ppos.second] == '+' && !boxaffected) {
 			if(DEBUG_MOVE == 1 && true) { cout << "R: Player moves from one goal square to regular area." << endl; }
 			theboard[ppos.first][ppos.second+1] = '@';
 			theboard[ppos.first][ppos.second] = '.';
 		}
-		else { // Om vi inte pŒverkar lŒdan.
+		else { // Om vi inte pï¿½verkar lï¿½dan.
 			if(DEBUG_MOVE == 1 && true) { cout << "R: Player just moves in the regular floor area." << endl; }
 			theboard[(ppos.first)][ppos.second+1] = '@';
 			theboard[ppos.first][ppos.second] = ' ';
 		}
-		ppos = make_pair((ppos.first), ppos.second+1); // Nya spelarpositionen pŒ brŠdan.
+		ppos = make_pair((ppos.first), ppos.second+1); // Nya spelarpositionen pï¿½ brï¿½dan.
 	}
 
 
@@ -557,12 +557,14 @@ void board::solve() {
 
 	char moves[]= {'U','L','D', 'R', 0};
 	int i=0;
+	string m;
 
 	while(1) {
 		for(i; moves[i]; i++) {
 			if(validateMove(moves[i])) {
 				solution.push_back(move(moves[i]));
 				i = 0;
+getline(cin, m, '\n');
 			}
 		}
 		//backtracking
