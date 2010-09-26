@@ -32,7 +32,8 @@ private:
     pair<int, int> ppos;					// ppos h�ller spelarmark�rens aktuella position p� br�dan.
     pair<char, bool> move_result;			// Varje move genererar en riktning U/D/L/R samt talar om ifall en l�da p�verkats.
     vector< pair <char, bool> > solution;	// Vektorn h�ller samtliga aktuella move_result pairs.
-    vector< vector<char> > theboard;			// Arren blev en vektor.
+    vector< vector<char> > theboard;		// Arren blev en vektor.
+    vector <board> visited_boards;
 };
 
 #endif	/* BOARD_H */
