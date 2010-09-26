@@ -11,18 +11,19 @@ int main(int argc, char *arv[]) {
 	string s1 = "##########\n#   @    #\n#   $    #\n#  ...   #\n# $...$  #\n#  ...   #\n#   $    #\n#        #\n##########";
 	board b1(s1);
 
-	/* kod fšr att kšra solve */
+	/* kod fï¿½r att kï¿½ra solve */
 	/*
 	cout << (b1.goalTest() ? "Solved" : "Not solved") << endl;
 
-	b1.printBoard();
+	*/
 
 	if(argc > 1) {
+		b1.printBoard();
 		cout << "running solve\n";
 		b1.solve();
 		return 0;
 	}
-	*/
+
 
 	/* Kod fï¿½r att spela med tangentbordet */
 	string m;
