@@ -27,7 +27,7 @@ public:
     void printBoard();
     bool currentBoardVisited();
     bool compareBoardToCurrent(vector< vector<char> >);
-
+    string generate_answer_string();
 private:
 
     char currentMove;						// Det move vi just nu beaktar. Skall vara VERSAL.
