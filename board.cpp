@@ -26,6 +26,7 @@ board::board (string board1){
 
 	stringstream ss(board1);
 	string token;
+	nodes_checked = 0;
 
 	/* Dessa beh�vs f�r att h�lla reda p� var i vectormatrisen vi �r n�r vi st�ter p�
 	 * spelare s� den kan sparas i ppos
@@ -601,7 +602,6 @@ bool board::solve() {
 	char moves[]= {'U','L','D', 'R', 0};
 	int i=0;
 	string m;
-	nodes_checked = 0;
 
 	DEBUG(getline(cin, m, '\n'));
 	while(1) {
