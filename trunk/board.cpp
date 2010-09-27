@@ -577,6 +577,7 @@ pair<char, bool> board::move(char c) {
 		ppos = make_pair((ppos.first), ppos.second+1); // Nya spelarpositionen p� br�dan.
 	}
 
+	solution.push_back(make_pair(c, boxaffected));
 
 	if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "move() result:" << endl; printBoard()); }
 
@@ -608,7 +609,7 @@ bool board::solve() {
 		for(i; moves[i];) {
 			nodes_checked++;
 			if(validateMove(moves[i])) {
-				solution.push_back(move(moves[i]));
+				move(moves[i]);
 				if(currentBoardVisited()) {
 					//add the board just so we can remove a board in the backtracking step
 					visited_boards.push_back(theboard);
