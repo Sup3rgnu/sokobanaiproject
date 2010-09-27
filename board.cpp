@@ -643,4 +643,12 @@ bool board::currentBoardVisited() {
 	return 0;
 }
 
+string board::generate_answer_string() {
+	int i;
+	string result;
 
+	for(i=0; i < solution.size(); i++) {
+		result += solution[i].first + " ";
+	}
+	return result;
+}
