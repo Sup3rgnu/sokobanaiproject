@@ -90,7 +90,7 @@ void board::printBoard() {
 		}
 		DEBUG(cout << "]" << endl);
 	}
-	DEBUG(cout << "player x=" << ppos.second << " ,y=" << ppos.first << ", depth=" << solution.size() << endl);
+	DEBUG(cout << "player x=" << ppos.second << " ,y=" << ppos.first << ", depth=" << solution.size() << ", nodes_checked = " << nodes_checked << endl);
 }
 
 bool board::goalTest() {
@@ -601,9 +601,11 @@ bool board::solve() {
 	char moves[]= {'U','L','D', 'R', 0};
 	int i=0;
 	string m;
+	nodes_checked = 0;
 
 	while(1) {
 		for(i; moves[i];) {
+			nodes_checked++;
 			if(validateMove(moves[i])) {
 				solution.push_back(move(moves[i]));
 				if(currentBoardVisited()) {
