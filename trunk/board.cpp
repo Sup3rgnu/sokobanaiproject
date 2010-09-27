@@ -65,10 +65,13 @@ void board::moveBack(pair<char,bool> move)
 		break;
 	case 'L':
 		ppos.second += 1;
+		break;
 	case 'D':
 		ppos.first -= 1;
+		break;
 	case 'R':
 		ppos.second -= 1;
+		break;
 	}
 
 }
