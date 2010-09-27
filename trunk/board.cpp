@@ -113,7 +113,7 @@ bool board::validateMove(char c) {
 
 				ok = false;
 			}
-			if(theboard[(ppos.first)-3][ppos.second] == '#' && (theboard[(ppos.first)-2][(ppos.second)-1] == '#' || theboard[(ppos.first)-2][(ppos.second)+1] == '#')){
+			else if(theboard[(ppos.first)-3][ppos.second] == '#' && (theboard[(ppos.first)-2][(ppos.second)-1] == '#' || theboard[(ppos.first)-2][(ppos.second)+1] == '#')){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { cout << "This move would push the box into a corner! Not OK." << endl; }
 
 				ok = false;
@@ -608,6 +608,7 @@ void board::solve() {
 				i = 0;
 				getline(cin, m, '\n');
 			} else {
+				cout << "Move was not allowed" << endl;
 				i++;
 			}
 
