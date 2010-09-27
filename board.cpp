@@ -605,6 +605,7 @@ bool board::solve() {
 	string m;
 
 	DEBUG(getline(cin, m, '\n'));
+	visited_boards.push_back(theboard);
 	while(1) {
 		for(i; moves[i];) {
 			nodes_checked++;
