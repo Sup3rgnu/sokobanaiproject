@@ -583,6 +583,11 @@ void board::solve() {
 		for(i; moves[i];) {
 			if(validateMove(moves[i])) {
 				solution.push_back(move(moves[i]));
+				if(currentBoardVisited()) {
+					cout << "board visited, backtracking\n";
+					break; //backtrack
+				}
+				visited_boards.push_back(theboard);
 				i = 0;
 				getline(cin, m, '\n');
 			} else {
@@ -604,6 +609,15 @@ void board::solve() {
 			}
 		}
 	}
+}
+
+bool board::currentBoardVisited() {
+	int i;
+	for(i = 0; i < visited_boards.size(); i++) {
+	 if(theboard == visited_boards[i])
+		 return 1;
+	}
+	return 0;
 }
 
 
