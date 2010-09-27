@@ -146,7 +146,7 @@ bool board::validateMove(char c) {
 
 				ok = false;
 			}
-			if(theboard[(ppos.first)+3][ppos.second] == '#' && (theboard[(ppos.first)+2][(ppos.second)-1] == '#' || theboard[(ppos.first)+2][(ppos.second)+1] == '#')){
+			else if(theboard[(ppos.first)+3][ppos.second] == '#' && (theboard[(ppos.first)+2][(ppos.second)-1] == '#' || theboard[(ppos.first)+2][(ppos.second)+1] == '#')){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into a corner! Not OK." << endl); }
 
 				ok = false;
@@ -170,7 +170,7 @@ bool board::validateMove(char c) {
 
 				ok = false;
 			}
-			if(theboard[(ppos.first)][ppos.second-3] == '#' && (theboard[(ppos.first)-1][(ppos.second)-2] == '#' || theboard[(ppos.first)+1][(ppos.second)-2] == '#')){
+			else if(theboard[(ppos.first)][ppos.second-3] == '#' && (theboard[(ppos.first)-1][(ppos.second)-2] == '#' || theboard[(ppos.first)+1][(ppos.second)-2] == '#')){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into a corner! Not OK." << endl); }
 
 				ok = false;
@@ -194,7 +194,7 @@ bool board::validateMove(char c) {
 
 				ok = false;
 			}
-			if(theboard[ppos.first][ppos.second+3] == '#' && (theboard[(ppos.first)-1][ppos.second+2] == '#' || theboard[ppos.first+1][ppos.second+2] == '#')){
+			else if(theboard[ppos.first][ppos.second+3] == '#' && (theboard[(ppos.first)-1][ppos.second+2] == '#' || theboard[ppos.first+1][ppos.second+2] == '#')){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into a corner! Not OK." << endl); }
 
 				ok = false;
