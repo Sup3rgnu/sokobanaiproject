@@ -12,6 +12,9 @@ int main(int argc, char *arv[]) {
 
 	string s1 = "########\n#@     #\n#   $  #\n#  .   #\n########\n";
 
+
+	s1 = "#####\n#@  #\n#   #\n# $.#\n#####\n";
+
 	board b1(s1);
 
 	/* kod f�r att k�ra solve */

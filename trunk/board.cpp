@@ -614,7 +614,8 @@ bool board::solve() {
 				}
 				visited_boards.push_back(theboard);
 				if(goalTest()) {
-					cout << "We found a solution!!--------------\n";
+					cout << "We found a solution!!--------------\nsolution=" << generate_answer_string() << endl;
+
 					return true;
 				}
 				i = 0;
@@ -659,6 +660,7 @@ string board::generate_answer_string() {
 
 	for(i=0; i < solution.size(); i++) {
 		result += solution[i].first + " ";
+		cout << solution[i].first << endl;
 	}
 	return result;
 }
