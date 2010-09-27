@@ -56,6 +56,21 @@ board::board (string board1){
 
 void board::moveBack(pair<char,bool> move)
 {
+	visited_boards.pop_back();
+	theboard = visited_boards.back();
+	//opposite directions
+	switch (move.first) {
+	case 'U':
+		ppos.second -= 1 ;
+		break;
+	case 'L':
+		ppos.first += 1;
+	case 'D':
+		ppos.second += 1;
+	case 'R':
+		ppos.first -= 1;
+	}
+
 }
 
 void board::printBoard() {
@@ -584,6 +599,8 @@ void board::solve() {
 			if(validateMove(moves[i])) {
 				solution.push_back(move(moves[i]));
 				if(currentBoardVisited()) {
+					//add the board just so we can remove a board in the backtracking step
+					visited_boards.push_back(theboard);
 					cout << "wrong move '" << moves[i] << "' made, board already visited, backtracking---------------------\n";
 					break; //backtrack
 				}
