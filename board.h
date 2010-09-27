@@ -36,6 +36,7 @@ private:
     vector< pair <char, bool> > solution;	// Vektorn h�ller samtliga aktuella move_result pairs.
     vector< vector<char> > theboard;		// Arren blev en vektor.
     vector< vector< vector<char> > > visited_boards;
+    unsigned long long nodes_checked;
 };
 
 #endif	/* BOARD_H */
