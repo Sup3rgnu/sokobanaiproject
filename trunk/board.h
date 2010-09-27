@@ -23,7 +23,7 @@ public:
     pair<char, bool> move(char);
     void moveBack(pair<char, bool>);
     void updateBoard(pair <char, bool> m);
-    void solve();
+    bool solve();
     void printBoard();
     bool currentBoardVisited();
     bool compareBoardToCurrent(vector< vector<char> >);
