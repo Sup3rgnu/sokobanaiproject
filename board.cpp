@@ -619,7 +619,7 @@ bool board::solve() {
 					break; //backtrack
 				}
 				if(goalTest()) {
-					cout << "We found a solution!!--------------\nsolution=" << generate_answer_string() << endl;
+					cout << "We found a solution!!--------------\nsolution = " << generate_answer_string() << endl;
 
 					return true;
 				}

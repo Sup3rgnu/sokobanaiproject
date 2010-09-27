@@ -1,36 +1,37 @@
 #include <iostream>
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "board.h"
 
 using namespace std;
 
-int main(int argc, char *arv[]) {
-
-	//string s1 = "########\n#......#\n#@$##$ #\n#  ##  #\n# $$ $$#\n#      #\n#...#  #\n########\n";
-	//string s1 = "##########\n#   @    #\n#   $    #\n#  ...   #\n# $...$  #\n#  ...   #\n#   $    #\n#        #\n##########";
-
-	string s1 = "########\n#@     #\n#   $  #\n#  .   #\n########\n";
-
-	s1 = "#####\n#@  #\n# $ #\n#  .#\n#####\n";
-
-	board b1(s1);
-
-	/* kod f�r att k�ra solve */
-	/*
-	cout << (b1.goalTest() ? "Solved" : "Not solved") << endl;
-
-	*/
+int main(int argc, char *argv[]) {
 
 	if(argc > 1) {
 		//b1.printBoard();
+		string thefile, tmp;
+
+		tmp = "boards/"; tmp += argv[1];
+		ifstream input(tmp.c_str());
+
+		while(!input.eof()) {
+		    getline(input, tmp);
+		    thefile += tmp;
+		    thefile += "\n";
+		}
 		cout << "running solve\n";
+		board b1(thefile);
 		b1.solve();
 		return 0;
 	}
 
+/*
+	string s1 = "########\n#......#\n#@$##$ #\n#  ##  #\n# $$ $$#\n#      #\n#...#  #\n########\n";
 
-	/* Kod f�r att spela med tangentbordet */
+	board b1(s1);
+
+	// Kod f�r att spela med tangentbordet
 	string m;
 	while(true) {
 
@@ -44,7 +45,6 @@ int main(int argc, char *arv[]) {
 		}
 		//b1.printBoard();
 	}
-	/* tangentbord */
-
+*/
 	return 0;
 }
