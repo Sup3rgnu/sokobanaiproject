@@ -9,7 +9,6 @@ using namespace std;
 int main(int argc, char *argv[]) {
 
 	if(argc > 1) {
-		//b1.printBoard();
 		string thefile, tmp;
 
 		tmp = "boards/"; tmp += argv[1];
