@@ -18,9 +18,9 @@ const int DEBUG_VALIDATEMOVE = 1;
 using namespace std;
 
 //debug
-#define DEBUG(x) x
+//#define DEBUG(x) x
 //no debug
-//#define DEBUG(x)
+#define DEBUG(x)
 
 board::board (string board1){
 
@@ -619,7 +619,8 @@ bool board::solve() {
 					break; //backtrack
 				}
 				if(goalTest()) {
-					cout << "We found a solution!!--------------\nsolution = " << generate_answer_string() << endl;
+					cout << "We found a solution!!--------------\nsolution = "
+							<< generate_answer_string() << endl << "nodes checked = " << nodes_checked << endl;
 
 					return true;
 				}
