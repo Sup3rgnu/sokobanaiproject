@@ -61,12 +61,12 @@ void board::moveBack(pair<char,bool> move)
 	//opposite directions
 	switch (move.first) {
 	case 'U':
-		ppos.second -= 1 ;
+		ppos.second += 1 ;
 		break;
 	case 'L':
 		ppos.first += 1;
 	case 'D':
-		ppos.second += 1;
+		ppos.second -= 1;
 	case 'R':
 		ppos.first -= 1;
 	}
