@@ -61,14 +61,14 @@ void board::moveBack(pair<char,bool> move)
 	//opposite directions
 	switch (move.first) {
 	case 'U':
-		ppos.second += 1 ;
+		ppos.first += 1 ;
 		break;
 	case 'L':
-		ppos.first += 1;
+		ppos.second += 1;
 	case 'D':
-		ppos.second -= 1;
-	case 'R':
 		ppos.first -= 1;
+	case 'R':
+		ppos.second -= 1;
 	}
 
 }
@@ -82,7 +82,7 @@ void board::printBoard() {
 		}
 		cout << "]" << endl;
 	}
-
+ cout << "player x=" << ppos.first << ", y=" << ppos.second << endl;
 }
 
 bool board::goalTest() {
