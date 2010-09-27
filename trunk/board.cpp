@@ -92,6 +92,7 @@ void board::printBoard() {
 		DEBUG(cout << "]" << endl);
 	}
 	DEBUG(cout << "player x=" << ppos.second << " ,y=" << ppos.first << ", depth=" << solution.size() << ", nodes_checked = " << nodes_checked << endl);
+	DEBUG(cout << "solution = " << generate_answer_string() << endl);
 }
 
 bool board::goalTest() {
@@ -664,8 +665,8 @@ string board::generate_answer_string() {
 	string result;
 
 	for(i=0; i < solution.size(); i++) {
-		result += solution[i].first + " ";
-		cout << solution[i].first << endl;
+		result += solution[i].first;
+		result += " ";
 	}
 	return result;
 }
