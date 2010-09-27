@@ -25,6 +25,8 @@ public:
     void updateBoard(pair <char, bool> m);
     void solve();
     void printBoard();
+    bool currentBoardVisited();
+    bool compareBoardToCurrent(vector< vector<char> >);
 
 private:
 
