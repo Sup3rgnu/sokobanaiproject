@@ -608,6 +608,10 @@ bool board::solve() {
 					break; //backtrack
 				}
 				visited_boards.push_back(theboard);
+				if(goalTest()) {
+					cout << "We found a solution!!--------------\n";
+					return true;
+				}
 				i = 0;
 				getline(cin, m, '\n');
 			} else {
@@ -632,6 +636,7 @@ bool board::solve() {
 			}
 		}
 	}
+	return false;
 }
 
 bool board::currentBoardVisited() {
