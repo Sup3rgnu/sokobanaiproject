@@ -82,7 +82,7 @@ void board::printBoard() {
 		}
 		cout << "]" << endl;
 	}
- cout << "player x=" << ppos.first << ", y=" << ppos.second << endl;
+ cout << "player x=" << ppos.second << ", y=" << ppos.first << endl;
 }
 
 bool board::goalTest() {
