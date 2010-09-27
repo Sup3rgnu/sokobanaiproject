@@ -584,7 +584,7 @@ void board::solve() {
 			if(validateMove(moves[i])) {
 				solution.push_back(move(moves[i]));
 				if(currentBoardVisited()) {
-					cout << "board visited, backtracking\n";
+					cout << "wrong move '" << moves[i] << "' made, board already visited, backtracking---------------------\n";
 					break; //backtrack
 				}
 				visited_boards.push_back(theboard);
@@ -600,6 +600,8 @@ void board::solve() {
 			pair<char, bool> last_move = solution.back();
 			solution.pop_back();
 			moveBack(last_move);
+			cout << "after backtracking including moveBack the board looks like:\n";
+			printBoard();
 			int j;
 			for(j = 0; last_move.first != moves[j]; j++)
 				;
