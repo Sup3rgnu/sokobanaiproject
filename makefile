@@ -10,4 +10,7 @@ stdin_client: stdin_client.cpp board.cpp board.h
 		g++ stdin_client.cpp board.cpp -lboost_system -o stdin_client -g
 
 clean:
-	rm client local_client
+	rm client local_client 
+
+zip:
+	zip voddler-sokoban.zip *.cc *.cpp *.h *.sh makefile 
