@@ -601,7 +601,7 @@ void board::updateBoard(pair<char, bool> m) {
 
 bool board::solve() {
 
-	char moves[]= {'U','L','D', 'R', 0};
+	char moves[]= {'D','R','U', 'L', 0};
 	int i=0;
 	string m;
 
