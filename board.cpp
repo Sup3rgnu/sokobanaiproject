@@ -603,6 +603,7 @@ bool board::solve() {
 	string m;
 	nodes_checked = 0;
 
+	DEBUG(getline(cin, m, '\n'));
 	while(1) {
 		for(i; moves[i];) {
 			nodes_checked++;
@@ -614,12 +615,12 @@ bool board::solve() {
 					DEBUG(cout << "wrong move '" << moves[i] << "' made, board already visited, backtracking---------------------\n");
 					break; //backtrack
 				}
-				visited_boards.push_back(theboard);
 				if(goalTest()) {
 					cout << "We found a solution!!--------------\nsolution=" << generate_answer_string() << endl;
 
 					return true;
 				}
+				visited_boards.push_back(theboard);
 				i = 0;
 				DEBUG(getline(cin, m, '\n'));
 			} else {

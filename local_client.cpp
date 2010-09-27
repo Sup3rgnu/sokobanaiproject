@@ -12,7 +12,6 @@ int main(int argc, char *arv[]) {
 
 	string s1 = "########\n#@     #\n#   $  #\n#  .   #\n########\n";
 
-
 	s1 = "#####\n#@  #\n#   #\n# $.#\n#####\n";
 
 	board b1(s1);
@@ -24,7 +23,7 @@ int main(int argc, char *arv[]) {
 	*/
 
 	if(argc > 1) {
-		b1.printBoard();
+		//b1.printBoard();
 		cout << "running solve\n";
 		b1.solve();
 		return 0;
