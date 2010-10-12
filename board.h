@@ -19,6 +19,7 @@ public:
 
     board(string board);
     bool goalTest();
+    bool wallCheck(char);
     bool validateMove(char);
     pair<char, bool> move(char);
     void moveBack(pair<char, bool>);

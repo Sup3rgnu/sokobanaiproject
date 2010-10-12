@@ -18,9 +18,9 @@ const int DEBUG_VALIDATEMOVE = 1;
 using namespace std;
 
 //debug
-//#define DEBUG(x) x
+#define DEBUG(x) x
 //no debug
-#define DEBUG(x)
+//#define DEBUG(x)
 
 board::board (string board1){
 
@@ -103,6 +103,85 @@ bool board::goalTest() {
 	return true;
 }
 
+bool board::wallCheck(char m) {
+	switch (m) {
+	case 'U':
+		//check if wall ahead
+		if(ppos.first-3 >= 0 && theboard[(ppos.first)-3][ppos.second] == '#' && theboard[(ppos.first)-2][ppos.second] == ' '){
+			//find corners
+			int xl, xr;
+			for(xl = ppos.second; theboard[ppos.first-2][xl] != '#'; xl--)
+				;
+			for(xr = ppos.second; theboard[ppos.first-2][xr] != '#'; xr++)
+				;
+			//check if wall between corners
+			for(int i = xl+1; i < xr; i++) {
+				if(!(theboard[ppos.first-3][i] == '#' && theboard[ppos.first-2][i] == ' '))
+					return false;
+			}
+			return true;
+		} else {
+			return false;
+		}
+	case 'D':
+		//check if wall ahead
+		if(ppos.first+3 <= theboard.size() && theboard[(ppos.first)+3][ppos.second] == '#' && theboard[(ppos.first)+2][ppos.second] == ' '){
+			//find corners
+			int xl, xr;
+			for(xl = ppos.second; theboard[ppos.first+2][xl] != '#'; xl--)
+				;
+			for(xr = ppos.second; theboard[ppos.first+2][xr] != '#'; xr++)
+				;
+			//check if wall between corners
+			for(int i = xl+1; i < xr; i++) {
+				if(!(theboard[ppos.first+3][i] == '#' && theboard[ppos.first+2][i] == ' '))
+					return false;
+			}
+			return true;
+		} else {
+			return false;
+		}
+	case 'L':
+		//check if wall ahead
+		if(ppos.second-3 >= 0 && theboard[ppos.first][ppos.second-3] == '#' && theboard[ppos.first][ppos.second-2] == ' '){
+			//find corners
+			int yl, yh;
+			for(yl = ppos.first; theboard[yl][ppos.first-2] != '#'; yl--)
+				;
+			for(yh = ppos.first; theboard[yh][ppos.first-2] != '#'; yh++)
+				;
+			//check if wall between corners
+			for(int i = yl+1; i < yh; i++) {
+				if(!(theboard[i][ppos.second-3] == '#' && theboard[i][ppos.second-2] == ' '))
+					return false;
+			}
+			return true;
+		} else {
+			return false;
+		}
+	case 'R':
+		//check if wall ahead
+		if(ppos.second+3 <= theboard[ppos.first].size() && theboard[ppos.first][ppos.second+3] == '#' && theboard[ppos.first][ppos.second+2] == ' '){
+			//find corners
+			int yl, yh;
+			for(yl = ppos.first; theboard[yl][ppos.first+2] != '#'; yl--)
+				;
+			for(yh = ppos.first; theboard[yh][ppos.first+2] != '#'; yh++)
+				;
+			//check if wall between corners
+			for(int i = yl+1; i < yh; i++) {
+				if(!(theboard[i][ppos.second+3] == '#' && theboard[i][ppos.second+2] == ' '))
+					return false;
+			}
+			return true;
+		} else {
+			return false;
+		}	default:
+		break;
+	}
+	return false;
+}
+
 bool board::validateMove(char c) {
 
 	if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "validateMove() input: " << c << endl); }
@@ -126,6 +205,10 @@ bool board::validateMove(char c) {
 			else if(theboard[(ppos.first)-2][ppos.second] == ' ' && theboard[(ppos.first)-3][ppos.second] == '#' && (theboard[(ppos.first)-2][(ppos.second)-1] == '#' || theboard[(ppos.first)-2][(ppos.second)+1] == '#')){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into a corner! Not OK." << endl); }
 
+				ok = false;
+			}
+			if(wallCheck(c)){
+				DEBUG(cout << "wall!!!" << endl);
 				ok = false;
 			}
 		}
@@ -153,6 +236,10 @@ bool board::validateMove(char c) {
 
 				ok = false;
 			}
+			if(wallCheck(c)){
+				DEBUG(cout << "wall!!!" << endl);
+				ok = false;
+			}
 		}
 		if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "There is no box in the way." << endl); }
 
@@ -177,6 +264,10 @@ bool board::validateMove(char c) {
 
 				ok = false;
 			}
+			if(wallCheck(c)){
+				DEBUG(cout << "wall!!!" << endl);
+				ok = false;
+			}
 		}
 		if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "There is no box in the way." << endl); }
 
@@ -199,6 +290,10 @@ bool board::validateMove(char c) {
 			else if(theboard[(ppos.first)][ppos.second+2] == ' ' && theboard[ppos.first][ppos.second+3] == '#' && (theboard[(ppos.first)-1][ppos.second+2] == '#' || theboard[ppos.first+1][ppos.second+2] == '#')){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into a corner! Not OK." << endl); }
 
+				ok = false;
+			}
+			if(wallCheck(c)){
+				DEBUG(cout << "wall!!!" << endl);
 				ok = false;
 			}
 		}
@@ -250,7 +345,7 @@ pair<char, bool> board::move(char c) {
 
 			// Kolla om spelaren skjuter in en l�da i goalsquare-omr�det
 			if(theboard[(ppos.first)-2][ppos.second] == '.'  && theboard[(ppos.first)-1][ppos.second] == '$'
-				&& theboard[ppos.first][ppos.second] == '@') {
+					&& theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "U: Player moves a box into goal square area." << endl); }
 				theboard[(ppos.first)-2][ppos.second] = '*';
 				theboard[(ppos.first)-1][ppos.second] = '@';
@@ -335,7 +430,7 @@ pair<char, bool> board::move(char c) {
 
 			// Kolla om spelaren skjuter in en l�da i goalsquare-omr�det
 			if(theboard[(ppos.first)+2][ppos.second] == '.'  && theboard[(ppos.first)+1][ppos.second] == '$'
-				&& theboard[ppos.first][ppos.second] == '@') {
+					&& theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box into goal square area." << endl); }
 				theboard[(ppos.first)+2][ppos.second] = '*';
 				theboard[(ppos.first)+1][ppos.second] = '@';
@@ -655,8 +750,8 @@ bool board::solve() {
 bool board::currentBoardVisited() {
 	int i;
 	for(i = 0; i < visited_boards.size(); i++) {
-	 if(theboard == visited_boards[i])
-		 return 1;
+		if(theboard == visited_boards[i])
+			return 1;
 	}
 	return 0;
 }
