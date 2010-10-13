@@ -41,6 +41,7 @@ private:
     vector< vector< vector<char> > > visited_boards;
     unsigned long long nodes_checked;
     struct timeval time_begin, time;
+    int second_checked;
 };
 
 #endif	/* BOARD_H */

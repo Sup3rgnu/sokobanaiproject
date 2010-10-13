@@ -42,6 +42,7 @@ board::board (string board1){
 	vector<char> newrow;
 
 	gettimeofday(&time_begin, 0);
+	second_checked = 0;
 
 	/* L�ser indata via en stringstream och splittar p� rad
 	 * och sedan per char som stoppas i en 2d vector.
@@ -704,14 +705,13 @@ void board::updateBoard(pair<char, bool> m) {
 		break;
 	case 'R':
 		break;
-
 	}
 }
 
 bool board::solve() {
 
 	char moves[]= {'D','R','U', 'L', 0};
-	int i=0;
+	int i=0, sec_diff;
 	string m;
 
 	DEBUG(getline(cin, m, '\n'));
@@ -719,6 +719,13 @@ bool board::solve() {
 	while(1) {
 		for(i; moves[i];) {
 			nodes_checked++;
+			gettimeofday(&time, 0);
+			if(time.tv_sec > second_checked) {
+				second_checked = time.tv_sec;
+				sec_diff = second_checked - time_begin.tv_sec;
+				if(sec_diff)
+					cout << "nodes checked last second: " << nodes_checked / (second_checked - time_begin.tv_sec) << "\n";
+			}
 			if(validateMove(moves[i])) {
 				move(moves[i]);
 				printBoard();
