@@ -15,12 +15,17 @@
 const int DEBUG_MOVE = 1;
 const int DEBUG_VALIDATEMOVE = 1;
 
+#define DEBUG_ALL 0
+#define USE_WALL  0
+#define USE_REACH 1
+
 using namespace std;
 
-//debug
-//#define DEBUG(x) x
-//no debug
+#if DEBUG_ALL
+#define DEBUG(x) x
+#else
 #define DEBUG(x)
+#endif
 
 board::board (string board1){
 
@@ -107,6 +112,9 @@ bool board::goalTest() {
 }
 
 bool board::wallCheck(char m) {
+#if USE_WALL == 0
+	return 0;
+#endif
 	switch (m) {
 	case 'U':
 		//check if wall ahead
@@ -711,8 +719,11 @@ bool board::solve() {
 			if(validateMove(moves[i])) {
 				move(moves[i]);
 				printBoard();
-				//om du vill slå på reachable board kör den istället för currentBoardVisited
-				if(/* reachableBoardVisited() */ currentBoardVisited() ) {
+#if USE_REACH
+				if( reachableBoardVisited()) {
+#else
+				if( currentBoardVisited()) {
+#endif
 					//add the board just so we can remove a board in the backtracking step
 					visited_boards.push_back(theboard);
 					DEBUG(cout << "wrong move '" << moves[i] << "' made, board already visited, backtracking---------------------\n");
