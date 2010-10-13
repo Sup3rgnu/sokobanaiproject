@@ -27,6 +27,7 @@ public:
     bool solve();
     void printBoard();
     bool currentBoardVisited();
+    bool reachableBoardVisited();
     bool compareBoardToCurrent(vector< vector<char> >);
     string generate_answer_string();
 private:
