@@ -42,6 +42,7 @@ private:
     unsigned long long nodes_checked;
     struct timeval time_begin, time;
     int second_checked;
+    int check_100;
 };
 
 #endif	/* BOARD_H */
