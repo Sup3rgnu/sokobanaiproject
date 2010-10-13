@@ -712,7 +712,7 @@ bool board::solve() {
 				move(moves[i]);
 				printBoard();
 				//om du vill slå på reachable board kör den istället för currentBoardVisited
-				if(reachableBoardVisited() /* currentBoardVisited() */) {
+				if(/* reachableBoardVisited() */ currentBoardVisited() ) {
 					//add the board just so we can remove a board in the backtracking step
 					visited_boards.push_back(theboard);
 					DEBUG(cout << "wrong move '" << moves[i] << "' made, board already visited, backtracking---------------------\n");
