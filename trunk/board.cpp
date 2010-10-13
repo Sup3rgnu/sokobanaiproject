@@ -719,14 +719,14 @@ bool board::solve() {
 	while(1) {
 		for(i; moves[i];) {
 				nodes_checked++;
-				check_100 = (check_100++) % 100;
+				check_100 = (++check_100) % 100;
 				if(!check_100) {
 					gettimeofday(&time, 0);
 					if(time.tv_sec > second_checked) {
 						second_checked = time.tv_sec;
 						sec_diff = second_checked - time_begin.tv_sec;
 						if(sec_diff)
-						cout << "nodes checked last second: " << nodes_checked / sec_diff << "\n";
+							cout << "nodes checked last second: " << nodes_checked / sec_diff << "\n";
 					}
 				}
 				if(validateMove(moves[i])) {
