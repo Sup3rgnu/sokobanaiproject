@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <sys/time.h>
 
 using namespace std;
 
@@ -39,6 +40,7 @@ private:
     vector< vector<char> > theboard;		// Arren blev en vektor.
     vector< vector< vector<char> > > visited_boards;
     unsigned long long nodes_checked;
+    struct timeval time_begin, time;
 };
 
 #endif	/* BOARD_H */

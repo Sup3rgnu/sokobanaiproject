@@ -12,6 +12,7 @@
 #include <utility>
 #include <assert.h>
 
+
 const int DEBUG_MOVE = 1;
 const int DEBUG_VALIDATEMOVE = 1;
 
@@ -39,6 +40,8 @@ board::board (string board1){
 	int row = 0;
 	int col = 0;
 	vector<char> newrow;
+
+	gettimeofday(&time_begin, 0);
 
 	/* L�ser indata via en stringstream och splittar p� rad
 	 * och sedan per char som stoppas i en 2d vector.
@@ -732,7 +735,9 @@ bool board::solve() {
 				if(goalTest()) {
 					cout << "We found a solution!!--------------\nsolution = "
 							<< generate_answer_string() << endl << "nodes checked = " << nodes_checked << endl;
-
+					gettimeofday(&time, 0);
+					cout << "seconds: " << time.tv_sec - time_begin.tv_sec << "." <<
+							time.tv_usec - time_begin.tv_usec << "\n";
 					return true;
 				}
 				visited_boards.push_back(theboard);
