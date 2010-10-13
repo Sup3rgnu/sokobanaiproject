@@ -18,9 +18,9 @@ const int DEBUG_VALIDATEMOVE = 1;
 using namespace std;
 
 //debug
-#define DEBUG(x) x
+//#define DEBUG(x) x
 //no debug
-//#define DEBUG(x)
+#define DEBUG(x)
 
 board::board (string board1){
 
@@ -85,14 +85,17 @@ void board::moveBack(pair<char,bool> move)
 void board::printBoard() {
 
 	for(int i = 0; i < theboard.size(); i++) {
-		DEBUG(cout << i+1 << "[");
+		DEBUG(cout << i << "[");
 		for(int j = 0; j < theboard[i].size(); j++) {
 			DEBUG(cout << theboard[i][j] << ",");
 		}
 		DEBUG(cout << "]" << endl);
 	}
-	DEBUG(cout << "player x=" << ppos.second << " ,y=" << ppos.first << ", depth=" << solution.size() << ", nodes_checked = " << nodes_checked << endl);
+	DEBUG(cout << "player x=" << ppos.second << " ,y=" << ppos.first <<
+			", depth=" << solution.size() << ", nodes_checked = " << nodes_checked <<
+			", visited_boards.size() = " << visited_boards.size() << endl);
 	DEBUG(cout << "solution = " << generate_answer_string() << endl);
+
 }
 
 bool board::goalTest() {
@@ -675,7 +678,7 @@ pair<char, bool> board::move(char c) {
 
 	solution.push_back(make_pair(c, boxaffected));
 
-	if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "move() result:" << endl; printBoard()); }
+	if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "move() result:" << endl; /* printBoard() */); }
 
 	return make_pair(c, boxaffected);
 }
@@ -707,7 +710,9 @@ bool board::solve() {
 			nodes_checked++;
 			if(validateMove(moves[i])) {
 				move(moves[i]);
-				if(currentBoardVisited()) {
+				printBoard();
+				//om du vill slå på reachable board kör den istället för currentBoardVisited
+				if(reachableBoardVisited() /* currentBoardVisited() */) {
 					//add the board just so we can remove a board in the backtracking step
 					visited_boards.push_back(theboard);
 					DEBUG(cout << "wrong move '" << moves[i] << "' made, board already visited, backtracking---------------------\n");
@@ -746,6 +751,65 @@ bool board::solve() {
 	}
 	return false;
 }
+
+bool board::reachableBoardVisited() {
+	int i, result;
+	char moves[]= {'D','R','U', 'L', 0};
+	pair<char, bool> last_move2, last_move = solution.back();
+
+	vector< vector<char> > backup_board;
+	backup_board = theboard; //the board is yet not on the visited boards list
+
+	if(currentBoardVisited())
+		return 1; //check current pos first
+
+	DEBUG(cout << "current pos checked, need also to check 3 reachable states......\n");
+
+	//check 3 reachable positions
+
+	for(i=0; moves[i]; i++) {
+		//don't check where we came from
+		switch(last_move.first) {
+		case 'U':
+			if(moves[i] == 'D')
+				continue;
+			break;
+		case 'D':
+			if(moves[i] == 'U')
+				continue;
+			break;
+		case 'L':
+			if(moves[i] == 'R')
+				continue;
+			break;
+		case 'R':
+			if(moves[i] == 'L')
+				continue;
+			break;
+		}
+
+		DEBUG(cout << "will check " << moves[i] << '\n');
+
+		if(validateMove(moves[i])) {
+			move(moves[i]);
+			result = currentBoardVisited();
+			visited_boards.push_back(theboard); //Just so that moveback can remove something..
+			DEBUG(cout << "pushing back this board:\n");
+			printBoard();
+			last_move2 = solution.back();
+			solution.pop_back();
+			moveBack(last_move2);
+			theboard = backup_board;
+			DEBUG(cout << "result of checking reachable state " << moves[i] << " was " << result << '\n');
+			if(result)
+				return 1;
+		}
+	}
+	DEBUG(cout << "status of board after reachable state checking:\n");
+	printBoard();
+	return 0;
+}
+
 
 bool board::currentBoardVisited() {
 	int i;
