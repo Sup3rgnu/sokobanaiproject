@@ -12,14 +12,13 @@
 #include <utility>
 #include <assert.h>
 
-
 const int DEBUG_MOVE = 1;
 const int DEBUG_VALIDATEMOVE = 1;
 
 #define DEBUG_ALL 0
 #define USE_WALL  0
 #define USE_REACH 1
-
+#define USE_HASH  1
 using namespace std;
 
 #if DEBUG_ALL
@@ -27,6 +26,21 @@ using namespace std;
 #else
 #define DEBUG(x)
 #endif
+
+long board::getHash(vector< vector<char> > board1) {
+	locale loc;                 // the "C" locale
+	string board_string;
+	int i, j;
+	const collate<char>& coll = use_facet<collate<char> >(loc);
+
+	for(i = 0; i < board1.size(); i++) {
+		for(j = 0; j < board1[i].size(); j++) {
+			board_string += board1[i][j];
+		}
+	}
+	return coll.hash(board_string.data(),board_string.data()+board_string.length());
+}
+
 
 board::board (string board1){
 
@@ -73,6 +87,9 @@ board::board (string board1){
 void board::moveBack(pair<char,bool> move)
 {
 	visited_boards.pop_back();
+#if USE_HASH
+	visited_hashed_boards.pop_back();
+#endif
 	theboard = visited_boards.back();
 	//opposite directions
 	switch (move.first) {
@@ -717,6 +734,9 @@ bool board::solve() {
 
 	DEBUG(getline(cin, m, '\n'));
 	visited_boards.push_back(theboard);
+#if USE_HASH
+	visited_hashed_boards.push_back(getHash(theboard));
+#endif
 	while(1) {
 		for(i; moves[i];) {
 				nodes_checked++;
@@ -739,6 +759,9 @@ bool board::solve() {
 #endif
 					//add the board just so we can remove a board in the backtracking step
 					visited_boards.push_back(theboard);
+#if USE_HASH
+					visited_hashed_boards.push_back(getHash(theboard));
+#endif
 					DEBUG(cout << "wrong move '" << moves[i] << "' made, board already visited, backtracking---------------------\n");
 					break; //backtrack
 				}
@@ -751,6 +774,9 @@ bool board::solve() {
 					return true;
 				}
 				visited_boards.push_back(theboard);
+#if USE_HASH
+				visited_hashed_boards.push_back(getHash(theboard));
+#endif
 				i = 0;
 				DEBUG(getline(cin, m, '\n'));
 			} else {
@@ -820,6 +846,9 @@ bool board::reachableBoardVisited() {
 			move(moves[i]);
 			result = currentBoardVisited();
 			visited_boards.push_back(theboard); //Just so that moveback can remove something..
+#if USE_HASH
+			visited_hashed_boards.push_back(getHash(theboard));
+#endif
 			DEBUG(cout << "pushing back this board:\n");
 			printBoard();
 			last_move2 = solution.back();
@@ -839,10 +868,19 @@ bool board::reachableBoardVisited() {
 
 bool board::currentBoardVisited() {
 	int i;
+
+#if USE_HASH
+	long hash = getHash(theboard);
+	for(i = 0; i < visited_hashed_boards.size(); i++) {
+		if(hash == visited_hashed_boards[i])
+			return 1;
+	}
+#else
 	for(i = 0; i < visited_boards.size(); i++) {
 		if(theboard == visited_boards[i])
 			return 1;
 	}
+#endif
 	return 0;
 }
 
