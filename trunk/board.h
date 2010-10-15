@@ -43,6 +43,7 @@ private:
     struct timeval time_begin, time;
     int second_checked;
     int check_100;
+    int nodes_checked_last_time;
 };
 
 #endif	/* BOARD_H */

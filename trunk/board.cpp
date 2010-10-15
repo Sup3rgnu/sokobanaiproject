@@ -33,6 +33,7 @@ board::board (string board1){
 	stringstream ss(board1);
 	string token;
 	nodes_checked = 0;
+	nodes_checked_last_time = 0;
 
 	/* Dessa beh�vs f�r att h�lla reda p� var i vectormatrisen vi �r n�r vi st�ter p�
 	 * spelare s� den kan sparas i ppos
@@ -711,7 +712,7 @@ void board::updateBoard(pair<char, bool> m) {
 bool board::solve() {
 
 	char moves[]= {'D','R','U', 'L', 0};
-	int i=0, sec_diff;
+	int i=0;
 	string m;
 
 	DEBUG(getline(cin, m, '\n'));
@@ -724,9 +725,8 @@ bool board::solve() {
 					gettimeofday(&time, 0);
 					if(time.tv_sec > second_checked) {
 						second_checked = time.tv_sec;
-						sec_diff = second_checked - time_begin.tv_sec;
-						if(sec_diff)
-							cout << "nodes checked last second: " << nodes_checked / sec_diff << "\n";
+						cout << "nodes checked last second: " << nodes_checked - nodes_checked_last_time << "\n";
+						nodes_checked_last_time = nodes_checked;
 					}
 				}
 				if(validateMove(moves[i])) {
