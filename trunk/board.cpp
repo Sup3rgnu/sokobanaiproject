@@ -75,6 +75,7 @@ board::board (string board1){
 		}
 
 		theboard.push_back(newrow);
+                theboardLayer.push_back(newrow);
 
 		newrow.clear();
 		token.clear();
@@ -230,19 +231,23 @@ bool board::validateMove(char c) {
 		if(theboard[(ppos.first)-1][ppos.second] == '$' || theboard[(ppos.first)-1][ppos.second] == '*') {
 			if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "Box will be affected." << endl); }
 
+                        if(theboardLayer[(ppos.first)-2][ppos.second] == 'x'){
+                            if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into DEAD AREA Not OK." << endl);}
+                            return false;
+                        }
 			if(theboard[(ppos.first)-2][ppos.second] == '#' || theboard[(ppos.first)-2][ppos.second] == '$'){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into something! Not OK." << endl); }
 
-				ok = false;
+				return false;
 			}
 			else if(theboard[(ppos.first)-2][ppos.second] == ' ' && theboard[(ppos.first)-3][ppos.second] == '#' && (theboard[(ppos.first)-2][(ppos.second)-1] == '#' || theboard[(ppos.first)-2][(ppos.second)+1] == '#')){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into a corner! Not OK." << endl); }
 
-				ok = false;
+				return false;
 			}
 			if(wallCheck(c)){
 				DEBUG(cout << "wall!!!" << endl);
-				ok = false;
+				return false;
 			}
 		}
 		if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "There is no box in the way." << endl); }
@@ -250,7 +255,7 @@ bool board::validateMove(char c) {
 		if(theboard[(ppos.first)-1][ppos.second] == '#'){
 			if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "You are trying to go into a wall. Not OK." << endl); }
 
-			ok = false;
+			return false;
 		}
 
 	}
@@ -259,19 +264,23 @@ bool board::validateMove(char c) {
 		if(theboard[((ppos.first)+1)][ppos.second] == '$' || theboard[(ppos.first)+1][ppos.second] == '*') {
 			if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "Box will be affected." << endl); }
 
+                        if(theboardLayer[(ppos.first)+2][ppos.second] == 'x'){
+                            if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into DEAD AREA Not OK." << endl);}
+                            return false;
+                        }
 			if(theboard[(ppos.first)+2][ppos.second] == '#' || theboard[(ppos.first)+2][ppos.second] == '$'){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into something! Not OK." << endl); }
 
-				ok = false;
+				return false;
 			}
 			else if(theboard[(ppos.first)+2][ppos.second] == ' ' && theboard[(ppos.first)+3][ppos.second] == '#' && (theboard[(ppos.first)+2][(ppos.second)-1] == '#' || theboard[(ppos.first)+2][(ppos.second)+1] == '#')){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into a corner! Not OK." << endl); }
 
-				ok = false;
+				return false;
 			}
 			if(wallCheck(c)){
 				DEBUG(cout << "wall!!!" << endl);
-				ok = false;
+				return false;
 			}
 		}
 		if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "There is no box in the way." << endl); }
@@ -279,7 +288,7 @@ bool board::validateMove(char c) {
 		if(theboard[(ppos.first)+1][ppos.second] == '#'){
 			if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "You are trying to go into a wall. Not OK." << endl); }
 
-			ok = false;
+			return false;
 		}
 	}
 
@@ -287,19 +296,23 @@ bool board::validateMove(char c) {
 		if(theboard[ppos.first][(ppos.second)-1] == '$' || theboard[ppos.first][(ppos.second)-1] == '*') {
 			if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "Box will be affected." << endl); }
 
+                        if(theboardLayer[ppos.first][ppos.second-2] == 'x'){
+                            if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into DEAD AREA Not OK." << endl);}
+                            return false;
+                        }
 			if(theboard[ppos.first][(ppos.second)-2] == '#' || theboard[ppos.first][(ppos.second)-2] == '$'){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into something! Not OK." << endl); }
 
-				ok = false;
+				return false;
 			}
 			else if(theboard[ppos.first][ppos.second-2] == ' ' && theboard[(ppos.first)][ppos.second-3] == '#' && (theboard[(ppos.first)-1][(ppos.second)-2] == '#' || theboard[(ppos.first)+1][(ppos.second)-2] == '#')){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into a corner! Not OK." << endl); }
 
-				ok = false;
+				return false;
 			}
 			if(wallCheck(c)){
 				DEBUG(cout << "wall!!!" << endl);
-				ok = false;
+				return false;
 			}
 		}
 		if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "There is no box in the way." << endl); }
@@ -307,7 +320,7 @@ bool board::validateMove(char c) {
 		if(theboard[ppos.first][(ppos.second)-1] == '#'){
 			if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "You are trying to go into a wall. Not OK." << endl); }
 
-			ok = false;
+			return false;
 		}
 	}
 
@@ -315,19 +328,23 @@ bool board::validateMove(char c) {
 		if(theboard[ppos.first][(ppos.second)+1] == '$' || theboard[ppos.first][(ppos.second)+1] == '*') {
 			if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "Box will be affected." << endl); }
 
+                        if(theboardLayer[(ppos.first)][ppos.second+2] == 'x'){
+                            if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into DEAD AREA Not OK." << endl);}
+                            return false;
+                        }
 			if(theboard[ppos.first][(ppos.second)+2] == '#' || theboard[ppos.first][(ppos.second)+2] == '$'){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into something! Not OK." << endl); }
 
-				ok = false;
+				return false;
 			}
 			else if(theboard[(ppos.first)][ppos.second+2] == ' ' && theboard[ppos.first][ppos.second+3] == '#' && (theboard[(ppos.first)-1][ppos.second+2] == '#' || theboard[ppos.first+1][ppos.second+2] == '#')){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into a corner! Not OK." << endl); }
 
-				ok = false;
+				return false;
 			}
 			if(wallCheck(c)){
 				DEBUG(cout << "wall!!!" << endl);
-				ok = false;
+				return false;
 			}
 		}
 		if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "There is no box in the way." << endl); }
@@ -335,7 +352,7 @@ bool board::validateMove(char c) {
 		if(theboard[ppos.first][(ppos.second)+1] == '#'){
 			if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "You are trying to go into a wall. Not OK." << endl); }
 
-			ok = false;
+			return false;
 		}
 	}
 
@@ -893,4 +910,137 @@ string board::generate_answer_string() {
 		result += " ";
 	}
 	return result;
+}
+
+void board::prepareBoard(){
+    DEBUG(cout << "Prep board..." << endl);
+    int ysize = theboard.size()-1;
+    /*Loop through all positions on the board, (actually starting at 1,1)*/
+    for(int j = 1; j < ysize-1; j++){
+        int xsize = theboard[j].size();
+        for(int i = 1; i < xsize-1; i++){
+            /*Find and mark dead area corners*/
+            if(theboard[j][i] == ' ' && theboard[j-1][i] == '#' && (theboard[j][i-1] == '#' ||  theboard[j][i+1] == '#')){
+                theboardLayer[j][i] = 'x'; //Corner w/out goal
+            }else if(theboard[j][i] == ' ' && theboard[j+1][i] == '#' && (theboard[j][i-1] == '#' || theboard[j][i+1] == '#')){
+                theboardLayer[j][i] = 'x'; //Corner w/out goal
+            }
+
+            /*Find and mark other dead areas*/
+            bool goal = false;
+            bool wall = true;
+            int xl = i;
+            int xr = i;
+
+            /*For empty squares ' ' that comes before the board starts, like boards/level5.sok*/
+            if(theboard[j][i] == ' '){
+                bool outsideBoard = true;
+                for(int m = i; m >= 0; m--){
+                    if(theboard[j][m] == '#'){
+                        outsideBoard = false;
+                        break; //TODO: Check that this works..
+                    }
+                }
+                if(outsideBoard == true){
+                    theboardLayer[j][i] = 'y'; //Dead area, not "inside" the board
+                }
+            }
+
+            if(theboardLayer[j][i] == 'x' || theboardLayer[j][i] == 'y'){
+                //break; //TODO put this here?
+            }else if(theboard[j][i] == '.'){
+                 goal = true;
+            }else if(theboard[j][i] != '#'){
+                /*Check for dead areas above*/
+                if(theboard[j][i] != '#' && theboard[j-1][i] == '#'){
+                    for(xl; theboard[j][xl-1] != '#' && xl >= 0; xl--);
+                    for(xr; theboard[j][xr+1] != '#' && xr <= xsize; xr++);
+                    for(int k = xl; k <= xr; k++) {
+                        if(theboard[j-1][k] == '#' ){
+                            if(theboard[j][k] == '.')
+                                goal = true;
+                        }else
+                            wall = false;
+                    }
+                    if(wall == true &&  goal == false){
+                        for(int l = xl; l<=xr; l++){
+                            theboardLayer[j][l] = 'x'; //DEAD area never check it.
+                            DEBUG(cout << "up" << endl);
+                        }
+                    }
+                }
+                /*Check for dead areas under*/
+                if(theboard[j][i] != '#' && theboard[j+1][i] == '#'){
+                    for(xl; theboard[j][xl-1] != '#' && xl >= 0; xl--);
+                    for(xr; theboard[j][xr+1] != '#' && xr <= xsize; xr++);
+                    for(int k = xl; k <= xr; k++) {
+                        if(theboard[j+1][k] == '#' ){
+                            if(theboard[j][k] == '.')
+                                goal = true;
+                        }else
+                            wall = false;
+                    }
+                    if(wall == true && goal == false){
+                        for(int l = xl; l<=xr; l++){
+                            theboardLayer[j][l] = 'x'; //DEAD area never check it.
+                            DEBUG(cout << "down" << endl);
+                        }
+                    }
+                }
+                /*Check for dead areas to the right*/
+                if(theboard[j][i] != '#' && theboard[j][i+1] == '#'){
+                    xl = j;
+                    xr = j;
+                    for(xl; theboard[xl-1][i] != '#' && xl >= 0 && (theboard[xl-1].size() >= i); xl--);
+                    for(xr; theboard[xr+1][i] != '#' && xr <= ysize && (theboard[xr+1].size() >= i); xr++);
+                    for(int k = xl; k <= xr; k++) {
+                        if(theboard[k][i+1] == '#' ){
+                            if(theboard[k][i] == '.')
+                                goal = true;
+                        }else
+                            wall = false;
+                    }
+                    if(wall == true && goal == false){
+                        for(int l = xl; l<=xr; l++){
+                            theboardLayer[l][i] = 'x'; //DEAD area never check it.
+                            DEBUG(cout << "right" << endl);
+                        }
+                    }
+                }
+                /*Check for dead areas to the left*/
+                if(theboard[j][i] != '#' && theboard[j][i-1] == '#'){
+                    xl = j;
+                    xr = j;
+                    for(xl; theboard[xl-1][i] != '#' && xl >= 0 && (theboard[xl-1].size() >= i); xl--);
+                    for(xr; theboard[xr+1][i] != '#' && xr <= ysize && (theboard[xr+1].size() >= i); xr++);
+                    for(int k = xl; k <= xr; k++) {
+                        if(theboard[k][i-1] == '#' ){
+                            if(theboard[k][i] == '.')
+                                goal = true;
+                        }else
+                            wall = false;
+                    }
+                    if(wall == true && goal == false){
+                        for(int l = xl; l<=xr; l++){
+                            theboardLayer[l][i] = 'x'; //DEAD area never check it.
+                            DEBUG(cout << "left" << endl);
+                        }
+                    }
+                }
+            }
+            if(theboard[j][i] == '#'){
+            }
+        }
+    }
+
+// Print the result DEBUG
+	for(int i = 0; i < theboardLayer.size(); i++) {
+		DEBUG(cout << i << "[");
+		for(int j = 0; j < theboardLayer[i].size(); j++) {
+			DEBUG(cout << theboardLayer[i][j] << ",");
+		}
+		DEBUG(cout << "]" << endl);
+        }
+
+
 }

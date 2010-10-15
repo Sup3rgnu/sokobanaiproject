@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
 		}
 		cout << "running solve\n";
 		board b1(thefile);
+                b1.prepareBoard();
 		b1.solve();
 		return 0;
 	}

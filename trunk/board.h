@@ -32,6 +32,7 @@ public:
     bool compareBoardToCurrent(vector< vector<char> >);
     string generate_answer_string();
     long getHash(vector< vector<char> >);
+    void prepareBoard();
 private:
 
     char currentMove;						// Det move vi just nu beaktar. Skall vara VERSAL.
@@ -39,6 +40,7 @@ private:
     pair<char, bool> move_result;			// Varje move genererar en riktning U/D/L/R samt talar om ifall en l�da p�verkats.
     vector< pair <char, bool> > solution;	// Vektorn h�ller samtliga aktuella move_result pairs.
     vector< vector<char> > theboard;		// Arren blev en vektor.
+    vector< vector<char> > theboardLayer;
     vector< vector< vector<char> > > visited_boards;
     vector< long > visited_hashed_boards;
     unsigned long long nodes_checked;
