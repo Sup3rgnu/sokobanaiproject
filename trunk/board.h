@@ -35,7 +35,7 @@ public:
     void prepareBoard();
     pair<int, int> goalDistance();
     int printhash();
-    bool notLeavingBox(char);
+    bool stickToBox(char);
 private:
 
     char currentMove;						// Det move vi just nu beaktar. Skall vara VERSAL.

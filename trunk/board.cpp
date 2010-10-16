@@ -20,7 +20,7 @@ const int DEBUG_VALIDATEMOVE = 1;
 #define USE_WALL  0
 #define USE_REACH 1
 #define USE_HASH  1
-#define USE_STICK 0 //stick to box
+#define USE_STICK 1 //stick to box
 using namespace std;
 
 #if DEBUG_ALL
@@ -229,10 +229,10 @@ bool board::wallCheck(char m) {
 	return false;
 }
 
-bool board::notLeavingBox(char c) {
+bool board::stickToBox(char c) {
 	int i,j, si, sj, box_near = 0, result;
 
-	DEBUG(cout << "in notLeaving Box\n");
+	DEBUG(cout << "in stickToBox\n");
 	//check if box nearby..
 	for(i = -1; i < 2; i++) {
 		for(j = -1; j < 2; j++) {
@@ -246,13 +246,14 @@ bool board::notLeavingBox(char c) {
 		DEBUG(cout << "\n");
 	}
 	if(!box_near) {
-		DEBUG(cout << "box not nearby\n");
+		DEBUG(cout << "stb: box not nearby\n");
 		return 1; //no box nearby
 	}
-	if(box_near > 1)
-		return 0; //many boxes naerby, skip at the moment
-
-	DEBUG(cout << "box nearby, move is " << c << "\n");
+	if(box_near > 1) {
+		DEBUG(cout << "stb: >1 box nearby, skip at the moment\n");
+		return 0; //many boxes nearby, skip at the moment
+	}
+	DEBUG(cout << "stb: box nearby, move is " << c << "\n");
 
 	//1 box nearby
 	result = 1; //ok
@@ -275,9 +276,9 @@ bool board::notLeavingBox(char c) {
 		break;
 	}
 	if(result)
-		DEBUG(cout << "ok, not moving away from box\n");
+		DEBUG(cout << "stb:ok, not moving away from box\n");
 	else
-		DEBUG(cout << "not ok, moving away from box\n");
+		DEBUG(cout << "stb:not ok, moving away from box\n");
 	return result;
 }
 
@@ -424,7 +425,7 @@ bool board::validateMove(char c) {
 	if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "Status at end: " << ok << endl); }
 
 #if USE_STICK
-	return notLeavingBox(c);
+	return stickToBox(c);
 #endif
 	return ok;
 }
