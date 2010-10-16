@@ -1022,7 +1022,7 @@ void board::prepareBoard(){
     for(int j = 1; j < ysize-1; j++){
         int xsize = theboard[j].size();
         for(int i = 1; i < xsize-1; i++){
-            DEBUG(cout << "j: " << j << " i: " << i << endl);
+            //DEBUG(cout << "j: " << j << " i: " << i << endl);
             /*Find and mark dead area corners*/
             if(theboard[j][i] == ' ' && theboard[j-1][i] == '#' && (theboard[j][i-1] == '#' ||  theboard[j][i+1] == '#')){
                 theboardLayer[j][i] = 'x'; //Corner w/out goal
@@ -1069,7 +1069,7 @@ void board::prepareBoard(){
                     if(wall == true &&  goal == false){
                         for(int l = xl; l<=xr; l++){
                             theboardLayer[j][l] = 'x'; //DEAD area never check it.
-                            DEBUG(cout << "up" << endl);
+                            //DEBUG(cout << "up" << endl);
                         }
                     }
                 }
@@ -1089,7 +1089,7 @@ void board::prepareBoard(){
                     if(wall == true && goal == false){
                         for(int l = xl; l<=xr; l++){
                             theboardLayer[j][l] = 'x'; //DEAD area never check it.
-                            DEBUG(cout << "down" << endl);
+                            //DEBUG(cout << "down" << endl);
                         }
                     }
                 }
@@ -1111,7 +1111,7 @@ void board::prepareBoard(){
                     if(wall == true && goal == false){
                         for(int l = xl; l<=xr; l++){
                             theboardLayer[l][i] = 'x'; //DEAD area never check it.
-                            DEBUG(cout << "right" << endl);
+                            //DEBUG(cout << "right" << endl);
                         }
                     }
                 }
@@ -1133,7 +1133,7 @@ void board::prepareBoard(){
                     if(wall == true && goal == false){
                         for(int l = xl; l<=xr; l++){
                             theboardLayer[l][i] = 'x'; //DEAD area never check it.
-                            DEBUG(cout << "left" << endl);
+                            //DEBUG(cout << "left" << endl);
                         }
                     }
                 }
