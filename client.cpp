@@ -82,9 +82,9 @@ int main(int argc, char* argv[])
 //            sleep(10);
 
             board b1(buf.data());
-            b1.prepareBoard();
 			std::string lMySol;
 			//lMySol = "U R R D U U L D L L U L L D R R R R L D D R U R U D L L U R";
+            b1.prepareBoard();
             if(b1.solve()) {
             	lMySol = b1.generate_answer_string();
             } else {

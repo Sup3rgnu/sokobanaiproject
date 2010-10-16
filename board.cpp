@@ -16,7 +16,7 @@
 const int DEBUG_MOVE = 1;
 const int DEBUG_VALIDATEMOVE = 1;
 
-#define DEBUG_ALL 0
+#define DEBUG_ALL 1
 #define USE_WALL  0
 #define USE_REACH 1
 #define USE_HASH  0
@@ -936,6 +936,7 @@ void board::prepareBoard(){
     for(int j = 1; j < ysize-1; j++){
         int xsize = theboard[j].size();
         for(int i = 1; i < xsize-1; i++){
+            DEBUG(cout << "j: " << j << " i: " << i << endl);
             /*Find and mark dead area corners*/
             if(theboard[j][i] == ' ' && theboard[j-1][i] == '#' && (theboard[j][i-1] == '#' ||  theboard[j][i+1] == '#')){
                 theboardLayer[j][i] = 'x'; //Corner w/out goal
@@ -944,8 +945,8 @@ void board::prepareBoard(){
             }
 
             /*Find and mark other dead areas*/
-            bool goal = false;
             bool wall = true;
+            bool goal = false;
             int xl = i;
             int xr = i;
 
@@ -988,6 +989,8 @@ void board::prepareBoard(){
                 }
                 /*Check for dead areas under*/
                 if(theboard[j][i] != '#' && theboard[j+1][i] == '#'){
+                    wall = true;
+                    goal = false;
                     for(xl; theboard[j][xl-1] != '#' && xl >= 0; xl--);
                     for(xr; theboard[j][xr+1] != '#' && xr <= xsize; xr++);
                     for(int k = xl; k <= xr; k++) {
@@ -1006,6 +1009,8 @@ void board::prepareBoard(){
                 }
                 /*Check for dead areas to the right*/
                 if(theboard[j][i] != '#' && theboard[j][i+1] == '#'){
+                    wall = true;
+                    goal = false;
                     xl = j;
                     xr = j;
                     for(xl; theboard[xl-1][i] != '#' && xl >= 0 && (theboard[xl-1].size() >= i); xl--);
@@ -1026,6 +1031,8 @@ void board::prepareBoard(){
                 }
                 /*Check for dead areas to the left*/
                 if(theboard[j][i] != '#' && theboard[j][i-1] == '#'){
+                    wall = true;
+                    goal = false;
                     xl = j;
                     xr = j;
                     for(xl; theboard[xl-1][i] != '#' && xl >= 0 && (theboard[xl-1].size() >= i); xl--);
