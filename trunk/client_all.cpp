@@ -2,14 +2,19 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define BOARDS 135
+#define BOARDS 134
 
 int main(int argc, char *argv[]) {
 	int i, result, success = 0;
 	char command[100];
-	int results[BOARDS];
+	int results[300];
+	int boards = BOARDS;
 
-	for(i = 1; i < BOARDS; i++) {
+	if(argc > 1) {
+		boards = atoi(argv[1]);
+	}
+
+	for(i = 1; i < boards+1; i++) {
 	   	printf("checking board %d\n", i);
 	   	snprintf(command ,100, "./client %d", i);
 	   	result = system(command);
@@ -20,9 +25,9 @@ int main(int argc, char *argv[]) {
 		sleep(2);
 	}
 
-	for(i = 1; i < BOARDS; i++) {
+	for(i = 1; i < boards+1; i++) {
 	   	printf("board %d %s\n", i, results[i] ? "failed" : "success");
 	}
-	printf("%d board(s) solved out of %d\n", success, BOARDS-1);
+	printf("%d board(s) solved out of %d\n", success, boards);
 	return 0;
 }
