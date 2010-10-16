@@ -19,7 +19,7 @@ const int DEBUG_VALIDATEMOVE = 1;
 #define DEBUG_ALL 0
 #define USE_WALL  0
 #define USE_REACH 1
-#define USE_HASH  0
+#define USE_HASH  1
 using namespace std;
 
 #if DEBUG_ALL
@@ -89,12 +89,18 @@ board::board (string board1){
 
 void board::moveBack(pair<char,bool> move)
 {
+	int segfault = 0;
+
 	if(visited_boards.size() == 1) {
 		cout << "trying to moveBack too far\n";
+		segfault = 1;
 		//exit(0);
 	}
 	visited_boards.pop_back();
 	theboard = visited_boards.back();
+	if(segfault) {
+		cout << "after segfault\n";
+	}
 #if USE_HASH
 	visited_hashed_boards.pop_back();
 	thehash = visited_hashed_boards.back();
@@ -734,6 +740,8 @@ pair<char, bool> board::move(char c) {
 
 	if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "move() result:" << endl; /* printBoard() */); }
 
+	thehash = getHash();
+
 	return make_pair(c, boxaffected);
 }
 
@@ -750,6 +758,17 @@ void board::updateBoard(pair<char, bool> m) {
 	}
 }
 
+int board::printhash() {
+	int i;
+
+	cout << "thehash = " << thehash << "\n";
+	cout << "gethash() = " << getHash() << "\n";
+	cout << "hash_vector:\n";
+	for(i = 0; i < visited_hashed_boards.size(); i++) {
+		cout << "hash[ " << i << "] = " << visited_hashed_boards[i] << "\n";
+	}
+}
+
 bool board::solve() {
 
 	char moves[]= {'D','R','U', 'L', 0};
@@ -759,9 +778,10 @@ bool board::solve() {
 	DEBUG(getline(cin, m, '\n'));
 	visited_boards.push_back(theboard);
 #if USE_HASH
-	visited_hashed_boards.push_back(getHash());
+	visited_hashed_boards.push_back(thehash);
 #endif
 	while(1) {
+
 		for(i; moves[i];) {
 				nodes_checked++;
 				check_100 = (++check_100) % 100;
@@ -788,7 +808,7 @@ bool board::solve() {
 					//add the board just so we can remove a board in the backtracking step
 					visited_boards.push_back(theboard);
 #if USE_HASH
-					visited_hashed_boards.push_back(getHash());
+					visited_hashed_boards.push_back(thehash);
 #endif
 					DEBUG(cout << "wrong move '" << moves[i] << "' made, board already visited, backtracking---------------------\n");
 					break; //backtrack
@@ -810,7 +830,7 @@ bool board::solve() {
 				}
 				visited_boards.push_back(theboard);
 #if USE_HASH
-				visited_hashed_boards.push_back(getHash());
+				visited_hashed_boards.push_back(thehash);
 #endif
 				i = 0;
 				DEBUG(getline(cin, m, '\n'));
@@ -886,7 +906,7 @@ bool board::reachableBoardVisited() {
 			result = currentBoardVisited();
 			visited_boards.push_back(theboard); //Just so that moveback can remove something..
 #if USE_HASH
-			visited_hashed_boards.push_back(getHash());
+			visited_hashed_boards.push_back(thehash);
 #endif
 			DEBUG(cout << "pushing back this board:\n");
 			printBoard();
@@ -912,7 +932,6 @@ bool board::currentBoardVisited() {
 
 #if USE_HASH
 	long hash = thehash;
-//	long hash = getHash();
 
 	for(i = 0; i < visited_hashed_boards.size(); i++) {
 		if(hash == visited_hashed_boards[i])
