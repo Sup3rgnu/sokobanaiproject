@@ -823,7 +823,7 @@ bool board::solve() {
 					diff_msec = time.tv_usec - time_begin.tv_usec;
 					if(diff_msec < 0) {
 						diff_sec--;
-						diff_msec = 1 + diff_msec;
+						diff_msec = 1000000 + diff_msec;
 					}
 					cout << "seconds: " << diff_sec << "." << diff_msec << "\n";
 					return true;
