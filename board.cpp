@@ -1049,7 +1049,7 @@ void board::prepareBoard(){
 
             if(theboardLayer[j][i] == 'x' || theboardLayer[j][i] == 'y'){
                 //break; //TODO put this here?
-            }else if(theboard[j][i] == '.'){
+            }else if(theboard[j][i] == '.' || theboard[j][i] == '+'){
                  goal = true;
             }else if(theboard[j][i] != '#'){
                 /*Check for dead areas above*/
@@ -1058,7 +1058,7 @@ void board::prepareBoard(){
                     for(xr; theboard[j][xr+1] != '#' && xr <= xsize; xr++);
                     for(int k = xl; k <= xr; k++) {
                         if(theboard[j-1][k] == '#' ){
-                            if(theboard[j][k] == '.')
+                            if(theboard[j][k] == '.' || theboard[j][k] == '+')
                                 goal = true;
                         }else
                             wall = false;
@@ -1078,7 +1078,7 @@ void board::prepareBoard(){
                     for(xr; theboard[j][xr+1] != '#' && xr <= xsize; xr++);
                     for(int k = xl; k <= xr; k++) {
                         if(theboard[j+1][k] == '#' ){
-                            if(theboard[j][k] == '.')
+                            if(theboard[j][k] == '.' || theboard[j][k] == '+')
                                 goal = true;
                         }else
                             wall = false;
@@ -1100,7 +1100,7 @@ void board::prepareBoard(){
                     for(xr; theboard[xr+1][i] != '#' && xr <= ysize && (theboard[xr+1].size() >= i); xr++);
                     for(int k = xl; k <= xr; k++) {
                         if(theboard[k][i+1] == '#' ){
-                            if(theboard[k][i] == '.')
+                            if(theboard[k][i] == '.'|| theboard[k][i] == '+')
                                 goal = true;
                         }else
                             wall = false;
@@ -1122,7 +1122,7 @@ void board::prepareBoard(){
                     for(xr; theboard[xr+1][i] != '#' && xr <= ysize && (theboard[xr+1].size() >= i); xr++);
                     for(int k = xl; k <= xr; k++) {
                         if(theboard[k][i-1] == '#' ){
-                            if(theboard[k][i] == '.')
+                            if(theboard[k][i] == '.' || theboard[k][i] == '+')
                                 goal = true;
                         }else
                             wall = false;
