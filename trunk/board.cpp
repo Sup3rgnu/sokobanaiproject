@@ -12,6 +12,7 @@
 #include <utility>
 #include <assert.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 const int DEBUG_MOVE = 1;
 const int DEBUG_VALIDATEMOVE = 1;
@@ -126,7 +127,8 @@ void board::moveBack(pair<char,bool> move)
 void board::printBoard() {
 
 	for(int i = 0; i < theboard.size(); i++) {
-		DEBUG(cout << i << "[");
+		DEBUG(printf("%02d[", i));
+//		DEBUG(cout << i << "[");
 		for(int j = 0; j < theboard[i].size(); j++) {
 			DEBUG(cout << theboard[i][j] << ",");
 		}
@@ -504,7 +506,7 @@ pair<char, bool> board::move(char c) {
 			}
 			// Kolla om vi skjuter runt l�dan p� det vanliga golvet.
 			if(theboard[(ppos.first)-1][ppos.second] == '$' || theboard[ppos.first][ppos.second] == '@') {
-				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "U: Player moves a box outside of goal squares." << endl); }
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "U: Player moves a box outside of goal squares 1." << endl); }
 				theboard[(ppos.first-2)][ppos.second] = '$';
 				theboard[(ppos.first-1)][ppos.second] = '@';
 				theboard[ppos.first][ppos.second] = ' ';
@@ -589,7 +591,7 @@ pair<char, bool> board::move(char c) {
 			}
 			// Kolla om vi skjuter runt l�dan p� det vanliga golvet.
 			if(theboard[(ppos.first)+1][ppos.second] == '$' || theboard[ppos.first][ppos.second] == '@') {
-				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box outside of goal squares." << endl); }
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box outside of goal squares 2." << endl); }
 				theboard[(ppos.first+2)][ppos.second] = '$';
 				theboard[(ppos.first+1)][ppos.second] = '@';
 				theboard[ppos.first][ppos.second] = ' ';
@@ -674,7 +676,7 @@ pair<char, bool> board::move(char c) {
 			}
 			// Kolla om vi skjuter runt l�dan p� det vanliga golvet.
 			if(theboard[ppos.first][ppos.second-1] == '$' || theboard[ppos.first][ppos.second] == '@') {
-				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "L: Player moves a box outside of goal squares." << endl); }
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "L: Player moves a box outside of goal squares 3." << endl); }
 				theboard[(ppos.first)][ppos.second-2] = '$';
 				theboard[(ppos.first)][ppos.second-1] = '@';
 				theboard[ppos.first][ppos.second] = ' ';
@@ -759,7 +761,7 @@ pair<char, bool> board::move(char c) {
 			}
 			// Kolla om vi skjuter runt l�dan p� det vanliga golvet.
 			if(theboard[ppos.first][ppos.second+1] == '$' || theboard[ppos.first][ppos.second] == '@') {
-				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "R: Player moves a box outside of goal squares." << endl); }
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "R: Player moves a box outside of goal squares 4." << endl); }
 				theboard[(ppos.first)][ppos.second+2] = '$';
 				theboard[(ppos.first)][ppos.second+1] = '@';
 				theboard[ppos.first][ppos.second] = ' ';
@@ -844,8 +846,8 @@ bool board::solve() {
 				if(!check_100) {
 					gettimeofday(&time, 0);
 					if(time.tv_sec > second_checked) {
-						if(time.tv_sec - time_begin.tv_sec >= 20 && !DEBUG_ALL) {
-							cout << "Giving up 20 seconds and no solution\n";
+						if(time.tv_sec - time_begin.tv_sec >= 10 && !DEBUG_ALL) {
+							cout << "Giving up 10 seconds and no solution\n";
 							exit(1);
 						}
 						second_checked = time.tv_sec;
@@ -1143,7 +1145,8 @@ void board::prepareBoard(){
 
 // Print the result DEBUG
 	for(int i = 0; i < theboardLayer.size(); i++) {
-		DEBUG(cout << i << "[");
+		//DEBUG(cout << i << "[");
+		DEBUG(printf("%02d[", i));
 		for(int j = 0; j < theboardLayer[i].size(); j++) {
 			DEBUG(cout << theboardLayer[i][j] << ",");
 		}
