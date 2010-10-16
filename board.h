@@ -34,6 +34,7 @@ public:
     long getHash();
     void prepareBoard();
     pair<int, int> goalDistance();
+    int printhash();
 private:
 
     char currentMove;						// Det move vi just nu beaktar. Skall vara VERSAL.
