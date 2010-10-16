@@ -70,7 +70,7 @@ board::board (string board1){
 		while(*strp != '\0') {
 			newrow.push_back(*strp++);
 			col++;
-			if(*strp == '@') {
+			if(*strp == '@' || *strp == '+') {
 				ppos = make_pair(row, col);
 			}
 		}
@@ -240,7 +240,7 @@ bool board::validateMove(char c) {
 	assert(c == 'U' || c == 'D' || c == 'L' || c == 'R');
 
 	if(c == 'U') {
-		// Kolla om vi tr�ffar en box.
+		// Kolla om vi träffar en box.
 		if(theboard[(ppos.first)-1][ppos.second] == '$' || theboard[(ppos.first)-1][ppos.second] == '*') {
 			if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "Box will be affected." << endl); }
 
