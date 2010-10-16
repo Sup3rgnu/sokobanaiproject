@@ -92,9 +92,9 @@ void board::moveBack(pair<char,bool> move)
 	int segfault = 0;
 
 	if(visited_boards.size() == 1) {
-		cout << "trying to moveBack too far\n";
+		cout << "trying to moveBack too far, exiting before getting segfault\n";
 		segfault = 1;
-		//exit(0);
+		exit(1);
 	}
 	visited_boards.pop_back();
 	theboard = visited_boards.back();
@@ -739,9 +739,9 @@ pair<char, bool> board::move(char c) {
 	solution.push_back(make_pair(c, boxaffected));
 
 	if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "move() result:" << endl; /* printBoard() */); }
-
+#if USE_HASH
 	thehash = getHash();
-
+#endif
 	return make_pair(c, boxaffected);
 }
 
