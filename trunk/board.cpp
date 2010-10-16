@@ -794,11 +794,18 @@ bool board::solve() {
 					break; //backtrack
 				}
 				if(goalTest()) {
+					int diff_sec, diff_msec;
+
 					cout << "We found a solution!!--------------\nsolution = "
 							<< generate_answer_string() << endl << "nodes checked = " << nodes_checked << endl;
 					gettimeofday(&time, 0);
-					cout << "seconds: " << time.tv_sec - time_begin.tv_sec << "." <<
-							time.tv_usec - time_begin.tv_usec << "\n";
+					diff_sec = time.tv_sec - time_begin.tv_sec;
+					diff_msec = time.tv_usec - time_begin.tv_usec;
+					if(diff_msec < 0) {
+						diff_sec--;
+						diff_msec = 1 + diff_msec;
+					}
+					cout << "seconds: " << diff_sec << "." << diff_msec << "\n";
 					return true;
 				}
 				visited_boards.push_back(theboard);
