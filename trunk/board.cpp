@@ -11,6 +11,7 @@
 #include <vector>
 #include <utility>
 #include <assert.h>
+#include <stdlib.h>
 
 const int DEBUG_MOVE = 1;
 const int DEBUG_VALIDATEMOVE = 1;
@@ -18,7 +19,7 @@ const int DEBUG_VALIDATEMOVE = 1;
 #define DEBUG_ALL 0
 #define USE_WALL  0
 #define USE_REACH 1
-#define USE_HASH  1
+#define USE_HASH  0
 using namespace std;
 
 #if DEBUG_ALL
@@ -27,15 +28,15 @@ using namespace std;
 #define DEBUG(x)
 #endif
 
-long board::getHash(vector< vector<char> > board1) {
+long board::getHash() {
 	locale loc;                 // the "C" locale
 	string board_string;
 	int i, j;
 	const collate<char>& coll = use_facet<collate<char> >(loc);
 
-	for(i = 0; i < board1.size(); i++) {
-		for(j = 0; j < board1[i].size(); j++) {
-			board_string += board1[i][j];
+	for(i = 0; i < theboard.size(); i++) {
+		for(j = 0; j < theboard[i].size(); j++) {
+			board_string += theboard[i][j];
 		}
 	}
 	return coll.hash(board_string.data(),board_string.data()+board_string.length());
@@ -83,15 +84,21 @@ board::board (string board1){
 		col = 0;
 	}
 	printBoard();
+	thehash = getHash();
 }
 
 void board::moveBack(pair<char,bool> move)
 {
+	if(visited_boards.size() == 1) {
+		cout << "trying to moveback to far\n";
+		//exit(0);
+	}
 	visited_boards.pop_back();
+	theboard = visited_boards.back();
 #if USE_HASH
 	visited_hashed_boards.pop_back();
+	thehash = visited_hashed_boards.back();
 #endif
-	theboard = visited_boards.back();
 	//opposite directions
 	switch (move.first) {
 	case 'U':
@@ -489,7 +496,7 @@ pair<char, bool> board::move(char c) {
 			// Kolla om spelaren skjuter in en l�da i goalsquare-omr�det och �ker med in.
 			if(theboard[(ppos.first)+2][ppos.second] == '.'  && theboard[(ppos.first)+1][ppos.second] == '*'
 					&& theboard[ppos.first][ppos.second] == '@') {
-				if(DEBUG_MOVE == 1 && true) { cout << "D: Player moves a box into goal square area and enters goal square." << endl; }
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box into goal square area and enters goal square." << endl); }
 				theboard[(ppos.first)+2][ppos.second] = '*';
 				theboard[(ppos.first)+1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = ' ';
@@ -497,7 +504,7 @@ pair<char, bool> board::move(char c) {
 			// Kolla om spelaren skjuter en l�da inom goalsquare-omr�det
 			if(theboard[(ppos.first)+2][ppos.second] == '.'  && theboard[(ppos.first)+1][ppos.second] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
-				if(DEBUG_MOVE == 1 && true) { cout << "D: Player moves a box within goal square area." << endl; }
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box within goal square area." << endl); }
 				theboard[(ppos.first)+2][ppos.second] = '*';
 				theboard[(ppos.first)+1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = '.';
@@ -505,7 +512,7 @@ pair<char, bool> board::move(char c) {
 			// Kolla om spelaren skjuter en l�da ut fr�n goalsquare-omr�det
 			if(theboard[(ppos.first)+2][ppos.second] == ' '  && theboard[(ppos.first)+1][ppos.second] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
-				if(DEBUG_MOVE == 1 && true) { cout << "D: Player moves a box within goal square area." << endl; }
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box within goal square area." << endl); }
 				theboard[(ppos.first)+2][ppos.second] = '$';
 				theboard[(ppos.first)+1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = '.';
@@ -752,7 +759,7 @@ bool board::solve() {
 	DEBUG(getline(cin, m, '\n'));
 	visited_boards.push_back(theboard);
 #if USE_HASH
-	visited_hashed_boards.push_back(getHash(theboard));
+	visited_hashed_boards.push_back(getHash());
 #endif
 	while(1) {
 		for(i; moves[i];) {
@@ -777,7 +784,7 @@ bool board::solve() {
 					//add the board just so we can remove a board in the backtracking step
 					visited_boards.push_back(theboard);
 #if USE_HASH
-					visited_hashed_boards.push_back(getHash(theboard));
+					visited_hashed_boards.push_back(getHash());
 #endif
 					DEBUG(cout << "wrong move '" << moves[i] << "' made, board already visited, backtracking---------------------\n");
 					break; //backtrack
@@ -792,7 +799,7 @@ bool board::solve() {
 				}
 				visited_boards.push_back(theboard);
 #if USE_HASH
-				visited_hashed_boards.push_back(getHash(theboard));
+				visited_hashed_boards.push_back(getHash());
 #endif
 				i = 0;
 				DEBUG(getline(cin, m, '\n'));
@@ -829,6 +836,10 @@ bool board::reachableBoardVisited() {
 	vector< vector<char> > backup_board;
 	backup_board = theboard; //the board is yet not on the visited boards list
 
+#if USE_HASH
+	long backup_hash = thehash;
+#endif
+
 	if(currentBoardVisited())
 		return 1; //check current pos first
 
@@ -864,7 +875,7 @@ bool board::reachableBoardVisited() {
 			result = currentBoardVisited();
 			visited_boards.push_back(theboard); //Just so that moveback can remove something..
 #if USE_HASH
-			visited_hashed_boards.push_back(getHash(theboard));
+			visited_hashed_boards.push_back(getHash());
 #endif
 			DEBUG(cout << "pushing back this board:\n");
 			printBoard();
@@ -872,6 +883,9 @@ bool board::reachableBoardVisited() {
 			solution.pop_back();
 			moveBack(last_move2);
 			theboard = backup_board;
+#if USE_HASH
+			thehash = backup_hash;
+#endif
 			DEBUG(cout << "result of checking reachable state " << moves[i] << " was " << result << '\n');
 			if(result)
 				return 1;
@@ -882,12 +896,11 @@ bool board::reachableBoardVisited() {
 	return 0;
 }
 
-
 bool board::currentBoardVisited() {
 	int i;
 
 #if USE_HASH
-	long hash = getHash(theboard);
+	long hash = thehash; //getHash();
 	for(i = 0; i < visited_hashed_boards.size(); i++) {
 		if(hash == visited_hashed_boards[i])
 			return 1;
