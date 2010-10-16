@@ -788,7 +788,7 @@ bool board::solve() {
 				if(!check_100) {
 					gettimeofday(&time, 0);
 					if(time.tv_sec > second_checked) {
-						if(time.tv_sec - time_begin.tv_sec >= 20) {
+						if(time.tv_sec - time_begin.tv_sec >= 20 && !DEBUG_ALL) {
 							cout << "Giving up 20 seconds and no solution\n";
 							exit(1);
 						}
