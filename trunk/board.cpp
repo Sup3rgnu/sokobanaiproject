@@ -250,8 +250,8 @@ bool board::stickToBox(char c) {
 		return 1; //no box nearby
 	}
 	if(box_near > 1) {
-		DEBUG(cout << "stb: >1 box nearby, skip at the moment\n");
-		return 0; //many boxes nearby, skip at the moment
+		DEBUG(cout << "stb: >1 box nearby, allow at the moment\n");
+		return 1; //many boxes nearby, skip at the moment
 	}
 	DEBUG(cout << "stb: box nearby, move is " << c << "\n");
 
