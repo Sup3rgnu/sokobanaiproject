@@ -1,0 +1,11 @@
+Your grade for the project milestone is 1. This means that you solved 1 boards
+out of the 3 boards with which we tested the milestone (boards 131,132 and 133).
+
+The requirements for E will be to solve a set of boards similar to board 131
+( which was before board 2). These boads will have a number of walkable cells
+similar to the board 130. Programming properly a depth first search with repeated
+states detection should be enough to solve such a board.
+For higher grades, you will have to solve a percent of a set of boards similar
+in difficulty to boards 1-130 in the server. Solving 30,60,90,120 boards will
+correspond to grades D,C,B,A. Your solver will have one minute to solve each
+ board. 
