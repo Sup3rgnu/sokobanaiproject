@@ -31,7 +31,7 @@ public:
     bool reachableBoardVisited();
     bool compareBoardToCurrent(vector< vector<char> >);
     string generate_answer_string();
-    long getHash(vector< vector<char> >);
+    long getHash();
     void prepareBoard();
 private:
 
@@ -43,6 +43,7 @@ private:
     vector< vector<char> > theboardLayer;
     vector< vector< vector<char> > > visited_boards;
     vector< long > visited_hashed_boards;
+    long thehash;
     unsigned long long nodes_checked;
     struct timeval time_begin, time;
     int second_checked;
