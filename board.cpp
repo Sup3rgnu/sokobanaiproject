@@ -20,6 +20,7 @@ const int DEBUG_VALIDATEMOVE = 1;
 #define USE_WALL  0
 #define USE_REACH 1
 #define USE_HASH  1
+#define USE_STICK 0 //stick to box
 using namespace std;
 
 #if DEBUG_ALL
@@ -41,7 +42,6 @@ long board::getHash() {
 	}
 	return coll.hash(board_string.data(),board_string.data()+board_string.length());
 }
-
 
 board::board (string board1){
 
@@ -229,6 +229,58 @@ bool board::wallCheck(char m) {
 	return false;
 }
 
+bool board::notLeavingBox(char c) {
+	int i,j, si, sj, box_near = 0, result;
+
+	DEBUG(cout << "in notLeaving Box\n");
+	//check if box nearby..
+	for(i = -1; i < 2; i++) {
+		for(j = -1; j < 2; j++) {
+			if(theboard[ppos.first+i][ppos.second+j] == '$') {
+				box_near++;
+				si = i;
+				sj = j;
+			}
+			DEBUG(cout << theboard[ppos.first+i][ppos.second+j]);
+		}
+		DEBUG(cout << "\n");
+	}
+	if(!box_near) {
+		DEBUG(cout << "box not nearby\n");
+		return 1; //no box nearby
+	}
+	if(box_near > 1)
+		return 0; //many boxes naerby, skip at the moment
+
+	DEBUG(cout << "box nearby, move is " << c << "\n");
+
+	//1 box nearby
+	result = 1; //ok
+	switch(c) {
+	case 'U':
+		if(si > 0)
+			result = 0;	//not ok
+		break;
+	case 'D':
+		if(si < 0)
+			result = 0;
+		break;
+	case 'L':
+		if(sj > 0)
+			result = 0;
+		break;
+	case 'R':
+		if(sj < 0)
+			result = 0;
+		break;
+	}
+	if(result)
+		DEBUG(cout << "ok, not moving away from box\n");
+	else
+		DEBUG(cout << "not ok, moving away from box\n");
+	return result;
+}
+
 bool board::validateMove(char c) {
 
 	if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "validateMove() input: " << c << endl); }
@@ -371,6 +423,9 @@ bool board::validateMove(char c) {
 
 	if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "Status at end: " << ok << endl); }
 
+#if USE_STICK
+	return notLeavingBox(c);
+#endif
 	return ok;
 }
 
