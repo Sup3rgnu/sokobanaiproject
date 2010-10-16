@@ -16,7 +16,7 @@
 const int DEBUG_MOVE = 1;
 const int DEBUG_VALIDATEMOVE = 1;
 
-#define DEBUG_ALL 1
+#define DEBUG_ALL 0
 #define USE_WALL  0
 #define USE_REACH 1
 #define USE_HASH  0
@@ -90,7 +90,7 @@ board::board (string board1){
 void board::moveBack(pair<char,bool> move)
 {
 	if(visited_boards.size() == 1) {
-		cout << "trying to moveback to far\n";
+		cout << "trying to moveBack too far\n";
 		//exit(0);
 	}
 	visited_boards.pop_back();
@@ -904,7 +904,9 @@ bool board::currentBoardVisited() {
 	int i;
 
 #if USE_HASH
-	long hash = thehash; //getHash();
+	long hash = thehash;
+//	long hash = getHash();
+
 	for(i = 0; i < visited_hashed_boards.size(); i++) {
 		if(hash == visited_hashed_boards[i])
 			return 1;
