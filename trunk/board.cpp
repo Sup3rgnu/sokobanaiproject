@@ -768,6 +768,10 @@ bool board::solve() {
 				if(!check_100) {
 					gettimeofday(&time, 0);
 					if(time.tv_sec > second_checked) {
+						if(time.tv_sec - time_begin.tv_sec >= 20) {
+							cout << "Giving up 20 seconds and no solution\n";
+							exit(1);
+						}
 						second_checked = time.tv_sec;
 						cout << "nodes checked last second: " << nodes_checked - nodes_checked_last_time << "\n";
 						nodes_checked_last_time = nodes_checked;
