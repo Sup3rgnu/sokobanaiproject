@@ -11,6 +11,7 @@
 #include <vector>
 #include <utility>
 #include <sys/time.h>
+#include <ext/hash_map> // non STL
 
 using namespace std;
 
@@ -36,6 +37,11 @@ public:
     pair<int, int> goalDistance();
     int printhash();
     bool stickToBox(char);
+    void addVisitedState();
+    bool checkVisitedState();
+    void delVisitedState();
+    string theboardToString();
+    void getLastState();
 private:
 
     char currentMove;						// Det move vi just nu beaktar. Skall vara VERSAL.
@@ -53,6 +59,8 @@ private:
     int second_checked;
     int check_100;
     int nodes_checked_last_time;
+    __gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > > visited_states;
+    vector<unsigned long int> hkey_history;
 };
 
 #endif	/* BOARD_H */
