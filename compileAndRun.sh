@@ -1,1 +1,2 @@
-make client && ./client 1
+cd code; make client && ./client 1
+

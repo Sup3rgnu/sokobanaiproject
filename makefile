@@ -16,7 +16,8 @@ clean:
 	rm -f client local_client stdin_client client_mac64 local_client_mac64 stdin_client_mac64
 	
 zip:
-	zip voddler-sokoban.zip *.cpp *.h *.sh makefile 
+	rm -rf code; mkdir code; cp *.cpp *.h makefile code
+	zip voddler-sokoban.zip -r code compileAndRun.sh README.txt report-ai10-groupVoddler.pdf
 		
 # For mac with 64bit boostlibs	
 all_mac64:	client_mac64	local_client_mac64 stdin_client_mac64
