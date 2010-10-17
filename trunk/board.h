@@ -12,8 +12,8 @@
 #define USE_HASHTABLE	1
 #define USE_TR1_HASH	0
 #define USE_WALL		0
-#define USE_REACH		0
-#define USE_STICK		0
+#define USE_REACH		1
+#define USE_STICK		1
 
 #include <string>
 #include <vector>
