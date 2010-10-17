@@ -1153,7 +1153,9 @@ bool board::currentBoardVisited() {
 		if(thehash == visited_hashes[i])
 			return 1;
 	}
-
+#elif USE_HASHTABLE
+	if(checkVisitedState())
+		return 1;
 #else
 	for(i = 0; i < visited_boards.size(); i++) {
 		if(theboard == visited_boards[i])
