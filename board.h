@@ -22,7 +22,9 @@
 #if USE_HASHTABLE
 #include <ext/hash_map> // non STL
 #endif
+#if USE_TR1_HASH
 #include <unordered_map>
+#endif
 
 using namespace std;
 
