@@ -1,0 +1,2656 @@
+Roberts-MacBook-Pro:sokobanaiproject robert$ ./client_all 136
+checking board 1
+Solving 
+########
+#   # .#
+#   $$.#
+####   #
+####@ ##
+########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 28
+We found a solution!!--------------
+solution = R U R U U L D R D L R U U L D L L U L L D R R R R D D L U D R U R U D L U L L U L L D R R R R 
+nodes checked = 7174
+seconds: 0.108738
+Good solution
+board 1 success
+-------------
+
+checking board 2
+Solving 
+#########
+#.. #####
+##.$# ###
+##.   ###
+#..#  ###
+#.$$$ $@#
+#   $ $ #
+#       #
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 35
+Giving up 1 seconds and no solution
+board 2 failed
+-------------
+
+checking board 3
+Solving 
+#######
+###  ##
+###  ##
+#   @##
+# *$. #
+###   #
+#######
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 15
+Giving up 1 seconds and no solution
+board 3 failed
+-------------
+
+checking board 4
+Solving 
+###########
+#         #
+# $$#.#$$ #
+# # . . # #
+# $ ... $ #
+# $ ... $ #
+# $##.##$ #
+#        @#
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 39
+Giving up 1 seconds and no solution
+board 4 failed
+-------------
+
+checking board 5
+Solving 
+############
+###        #
+### ## ##  #
+### # $    #
+#    $@$#. #
+# # # $ #. #
+# #$## #.#.#
+# #      . #
+# ###### ###
+#        ###
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 23
+Giving up 1 seconds and no solution
+board 5 failed
+-------------
+
+checking board 6
+Solving 
+############
+##     #####
+#  ### #####
+# #  # #####
+#   .#     #
+###. ##### #
+### *    $ #
+##...##  ###
+##    $$$$ #
+#######   @#
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 22
+Giving up 1 seconds and no solution
+board 6 failed
+-------------
+
+checking board 7
+Solving 
+########
+#  ... #
+#.$ #  #
+# #$$$ #
+#.$ @  #
+########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 33
+Giving up 1 seconds and no solution
+board 7 failed
+-------------
+
+checking board 8
+Solving 
+##########
+##    ####
+## .$*####
+##@#$ ####
+## .$ ####
+## . .####
+##$.$ $.##
+#.$ #$ $.#
+#. ** # ##
+###. $ $##
+###.$ #.##
+#####$####
+##### ####
+#####.####
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 38
+Giving up 1 seconds and no solution
+board 8 failed
+-------------
+
+checking board 9
+Solving 
+#############
+#####  ######
+#####     ###
+#####    ####
+###### #  ###
+###### #    #
+#     $**** #
+# $#$ $ ... #
+#       #@. #
+##########  #
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 41
+Giving up 1 seconds and no solution
+board 9 failed
+-------------
+
+checking board 10
+Solving 
+##############
+######      ##
+####  $ $   ##
+###  $ ###  ##
+### $    #  ##
+###### #    ##
+###. # #   ###
+# ...# $ # ###
+# #. ###   ###
+#          ###
+##   #   #   #
+####   #   #@#
+##############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 36
+Giving up 1 seconds and no solution
+board 10 failed
+-------------
+
+checking board 11
+Solving 
+##############
+#####@ #######
+#   ##    ####
+# $###  $ ####
+#    ###$$   #
+##..      $  #
+##..#    ### #
+#######   #  #
+#######      #
+########  . ##
+#########   ##
+##############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 46
+Giving up 1 seconds and no solution
+board 11 failed
+-------------
+
+checking board 12
+Solving 
+###########
+#######  ##
+##        #
+##.*****$ #
+###     @##
+######  ###
+###########
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 42
+Giving up 1 seconds and no solution
+board 12 failed
+-------------
+
+checking board 13
+Solving 
+##############
+######  ######
+######      ##
+###### ###$$##
+#..  # #     #
+#        #@  #
+#..  # #     #
+###### ###$$##
+######      ##
+######  ######
+##############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 22
+Giving up 1 seconds and no solution
+board 13 failed
+-------------
+
+checking board 14
+Solving 
+###########
+####.######
+###   .####
+###  ### .#
+###$$$    #
+##.$@$  #.#
+##.$$$#   #
+#   # ##  #
+# ### ##  #
+#      .###
+#####.#####
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 43
+Giving up 1 seconds and no solution
+board 14 failed
+-------------
+
+checking board 15
+Solving 
+########
+####.  #
+####.$ #
+##. .$ #
+###$ *@#
+##.$   #
+###  $##
+###$  ##
+# .$* ##
+# # *.##
+# # # ##
+#     ##
+########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 46
+Giving up 1 seconds and no solution
+board 15 failed
+-------------
+
+checking board 16
+Solving 
+#########
+##  #####
+##  #####
+## $ $  #
+##$ $ $ #
+#.  #   #
+#.$.##.##
+##.@.####
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 34
+Giving up 1 seconds and no solution
+board 16 failed
+-------------
+
+checking board 17
+Solving 
+#######
+#     #
+# #*  #
+# .*. #
+#  *  #
+# #*# #
+#  *  #
+# $*$ #
+#  *  #
+#  @  #
+##   ##
+#######
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 43
+Giving up 1 seconds and no solution
+board 17 failed
+-------------
+
+checking board 18
+Solving 
+########
+###    #
+# $ ## #
+# # .$ #
+# #. # #
+# .. # #
+## $$@ #
+###   ##
+########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 41
+Giving up 1 seconds and no solution
+board 18 failed
+-------------
+
+checking board 19
+Solving 
+###################
+#####          ####
+##### ######## ####
+#   #     #  ...  #
+# # # # # # $.*.$ #
+#   ##### @ $#$#$##
+####      #      ##
+###################
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 35
+Giving up 1 seconds and no solution
+board 19 failed
+-------------
+
+checking board 20
+Solving 
+#########
+###   ###
+###@* ###
+#  * *  #
+# $ * . #
+#  * *  #
+### * ###
+###   ###
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 41
+Giving up 1 seconds and no solution
+board 20 failed
+-------------
+
+checking board 21
+Solving 
+#########
+###@ ####
+##.$ ####
+###$#####
+# . #####
+# *  ####
+# .$ ####
+# .  ####
+# .$##.##
+# * $ $ #
+#  #.#  #
+# ##$## #
+# ## ## #
+#       #
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 34
+Giving up 1 seconds and no solution
+board 21 failed
+-------------
+
+checking board 22
+Solving 
+############
+####    ####
+###  $#$ ###
+###  @$  ###
+##    ##   #
+## #$### # #
+#    ...   #
+# $  ... ###
+# $#########
+#  #########
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 35
+Giving up 1 seconds and no solution
+board 22 failed
+-------------
+
+checking board 23
+Solving 
+##########
+#### ..###
+###   ####
+### #  ###
+### # $  #
+#     *  #
+#   ***$ #
+#    *@* #
+#######  #
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 32
+Giving up 1 seconds and no solution
+board 23 failed
+-------------
+
+checking board 24
+Solving 
+#######
+#     #
+#  *  #
+# .*. #
+#  *  #
+# #*# #
+#  *  #
+# $*$ #
+#  *  #
+#  @  #
+#######
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 43
+Giving up 1 seconds and no solution
+board 24 failed
+-------------
+
+checking board 25
+Solving 
+#########
+##  @   #
+##$ $ $ #
+# $ # $ #
+#  $ # ##
+#......##
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 34
+Giving up 1 seconds and no solution
+board 25 failed
+-------------
+
+checking board 26
+Solving 
+#############
+#  $ .#.  $ #
+#    #.#.$@ #
+#   #   #.$ #
+#$ #     #  #
+# #      .#$#
+# $      $  #
+#.         .#
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 44
+Giving up 1 seconds and no solution
+board 26 failed
+-------------
+
+checking board 27
+Solving 
+##########
+#######  #
+#######$ #
+#######  #
+##       #
+###.#.# ##
+### #@.  #
+#  .$$.# #
+# $$$  . #
+###   ####
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 27
+Giving up 1 seconds and no solution
+board 27 failed
+-------------
+
+checking board 28
+Solving 
+##########
+#.#   . .#
+# # $$$  #
+# $.$.@# #
+# #    $ #
+#    $$# #
+#.    . .#
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 39
+Giving up 1 seconds and no solution
+board 28 failed
+-------------
+
+checking board 29
+Solving 
+############
+####  ######
+####  ######
+##      ####
+#  #..#  ###
+# $$**$$ ###
+##  ..  ####
+####  #  @ #
+######     #
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 16
+Giving up 1 seconds and no solution
+board 29 failed
+-------------
+
+checking board 30
+Solving 
+#########
+#      ##
+#  $ $ ##
+# $$ # ##
+# $  # ##
+#  ### ##
+####.# ##
+##  .# ##
+## $.# ##
+## . #  #
+## . @  #
+## .##  #
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 37
+Giving up 1 seconds and no solution
+board 30 failed
+-------------
+
+checking board 31
+Solving 
+############
+#      #####
+# $ #$ ##. #
+#  #   ..  #
+#  @$ $#   #
+#  #   ..  #
+# $ #$ ##. #
+#      #####
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 43
+Giving up 1 seconds and no solution
+board 31 failed
+-------------
+
+checking board 32
+Solving 
+########
+##  ####
+#   $  #
+# $$#@ #
+# $ ## #
+#    #.#
+## $ ..#
+###  ..#
+########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 42
+Giving up 1 seconds and no solution
+board 32 failed
+-------------
+
+checking board 33
+Solving 
+###########
+##    #####
+##@ $ #####
+##$$$$#####
+##    #####
+# *  $ $  #
+# #..# #  #
+# #.#.    #
+#  ... ####
+#####  ####
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 35
+Giving up 1 seconds and no solution
+board 33 failed
+-------------
+
+checking board 34
+Solving 
+##########
+###     ##
+### $ @ ##
+##### # ##
+# $     ##
+#  #$## ##
+#..$  #  #
+#..      #
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 35
+Giving up 1 seconds and no solution
+board 34 failed
+-------------
+
+checking board 35
+Solving 
+############
+#          #
+# #  .  #$ #
+#  #.$.#   #
+#  $.$.$ $ #
+# $  .  $  #
+#  $.@.$   #
+# #. $ .#$ #
+# $ ...    #
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 41
+Giving up 1 seconds and no solution
+board 35 failed
+-------------
+
+checking board 36
+Solving 
+#########
+#       #
+#  #$#  #
+#  $  $ #
+#  ###  #
+#  $ #$ #
+# $ $  ##
+# ..#.. #
+##.###* #
+##. # . #
+### @ ###
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 25
+Giving up 1 seconds and no solution
+board 36 failed
+-------------
+
+checking board 37
+Solving 
+#########
+####.  ##
+##     .#
+## $#.$ #
+#  $.#. #
+#  $#.# #
+#  $  $ #
+##     @#
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 41
+Giving up 1 seconds and no solution
+board 37 failed
+-------------
+
+checking board 38
+Solving 
+#############
+##...  #   ##
+#####  # $ ##
+###      ####
+###     $   #
+##  ##@ $   #
+##     # ####
+#.  ## #  $ #
+#.  ## # $  #
+##         ##
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 44
+Giving up 1 seconds and no solution
+board 38 failed
+-------------
+
+checking board 39
+Solving 
+#############
+##     ##  ##
+#  #.   #  ##
+#      .#  ##
+##$$##@##$$##
+##  #.      #
+##  #   .#  #
+##  #  #   ##
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 35
+Giving up 1 seconds and no solution
+board 39 failed
+-------------
+
+checking board 40
+Solving 
+#######
+##   ##
+# . . #
+#. . .#
+## . ##
+### ###
+##   ##
+#  $  #
+# $$$ #
+#  @  #
+# $ $ #
+##   ##
+#######
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 37
+Giving up 1 seconds and no solution
+board 40 failed
+-------------
+
+checking board 41
+Solving 
+#############
+######  #####
+##       ####
+#   #       #
+# $$$ ## ## #
+##    #    @#
+#####. .  ###
+##### .  ####
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 37
+Giving up 1 seconds and no solution
+board 41 failed
+-------------
+
+checking board 42
+Solving 
+##########
+####..####
+###.$$ ###
+##.$@ $ ##
+#.$.$ $ .#
+#..$ $  ##
+##. $  ###
+###.$ ####
+#### #####
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 26
+Giving up 1 seconds and no solution
+board 42 failed
+-------------
+
+checking board 43
+Solving 
+######     ####
+####.#######  #
+####.##..  #$ #
+####.####  #  #
+####.#### ##$ #
+#### #        #
+#    #    # # #
+#  # $$ ### # #
+## ##$@$    ###
+##     ########
+##  ###########
+###############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 18
+Giving up 1 seconds and no solution
+board 43 failed
+-------------
+
+checking board 44
+Solving 
+#########
+##     ##
+# .$#$. #
+# $ .   #
+##.$ $.##
+### @ ###
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 27
+Giving up 1 seconds and no solution
+board 44 failed
+-------------
+
+checking board 45
+Solving 
+#######
+##   ##
+#     #
+# ... #
+##...##
+### ###
+##   ##
+#  $  #
+# $$$ #
+#  @  #
+# $ $ #
+##   ##
+#######
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 37
+Giving up 1 seconds and no solution
+board 45 failed
+-------------
+
+checking board 46
+Solving 
+###########
+##  #     #
+##$  $$## #
+## $# @ $ #
+##  # $$  #
+#  $##*..##
+#   ##...##
+#  ###...##
+#### ######
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 46
+Giving up 1 seconds and no solution
+board 46 failed
+-------------
+
+checking board 47
+Solving 
+##########
+##     ###
+## $  $ ##
+### # #@##
+###.# $ ##
+###..$ ###
+#  ..# ###
+# #.*# ###
+#  #.$$$ #
+##   # # #
+####     #
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 45
+Giving up 1 seconds and no solution
+board 47 failed
+-------------
+
+checking board 48
+Solving 
+#############
+###  @  #####
+#    $     ##
+#.#$#.#$   ##
+#$ *.*.* $ ##
+# $..*..$ #.#
+# #.#...   $#
+#  $$. $  $ #
+# # #*# #.# #
+#    $      #
+####   $# ###
+#####  $  ###
+######   ####
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 43
+Giving up 1 seconds and no solution
+board 48 failed
+-------------
+
+checking board 49
+Solving 
+###############
+##  ###########
+#             #
+# .# #    ##  #
+#.@.    #  #. #
+# .#  ###     #
+#      $ $    #
+#### #$ $ $####
+####       ####
+###############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 47
+Giving up 1 seconds and no solution
+board 49 failed
+-------------
+
+checking board 50
+Solving 
+#########
+##      #
+#. ## # #
+# $ $ # #
+#$ # *# #
+# $ $ # #
+# ## @# #
+#   #.# #
+###...  #
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 44
+Giving up 1 seconds and no solution
+board 50 failed
+-------------
+
+checking board 51
+Solving 
+#########
+##      #
+##$ # $ #
+## $.$###
+## #$   #
+# $...# #
+# @*#.$ #
+# $...###
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 36
+Giving up 1 seconds and no solution
+board 51 failed
+-------------
+
+checking board 52
+Solving 
+###########
+###  #   ##
+##  $#$$ ##
+##       ##
+#   #$#   #
+# #  .. # #
+# . ..  . #
+### #.# ###
+###     ###
+###$$#$ ###
+### @#  ###
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 21
+Giving up 1 seconds and no solution
+board 52 failed
+-------------
+
+checking board 53
+Solving 
+#########
+#       #
+# *$$$# #
+# .$  $ #
+# ..$@###
+# ##.$###
+# ... ###
+# *.*$###
+#     ###
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 28
+Giving up 1 seconds and no solution
+board 53 failed
+-------------
+
+checking board 54
+Solving 
+########
+#  $ . #
+# #.$. #
+# $$.@ #
+# . $$ #
+# .$.# #
+##. $  #
+########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 32
+Giving up 1 seconds and no solution
+board 54 failed
+-------------
+
+checking board 55
+Solving 
+#########
+####  ###
+###   ###
+###$.$  #
+###.$.  #
+# . .$###
+#  .$ ###
+###$  ###
+###  @###
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 35
+Giving up 1 seconds and no solution
+board 55 failed
+-------------
+
+checking board 56
+Solving 
+###########
+##   ######
+## $.##   #
+###$...$  #
+### .$. ###
+#@$ $$#####
+# $ ..#####
+# $  .  ###
+#####   ###
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 20
+Giving up 1 seconds and no solution
+board 56 failed
+-------------
+
+checking board 57
+Solving 
+###################
+######## @ ########
+####  ## # ##  ####
+#        #        #
+# ##$# # # # #$## #
+#    # # # # #    #
+### $# # # # #$ ###
+###     ...     ###
+#### ###.#.### ####
+####    ...    ####
+###### # # # ######
+####     #     ####
+#### ### # ### ####
+#### $ $   $ $ ####
+####   #   #   ####
+###################
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 35
+Giving up 1 seconds and no solution
+board 57 failed
+-------------
+
+checking board 58
+Solving 
+#######
+#.   .#
+# $$$ #
+# $@$ #
+#.$$$.#
+#.. ..#
+#######
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 40
+Giving up 1 seconds and no solution
+board 58 failed
+-------------
+
+checking board 59
+Solving 
+#############
+####        #
+####$#$#$#$ #
+####    $   #
+# $@$...# ###
+# ##$##.# ###
+#   ....# ###
+#######   ###
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 41
+Giving up 1 seconds and no solution
+board 59 failed
+-------------
+
+checking board 60
+Solving 
+#########
+####  ###
+#  $ $@##
+# *#.$ ##
+# ...#$##
+# ...$ ##
+### #   #
+##  $$  #
+##     ##
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 32
+Giving up 1 seconds and no solution
+board 60 failed
+-------------
+
+checking board 61
+Solving 
+###############
+#     #   #####
+# #$# #  #. .##
+# $ $ ###.   .#
+# $@$         #
+# $ $ ###.   .#
+# #$# #  #. .##
+#     #   #####
+###############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 34
+Giving up 1 seconds and no solution
+board 61 failed
+-------------
+
+checking board 62
+Solving 
+##############
+####       ###
+#####$##     #
+#   $@##...# #
+#  $#$##...# #
+##  $ ### ## #
+##  $     ## #
+## ###### ## #
+#            #
+##############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 42
+Giving up 1 seconds and no solution
+board 62 failed
+-------------
+
+checking board 63
+Solving 
+##########
+#        #
+## *.$ # #
+##.###   #
+##.# $ $ #
+# $@.$ # #
+#  $## $ #
+### ##$  #
+#...    ##
+#.      ##
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 45
+Giving up 1 seconds and no solution
+board 63 failed
+-------------
+
+checking board 64
+Solving 
+#########
+#      @#
+# $.$.$ #
+# .$.$. #
+# $.*.$ #
+# .$.$. #
+# $.$.$ #
+#       #
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 44
+Giving up 1 seconds and no solution
+board 64 failed
+-------------
+
+checking board 65
+Solving 
+##########
+######  ##
+######$ ##
+# $@$   ##
+# # ##$ ##
+# #$.   .#
+# # . #.##
+#  $. .###
+# $#.  ###
+#      ###
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 34
+Giving up 1 seconds and no solution
+board 65 failed
+-------------
+
+checking board 66
+Solving 
+###########
+#         #
+#.......  #
+########  #
+########$ #
+########  #
+########$ #
+#@      $ #
+#  $ $ $$ #
+######    #
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 44
+Giving up 1 seconds and no solution
+board 66 failed
+-------------
+
+checking board 67
+Solving 
+#############
+#  $ .#.  $ #
+#  $.#.#.$@ #
+#   #...#.$ #
+#$ #  $ .#  #
+# #      .#$#
+# $ $ $ $$  #
+#.         .#
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 44
+Giving up 1 seconds and no solution
+board 67 failed
+-------------
+
+checking board 68
+Solving 
+##########
+#        #
+# $ $. . #
+#  $  .  #
+# $#$.#. #
+# .#.$#$ #
+#  .  $  #
+# . .$ $ #
+#@       #
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 44
+Giving up 1 seconds and no solution
+board 68 failed
+-------------
+
+checking board 69
+Solving 
+##########
+#      ###
+# #$$ ..##
+# $@ #..##
+# #$$#..##
+# $  #..##
+# #$ $..##
+# $  #   #
+# #$ ### #
+#        #
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 44
+Giving up 1 seconds and no solution
+board 69 failed
+-------------
+
+checking board 70
+Solving 
+############
+#. #   #####
+#.$    #####
+#.$###.#  @#
+#.$ # $$$ ##
+# $ #..#  ##
+##  #  #  ##
+##*   .$ ###
+##  #  #####
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 20
+Giving up 1 seconds and no solution
+board 70 failed
+-------------
+
+checking board 71
+Solving 
+#######
+# $.  #
+#. .$.#
+#$.*. #
+# $*$ #
+#  .  #
+# $*$ #
+#  * @#
+#######
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 42
+Giving up 1 seconds and no solution
+board 71 failed
+-------------
+
+checking board 72
+Solving 
+############
+###        #
+### ##$##  #
+###$# $    #
+#    $@$#..#
+# # # $ #..#
+# #$## #.#.#
+# #      ..#
+# ##$### ###
+#        ###
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 15
+Giving up 1 seconds and no solution
+board 72 failed
+-------------
+
+checking board 73
+Solving 
+################
+#  #############
+#              #
+#  ########### #
+#              #
+#  ..######### #
+# #..######### #
+###..#         #
+#    # #########
+#  #   #########
+##$@############
+## $ ###########
+##$  ###########
+# $  ###########
+# $$ ###########
+#    ###########
+################
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 12
+Giving up 1 seconds and no solution
+board 73 failed
+-------------
+
+checking board 74
+Solving 
+#########
+###   ###
+###.  ###
+#  *$*$ #
+# @. .  #
+# $*$*  #
+###  .###
+###   ###
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 45
+Giving up 1 seconds and no solution
+board 74 failed
+-------------
+
+checking board 75
+Solving 
+###########
+##### #####
+##   #   ##
+#  $ @ $  #
+#  # ###  #
+#   ...# ##
+##$$. .$$##
+## #...#  #
+#  ### #  #
+#  $   $  #
+#    #    #
+##### #####
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 43
+Giving up 1 seconds and no solution
+board 75 failed
+-------------
+
+checking board 76
+Solving 
+########
+#     ##
+# #*# ##
+# .*.  #
+#  *   #
+# #*# ##
+#  *  ##
+# $*$ ##
+#  *  ##
+#  @  ##
+########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 42
+Giving up 1 seconds and no solution
+board 76 failed
+-------------
+
+checking board 77
+Solving 
+#########
+##. . .##
+#.#  $#.#
+# $$$$  #
+#. $@*  #
+#  $$$$ #
+#.#$  #.#
+##. . .##
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 38
+Giving up 1 seconds and no solution
+board 77 failed
+-------------
+
+checking board 78
+Solving 
+############
+#          #
+# $$ # #.. #
+#  ##  #.. #
+#   $ $##  #
+# # ##     #
+# # ## $#  #
+#  #    #  #
+#  @# $#.  #
+#  #   .#  #
+# #        #
+#  ###     #
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 23
+Giving up 1 seconds and no solution
+board 78 failed
+-------------
+
+checking board 79
+Solving 
+###########
+##     ####
+## ###.   #
+##    # # #
+# .#$ $ # #
+# #  *  # #
+# # $ $#. #
+# # #    ##
+#   .### ##
+####      #
+########  #
+########@ #
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 38
+Giving up 1 seconds and no solution
+board 79 failed
+-------------
+
+checking board 80
+Solving 
+##########
+####    ##
+##    #  #
+#  $$$   #
+# #$@$## #
+#  $$$   #
+# #   ####
+## ... ###
+# .   . ##
+## ... ###
+###   ####
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 40
+Giving up 1 seconds and no solution
+board 80 failed
+-------------
+
+checking board 81
+Solving 
+#########
+##..#####
+#.. #####
+#.. .####
+#  ######
+#   $ $ #
+## $ $  #
+##  $ $ #
+###  $  #
+#### @ ##
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 21
+Giving up 1 seconds and no solution
+board 81 failed
+-------------
+
+checking board 82
+Solving 
+############
+####  ######
+####    ####
+####  #   @#
+##### # ####
+###  *.*  ##
+### $.*.$ ##
+##### # ####
+#  #  #  ###
+# $#  $  ###
+#  .  #  ###
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 16
+Giving up 1 seconds and no solution
+board 82 failed
+-------------
+
+checking board 83
+Solving 
+#############
+#           #
+# $$$$  $ ###
+#  $@$ $  .##
+# $ $### ..##
+###     ....#
+#######...###
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 37
+Giving up 1 seconds and no solution
+board 83 failed
+-------------
+
+checking board 84
+Solving 
+##########
+####     #
+####  $$ #
+###  $ $ #
+## * $   #
+# *@* #$ #
+# .*. #  #
+# . . ####
+##. .#####
+### ######
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 37
+Giving up 1 seconds and no solution
+board 84 failed
+-------------
+
+checking board 85
+Solving 
+#############
+########   ##
+###### $@$  #
+###### $ $# #
+#####  # $  #
+#####  $$$ ##
+#...#    # ##
+#...### ## ##
+#..        ##
+#   #########
+#   #########
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 19
+Giving up 1 seconds and no solution
+board 85 failed
+-------------
+
+checking board 86
+Solving 
+###############
+###      ######
+###       #####
+#    ###   ####
+#      #  $ ###
+## ###.# $ $ ##
+#  #  .#  $  @#
+#  .  .##$ $ ##
+####...## $ ###
+###### #   ####
+######    #####
+###############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 37
+Giving up 1 seconds and no solution
+board 86 failed
+-------------
+
+checking board 87
+Solving 
+##########
+####. .###
+#.$  $ .##
+#.$ $#$ .#
+#.$$ $@ .#
+#.$    $.#
+####$ $###
+#### ..###
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 42
+Giving up 1 seconds and no solution
+board 87 failed
+-------------
+
+checking board 88
+Solving 
+################
+####  ##########
+####   # ...####
+####   # ...####
+####$#$# ...   #
+####  $      # #
+###  # # # ##  #
+#    # @    # ##
+# #    #  $$  ##
+# #$#$ ## #  ###
+#  $   ## $ ####
+### #####  #####
+###       ######
+################
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 20
+Giving up 1 seconds and no solution
+board 88 failed
+-------------
+
+checking board 89
+Solving 
+############
+####  ######
+####  ######
+####       #
+#####.#.#$##
+##### #@.  #
+#    .$$*# #
+# $ $$$ ...#
+#####   ####
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 28
+Giving up 1 seconds and no solution
+board 89 failed
+-------------
+
+checking board 90
+Solving 
+##############
+#       ######
+# $   # .#####
+# #$# ##  .  #
+# $@$    . . #
+# #$# ##  .  #
+#   $ # .#####
+#       ######
+##############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 39
+Giving up 1 seconds and no solution
+board 90 failed
+-------------
+
+checking board 91
+Solving 
+############
+###       ##
+### #   #$##
+##.@### # ##
+#...##### ##
+#...#     ##
+#$$$#$$$# ##
+#          #
+#  ######  #
+#         ##
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 35
+Giving up 1 seconds and no solution
+board 91 failed
+-------------
+
+checking board 92
+Solving 
+################
+####   $.#######
+###   $.    .###
+### ### $#######
+# $.####     ###
+# # #####$## ###
+# # ###   #  ###
+#  $ # * *  #  #
+###. #$.$.# @  #
+####  .$. ##** #
+#### ###  ##  ##
+#### #######. ##
+#### #    ###$##
+####   ##     ##
+################
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 39
+Giving up 1 seconds and no solution
+board 92 failed
+-------------
+
+checking board 93
+Solving 
+#############
+###.......###
+## .$$$$$. ##
+#   #   #   #
+#  #*#@#*#  #
+##  #   #  ##
+##. $$$$$  ##
+###.$     ###
+#####   #####
+#############
+#############
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 19
+Giving up 1 seconds and no solution
+board 93 failed
+-------------
+
+checking board 94
+Solving 
+########
+###   ##
+### *$ #
+#  .$. #
+#  $. ##
+###  @##
+########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 37
+Giving up 1 seconds and no solution
+board 94 failed
+-------------
+
+checking board 95
+Solving 
+##########
+# .   $ ##
+#.#$#.  ##
+# . #$$ ##
+#   .    #
+#   $ #$ #
+# @ #$.  #
+# #$.   ##
+# .  #$ ##
+###  .  ##
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 43
+Giving up 1 seconds and no solution
+board 95 failed
+-------------
+
+checking board 96
+Solving 
+###########
+#         #
+# $ ### $ #
+# #  $  # #
+# ..$.$.. #
+# #$.#.$# #
+# ..$.$.. #
+# #  $  # #
+# $ ### $ #
+#    @    #
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 41
+Giving up 1 seconds and no solution
+board 96 failed
+-------------
+
+checking board 97
+Solving 
+###################
+#    $   .........#
+# $ $#$$ $ $ $ $ @#
+#      ############
+###################
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 23
+Giving up 1 seconds and no solution
+board 97 failed
+-------------
+
+checking board 98
+Solving 
+#########
+#  .#...#
+# $#.#$ #
+#. $   $#
+# $#@#$ #
+#  $  $ #
+#.     .#
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 39
+Giving up 1 seconds and no solution
+board 98 failed
+-------------
+
+checking board 99
+Solving 
+##################
+###  #############
+###$ #   #########
+## $   .$ ########
+# $   ###   ######
+#   #######    ###
+## # ....##### ###
+## #  ########   #
+##  # ###.#### $ #
+#  $# ###.#### ###
+# *   ### ####  ##
+####     $      ##
+#########@ #######
+##################
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 39
+Giving up 1 seconds and no solution
+board 99 failed
+-------------
+
+checking board 100
+Solving 
+##############
+##   ##   # ##
+## #.##$ $   #
+## .... $ #$@#
+#  #.##$ $   #
+#    ##   # ##
+##   #########
+##############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 28
+Giving up 1 seconds and no solution
+board 100 failed
+-------------
+
+checking board 101
+Solving 
+###########
+# ....#  .#
+#  ##$$$#.#
+## ## $ #.#
+## ##   #.#
+## #### # #
+# $ $ $ $ #
+#         #
+# @ #######
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 43
+Giving up 1 seconds and no solution
+board 101 failed
+-------------
+
+checking board 102
+Solving 
+##### #####
+#   ###  ##
+# $     @##
+##$*****$##
+# $.....$ #
+#   #     #
+########  #
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 21
+Giving up 1 seconds and no solution
+board 102 failed
+-------------
+
+checking board 103
+Solving 
+###########
+# . . . . #
+#  . . .  #
+#######$  #
+#    $ $  #
+#         #
+###$####  #
+#@   $ #  #
+### $ $   #
+#####     #
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 10
+Giving up 1 seconds and no solution
+board 103 failed
+-------------
+
+checking board 104
+Solving 
+##########
+#        #
+# $#$.#. #
+#  $  .  #
+# $#$.#. #
+# .#.$#$ #
+#  .  $  #
+# .#.$#$ #
+#@       #
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 44
+Giving up 1 seconds and no solution
+board 104 failed
+-------------
+
+checking board 105
+Solving 
+#######
+#     #
+# $$$ #
+# $@$ #
+# $$$ #
+# # # #
+#     #
+#     #
+# ... #
+# . . #
+# ... #
+#     #
+#######
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 46
+Giving up 1 seconds and no solution
+board 105 failed
+-------------
+
+checking board 106
+Solving 
+#########
+##  @  ##
+##*$*$*##
+## .$. ##
+##. # .##
+#  *$*  #
+#   *   #
+#  ###  #
+#### ####
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 30
+Giving up 1 seconds and no solution
+board 106 failed
+-------------
+
+checking board 107
+Solving 
+#############
+#####   #####
+#  $     $  #
+# $ # # # $ #
+#  # ... #  #
+##  .   .  ##
+#  # ... #  #
+# $ # # # $ #
+#  $     $  #
+##### @ #####
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 33
+Giving up 1 seconds and no solution
+board 107 failed
+-------------
+
+checking board 108
+Solving 
+###############
+###### @ ######
+###### # ######
+##     #     ##
+##$### # # #$##
+#  ### # # #  #
+# $### # # #$ #
+#     ...     #
+## ###.#.######
+##    ...######
+#### # # ######
+##     #     ##
+## ### # ### ##
+## $ $   $ $ ##
+##   #   #   ##
+###############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 35
+Giving up 1 seconds and no solution
+board 108 failed
+-------------
+
+checking board 109
+Solving 
+############
+#######.####
+######.  .##
+##### .   ##
+####     ###
+# $  ### ###
+#    ### ###
+## $@### ###
+### $.   ###
+###  ##  ###
+####$### ###
+#### ### ###
+###  ###  ##
+### $#### ##
+##   ####  #
+## ####### #
+## ####### #
+## #     # #
+##   ###   #
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 42
+Giving up 1 seconds and no solution
+board 109 failed
+-------------
+
+checking board 110
+Solving 
+#########
+###  ####
+###@ ####
+#      ##
+##.$.# ##
+## ...$##
+##$$. $ #
+#  $# # #
+#  $.   #
+#    ####
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 46
+Giving up 1 seconds and no solution
+board 110 failed
+-------------
+
+checking board 111
+Solving 
+############
+####  ######
+####$     ##
+##     .# ##
+## ## #.  ##
+## $  #*####
+## ####.   #
+#  #  @.#  #
+# $  #$.#$##
+###    . $ #
+########   #
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 17
+Giving up 1 seconds and no solution
+board 111 failed
+-------------
+
+checking board 112
+Solving 
+######     ######
+#################
+######     ######
+######     ######
+## # #     # # ##
+###### #.# ######
+##    $. .$    ##
+##   # #$# #   ##
+##   . $@$ .   ##
+##   # #$# #   ##
+##    $. .$    ##
+###### #.# ######
+## # #     # # ##
+######     ######
+######     ######
+#################
+######     ######
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 45
+Giving up 1 seconds and no solution
+board 112 failed
+-------------
+
+checking board 113
+Solving 
+#############
+####. ..#.. #
+#  ..*.   $ #
+# ##$#*### ##
+#      $ # ##
+### #$$  $ ##
+### $ #$ ####
+###   #@ ####
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 29
+Giving up 1 seconds and no solution
+board 113 failed
+-------------
+
+checking board 114
+Solving 
+###   ###
+#.#   #.#
+#.#### .#
+#..$ $..#
+# $$@$$ #
+## $$$  #
+#..$ $ ##
+#.     ##
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 36
+Giving up 1 seconds and no solution
+board 114 failed
+-------------
+
+checking board 115
+Solving 
+##########
+##   #  ##
+## *  * ##
+#  . *   #
+# $.*@$$ #
+#  . *   #
+## *  * ##
+##   #  ##
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 42
+Giving up 1 seconds and no solution
+board 115 failed
+-------------
+
+checking board 116
+Solving 
+##########
+##   #####
+#  $ #####
+# $ $#####
+#  $ #####
+# $ $#   #
+#  $ # # #
+# $@$    #
+###### ###
+##. .   ##
+###.#   ##
+##. .  ###
+###.   ###
+##. .  ###
+###.######
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 24
+Giving up 1 seconds and no solution
+board 116 failed
+-------------
+
+checking board 117
+Solving 
+##########
+#        #
+## $.$ # #
+## ###   #
+## # $ $ #
+# $@.$ # #
+#  $## $ #
+### ##$  #
+#...... ##
+#.      ##
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 45
+Giving up 1 seconds and no solution
+board 117 failed
+-------------
+
+checking board 118
+Solving 
+############
+#          #
+# $#$ $#$  #
+#  $. .$   #
+# $#*$*#$  #
+#   . .    #
+#  #. .# . #
+# # #.# #. #
+#         @#
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 38
+Giving up 1 seconds and no solution
+board 118 failed
+-------------
+
+checking board 119
+Solving 
+##############
+##########   #
+##########   #
+##########   #
+###    ## ...#
+# $ $ $@ $...#
+# ### #$$#...#
+# ### #  #   #
+# $ $ $  #   #
+#        #   #
+##############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 36
+Giving up 1 seconds and no solution
+board 119 failed
+-------------
+
+checking board 120
+Solving 
+##########
+#     ####
+##$ $ ####
+#@* #    #
+# *.*..* #
+# $ # $$##
+#  .#   ##
+## .. #$##
+#####   ##
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 38
+Giving up 1 seconds and no solution
+board 120 failed
+-------------
+
+checking board 121
+Solving 
+###############
+###           #
+###  $ #$ # # #
+#    # $  $   #
+#  $ # #$######
+#  #     #..###
+# ## ##### .###
+#  #   #  . ###
+#         ..###
+#######  @#####
+###############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 37
+Giving up 1 seconds and no solution
+board 121 failed
+-------------
+
+checking board 122
+Solving 
+###########
+#.$..... .#
+#        @#
+## $$$$#$##
+#. $ $ $ .#
+#         #
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 34
+Giving up 1 seconds and no solution
+board 122 failed
+-------------
+
+checking board 123
+Solving 
+##########
+#        #
+## $.$.# #
+## ###   #
+## # $ $ #
+# $@.$ # #
+#  $## $ #
+### ##$  #
+#.....  ##
+#.      ##
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 45
+Giving up 1 seconds and no solution
+board 123 failed
+-------------
+
+checking board 124
+Solving 
+#############
+#........   #
+# $  $  $@$ #
+# #$##$$#$# #
+#           #
+#           #
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 38
+Giving up 1 seconds and no solution
+board 124 failed
+-------------
+
+checking board 125
+Solving 
+############
+#          #
+#  $###....#
+# $ #....# #
+# $@#.#..  #
+# $$$$$$$###
+# $      ###
+##  ########
+##  ########
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 43
+Giving up 1 seconds and no solution
+board 125 failed
+-------------
+
+checking board 126
+Solving 
+############
+#          #
+# $#$ $#$  #
+#  $. .$   #
+# *#*$*#*  #
+#   . .    #
+#  #. .#   #
+# # #.# #  #
+#         @#
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 38
+Giving up 1 seconds and no solution
+board 126 failed
+-------------
+
+checking board 127
+Solving 
+#############
+#####   #@###
+#####   $  ##
+#####  #$  ##
+#####   $   #
+###.#  ## $ #
+#...# $$    #
+#...  $     #
+#...  #  $$##
+## # $#    ##
+## #      ###
+## # ########
+##   ########
+#############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 44
+Giving up 1 seconds and no solution
+board 127 failed
+-------------
+
+checking board 128
+Solving 
+###########
+#   #   ###
+#   $  . ##
+##$### #$##
+## #.. # ##
+##  .$*# ##
+## #...$ ##
+##$# ###  #
+##  @  $  #
+###  ###  #
+###########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 35
+Giving up 1 seconds and no solution
+board 128 failed
+-------------
+
+checking board 129
+Solving 
+#########
+###  ##@#
+###     #
+###* *  #
+#  $*$ ##
+#...  . #
+#  $*$# #
+## * *  #
+##   ####
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 34
+Giving up 1 seconds and no solution
+board 129 failed
+-------------
+
+checking board 130
+Solving 
+###############
+###   # #######
+#   $ ###  ####
+# # $  ....   #
+# $$#$ #... # #
+##   $ #.## # #
+###   ##.##$# #
+######## $@ $ #
+######## #### #
+########      #
+###############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 16
+Giving up 1 seconds and no solution
+board 130 failed
+-------------
+
+checking board 131
+Solving 
+#########
+#@      #
+#  $    #
+#     . #
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 40
+We found a solution!!--------------
+solution = D D R R R R R R U U L D L U L D L D R R R R U U L D L U L L L D R D R R R R U U L D L U L L L L D D R R R R 
+nodes checked = 144
+seconds: 0.2196
+Good solution
+board 131 success
+-------------
+
+checking board 132
+Solving 
+#########
+#       #
+#     $ #
+#@.     #
+#########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 37
+Giving up 1 seconds and no solution
+board 132 failed
+-------------
+
+checking board 133
+Solving 
+#######
+#     #
+#   $ #
+#     #
+#+    #
+#######
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 41
+Giving up 1 seconds and no solution
+board 133 failed
+-------------
+
+checking board 134
+Solving 
+##################
+#@               #
+#  $ $ $ $       #
+#               .#
+#  #############*#
+#  ###########  .#
+#  ###########  .#
+#  ###########  .#
+#  ###########   #
+#  ###########   #
+#  ###########   #
+#  ###########   #
+#                #
+#                #
+##################
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 52
+Giving up 1 seconds and no solution
+board 134 failed
+-------------
+
+checking board 135
+Solving 
+##########
+#    *   #
+# .  * $@#
+#    *   #
+#    *   #
+##########
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 28
+Giving up 1 seconds and no solution
+board 135 failed
+-------------
+
+checking board 136
+Solving 
+############
+# $. . $  .#
+# $. . $   #
+# $. . $   #
+# $. @ $   #
+#    . $   #
+############
+
+nodes checked last second: 100 visited_boards.size(): 0 (HASH)visited_states.size(): 36
+Giving up 1 seconds and no solution
+board 136 failed
+-------------
+
+board 1 success
+board 2 failed
+board 3 failed
+board 4 failed
+board 5 failed
+board 6 failed
+board 7 failed
+board 8 failed
+board 9 failed
+board 10 failed
+board 11 failed
+board 12 failed
+board 13 failed
+board 14 failed
+board 15 failed
+board 16 failed
+board 17 failed
+board 18 failed
+board 19 failed
+board 20 failed
+board 21 failed
+board 22 failed
+board 23 failed
+board 24 failed
+board 25 failed
+board 26 failed
+board 27 failed
+board 28 failed
+board 29 failed
+board 30 failed
+board 31 failed
+board 32 failed
+board 33 failed
+board 34 failed
+board 35 failed
+board 36 failed
+board 37 failed
+board 38 failed
+board 39 failed
+board 40 failed
+board 41 failed
+board 42 failed
+board 43 failed
+board 44 failed
+board 45 failed
+board 46 failed
+board 47 failed
+board 48 failed
+board 49 failed
+board 50 failed
+board 51 failed
+board 52 failed
+board 53 failed
+board 54 failed
+board 55 failed
+board 56 failed
+board 57 failed
+board 58 failed
+board 59 failed
+board 60 failed
+board 61 failed
+board 62 failed
+board 63 failed
+board 64 failed
+board 65 failed
+board 66 failed
+board 67 failed
+board 68 failed
+board 69 failed
+board 70 failed
+board 71 failed
+board 72 failed
+board 73 failed
+board 74 failed
+board 75 failed
+board 76 failed
+board 77 failed
+board 78 failed
+board 79 failed
+board 80 failed
+board 81 failed
+board 82 failed
+board 83 failed
+board 84 failed
+board 85 failed
+board 86 failed
+board 87 failed
+board 88 failed
+board 89 failed
+board 90 failed
+board 91 failed
+board 92 failed
+board 93 failed
+board 94 failed
+board 95 failed
+board 96 failed
+board 97 failed
+board 98 failed
+board 99 failed
+board 100 failed
+board 101 failed
+board 102 failed
+board 103 failed
+board 104 failed
+board 105 failed
+board 106 failed
+board 107 failed
+board 108 failed
+board 109 failed
+board 110 failed
+board 111 failed
+board 112 failed
+board 113 failed
+board 114 failed
+board 115 failed
+board 116 failed
+board 117 failed
+board 118 failed
+board 119 failed
+board 120 failed
+board 121 failed
+board 122 failed
+board 123 failed
+board 124 failed
+board 125 failed
+board 126 failed
+board 127 failed
+board 128 failed
+board 129 failed
+board 130 failed
+board 131 success
+board 132 failed
+board 133 failed
+board 134 failed
+board 135 failed
+board 136 failed
+2 board(s) solved out of 136
+
