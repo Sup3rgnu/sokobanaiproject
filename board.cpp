@@ -395,7 +395,7 @@ bool board::validateMove(char c) {
                             if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into DEAD AREA Not OK." << endl);}
                             return false;
                         }
-			if(theboard[(ppos.first)-2][ppos.second] == '#' || theboard[(ppos.first)-2][ppos.second] == '$'){
+			if(theboard[(ppos.first)-2][ppos.second] == '#' || theboard[(ppos.first)-2][ppos.second] == '$' ||  theboard[ppos.first-2][(ppos.second)] == '*'){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into something! Not OK." << endl); }
 
 				return false;
@@ -428,7 +428,7 @@ bool board::validateMove(char c) {
                             if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into DEAD AREA Not OK." << endl);}
                             return false;
                         }
-			if(theboard[(ppos.first)+2][ppos.second] == '#' || theboard[(ppos.first)+2][ppos.second] == '$'){
+			if(theboard[(ppos.first)+2][ppos.second] == '#' || theboard[(ppos.first)+2][ppos.second] == '$' ||  theboard[ppos.first+2][(ppos.second)] == '*'){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into something! Not OK." << endl); }
 
 				return false;
@@ -460,7 +460,7 @@ bool board::validateMove(char c) {
                             if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into DEAD AREA Not OK." << endl);}
                             return false;
                         }
-			if(theboard[ppos.first][(ppos.second)-2] == '#' || theboard[ppos.first][(ppos.second)-2] == '$'){
+			if(theboard[ppos.first][(ppos.second)-2] == '#' || theboard[ppos.first][(ppos.second)-2] == '$' ||  theboard[ppos.first][(ppos.second)-2] == '*'){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into something! Not OK." << endl); }
 
 				return false;
@@ -492,7 +492,7 @@ bool board::validateMove(char c) {
                             if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into DEAD AREA Not OK." << endl);}
                             return false;
                         }
-			if(theboard[ppos.first][(ppos.second)+2] == '#' || theboard[ppos.first][(ppos.second)+2] == '$'){
+			if(theboard[ppos.first][(ppos.second)+2] == '#' || theboard[ppos.first][(ppos.second)+2] == '$'||  theboard[ppos.first][(ppos.second)+2] == '*'){
 				if(DEBUG_VALIDATEMOVE == 1 && true) { DEBUG(cout << "This move would push the box into something! Not OK." << endl); }
 
 				return false;
@@ -588,6 +588,13 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)-1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = '.';
 			}
+			if(theboard[(ppos.first)-2][ppos.second] == ' '  && theboard[(ppos.first)-1][ppos.second] == '*'
+					&& theboard[ppos.first][ppos.second] == '@') {
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "U: Player moves a box within goal square area." << endl); }
+				theboard[(ppos.first)-2][ppos.second] = '$';
+				theboard[(ppos.first)-1][ppos.second] = '+';
+				theboard[ppos.first][ppos.second] = ' ';
+			}
 			// Kolla om spelaren skjuter en l�da som ligger vid kanten till goalsquare-omr�det
 			if(theboard[(ppos.first)-2][ppos.second] == ' '  && theboard[(ppos.first)-1][ppos.second] == '$'
 					&& theboard[ppos.first][ppos.second] == '+') {
@@ -664,6 +671,13 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)+2][ppos.second] = '*';
 				theboard[(ppos.first)+1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = '.';
+			}
+			if(theboard[(ppos.first)+2][ppos.second] == ' '  && theboard[(ppos.first)+1][ppos.second] == '*'
+					&& theboard[ppos.first][ppos.second] == '@') {
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box within goal square area." << endl); }
+				theboard[(ppos.first)+2][ppos.second] = '$';
+				theboard[(ppos.first)+1][ppos.second] = '+';
+				theboard[ppos.first][ppos.second] = ' ';
 			}
 			// Kolla om spelaren skjuter en l�da ut fr�n goalsquare-omr�det
 			if(theboard[(ppos.first)+2][ppos.second] == ' '  && theboard[(ppos.first)+1][ppos.second] == '*'
@@ -766,6 +780,14 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second-1] = '@';
 				theboard[ppos.first][ppos.second] = '.';
 			}
+			if(theboard[ppos.first][ppos.second-2] == ' '  && theboard[ppos.first][ppos.second-1] == '*'
+					&& theboard[ppos.first][ppos.second] == '@') {
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "L: Player moves a box at the border of goal square area." << endl); }
+				theboard[ppos.first][ppos.second-2] = '$';
+				theboard[ppos.first][ppos.second-1] = '+';
+				theboard[ppos.first][ppos.second] = ' ';
+			}
+
 			// Kolla om vi skjuter runt l�dan p� det vanliga golvet.
 			if(theboard[ppos.first][ppos.second-1] == '$' || theboard[ppos.first][ppos.second] == '@') {
 				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "L: Player moves a box outside of goal squares 3." << endl); }
@@ -773,6 +795,7 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)][ppos.second-1] = '@';
 				theboard[ppos.first][ppos.second] = ' ';
 			}
+
 		}
 
 		// Kolla om spelarmark�ren g�r in i goalsquare och ska byta mark�r till +.
@@ -842,6 +865,14 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second+2] = '$';
 				theboard[ppos.first][ppos.second+1] = '+';
 				theboard[ppos.first][ppos.second] = '.';
+			}
+			// Kolla om spelaren skjuter en l�da ut fr�n goalsquare-omr�det
+			if(theboard[ppos.first][ppos.second+2] == ' '  && theboard[ppos.first][ppos.second+1] == '*'
+					&& theboard[ppos.first][ppos.second] == '@') {
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "R: Player moves a box within goal square area." << endl); }
+				theboard[ppos.first][ppos.second+2] = '$';
+				theboard[ppos.first][ppos.second+1] = '+';
+				theboard[ppos.first][ppos.second] = ' ';
 			}
 			// Kolla om spelaren skjuter en l�da som ligger vid kanten till goalsquare-omr�det
 			if(theboard[ppos.first][ppos.second+2] == ' '  && theboard[ppos.first][ppos.second+1] == '$'
@@ -1180,6 +1211,7 @@ void board::prepareBoard(){
                 if(theboard[j][i] != '#' && theboard[j-1][i] == '#'){
                     for(xl; theboard[j][xl-1] != '#' && xl >= 0; xl--);
                     for(xr; theboard[j][xr+1] != '#' && xr <= xsize; xr++);
+                    cout << "xl: " << xl << "xk: " << xr << endl;
                     for(int k = xl; k <= xr; k++) {
                         if(theboard[j-1][k] == '#' ){
                             if(theboard[j][k] == '.' || theboard[j][k] == '+')
