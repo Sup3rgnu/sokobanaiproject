@@ -19,13 +19,13 @@
 const int DEBUG_MOVE = 1;
 const int DEBUG_VALIDATEMOVE = 1;
 
-#define DEBUG_ALL 0
-#define DEBUG_HASH 0
-#define USE_WALL  0
-#define USE_REACH 0
-#define USE_HASH  0
-#define USE_STICK 0 //stick to box
-#define USE_HASHTABLE 1
+#define DEBUG_ALL		0
+#define DEBUG_HASHTABLE 0
+#define USE_WALL		0
+#define USE_REACH		0
+#define USE_HASH		0
+#define USE_STICK		0
+#define USE_HASHTABLE	1
 
 using namespace std;
 
@@ -35,7 +35,7 @@ using namespace std;
 #define DEBUG(x)
 #endif
 
-#if DEBUG_HASH
+#if DEBUG_HASHTABLE
 #define DEBUG_HASH(x) x
 #else
 #define DEBUG_HASH(x)
