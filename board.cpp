@@ -102,25 +102,24 @@ board::board (string board1){
 }
 #if USE_HASHTABLE
 string board::theboardToString() {
-	string boardstr;
-	vector<char> vec;
+	string board;
 
-	for(int n = 0; n < theboard.size(); n++) {
-		vec = theboard[n];
-		for(int i = 0; i < vec.size(); i++) {
-			boardstr += vec[i];
+	int i, j;
+	for(i = 0; i < theboard.size(); i++) {
+		for(j = 0; j < theboard[i].size(); j++) {
+			board += theboard[i][j];
 		}
-		boardstr += '\n';
 	}
 
-	return boardstr;
+	return board;
 }
 #endif
 
 #if USE_HASHTABLE
 void board::addVisitedState() {
+	boardstr = theboardToString();
 	hash<string> HS;
-	unsigned long int hkey = HS(theboardToString());
+	unsigned long int hkey = HS(boardstr);
 
 	visited_states.insert(make_pair(hkey,theboard));
 	hkey_history.push_back(hkey);
@@ -129,8 +128,6 @@ void board::addVisitedState() {
 }
 
 void board::delVisitedState() {
-	hash<string> HS;
-	unsigned long int hkey = HS(theboardToString());
 
 	DEBUG_HASH(cout << "Before deleting state " << visited_states.size() << endl);
 	visited_states.erase(visited_states.find(hkey));
@@ -143,9 +140,6 @@ void board::delVisitedState() {
 
 bool board::checkVisitedState() {
 
-	hash<string> HS;
-	unsigned long int hkey = HS(theboardToString());
-
 	if(visited_states.count(hkey) > 0) {
 		DEBUG_HASH(cout << "The board " << hkey << " is IN the visited_states table!" << endl);
 		return true;
@@ -156,8 +150,9 @@ bool board::checkVisitedState() {
 }
 
 void board::getLastState() {
+	boardstr = theboardToString();
 	hash<string> HS;
-	unsigned long int hkey = HS(theboardToString());
+	unsigned long int hkey = HS(boardstr);
 
 	hkey_history.pop_back();
 	pair<__gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > >::const_iterator , __gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > >::const_iterator > sit;
@@ -977,13 +972,16 @@ bool board::solve() {
 				if(!check_100) {
 					gettimeofday(&time, 0);
 					if(time.tv_sec > second_checked) {
-						if(time.tv_sec - time_begin.tv_sec >= 10 && !DEBUG_ALL) {
-							cout << "Giving up 10 seconds and no solution\n";
+						if(time.tv_sec - time_begin.tv_sec >= 25 && !DEBUG_ALL) {
+							cout << "Giving up 25 seconds and no solution\n";
 							exit(1);
 						}
 						second_checked = time.tv_sec;
 						cout << "nodes checked last second: " << nodes_checked - nodes_checked_last_time << " visited_boards.size(): " << visited_boards.size()
-														<< DEBUG_HASH(" (HASH)visited_states.size(): " << visited_states.size() <<) "\n";
+#if USE_HASHTABLE
+							<< ", (HT) visited_states.size() = " << visited_states.size()
+#endif
+																<< "\n";
 						nodes_checked_last_time = nodes_checked;
 					}
 				}

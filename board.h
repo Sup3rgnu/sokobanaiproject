@@ -9,11 +9,11 @@
 
 #define DEBUG_ALL		0
 #define DEBUG_HASHTABLE 0
-#define USE_HASHTABLE	0
+#define USE_HASHTABLE	1
 #define USE_TR1_HASH	0
 #define USE_WALL		0
 #define USE_REACH		0
-#define USE_STICK		1
+#define USE_STICK		0
 
 #include <string>
 #include <vector>
@@ -72,6 +72,8 @@ private:
     string theboardToString();
     __gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > > visited_states;
     vector<unsigned long int> hkey_history;
+    string boardstr;
+    unsigned long int hkey;
 #endif
 #if USE_TR1_HASH
     typedef long hashType;
