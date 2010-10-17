@@ -15,6 +15,7 @@
 #define USE_REACH		1
 #define USE_STICK		1
 #define USE_5SEC_LIMIT	0
+#define USE_AVOID_STATE_REP 0
 
 #include <string>
 #include <vector>
