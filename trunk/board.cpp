@@ -100,6 +100,7 @@ board::board (string board1){
 	thehash = getHash();
 #endif
 }
+
 #if USE_HASHTABLE
 string board::theboardToString() {
 	string board;
@@ -117,9 +118,10 @@ string board::theboardToString() {
 
 #if USE_HASHTABLE
 void board::addVisitedState() {
+
 	boardstr = theboardToString();
 	hash<string> HS;
-	unsigned long int hkey = HS(boardstr);
+	hkey = HS(boardstr);
 
 	visited_states.insert(make_pair(hkey,theboard));
 	hkey_history.push_back(hkey);
@@ -140,6 +142,10 @@ void board::delVisitedState() {
 
 bool board::checkVisitedState() {
 
+	boardstr = theboardToString();
+	hash<string> HS;
+	hkey = HS(boardstr);
+
 	if(visited_states.count(hkey) > 0) {
 		DEBUG_HASH(cout << "The board " << hkey << " is IN the visited_states table!" << endl);
 		return true;
@@ -150,9 +156,10 @@ bool board::checkVisitedState() {
 }
 
 void board::getLastState() {
+
 	boardstr = theboardToString();
 	hash<string> HS;
-	unsigned long int hkey = HS(boardstr);
+	hkey = HS(boardstr);
 
 	hkey_history.pop_back();
 	pair<__gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > >::const_iterator , __gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > >::const_iterator > sit;
@@ -972,8 +979,8 @@ bool board::solve() {
 				if(!check_100) {
 					gettimeofday(&time, 0);
 					if(time.tv_sec > second_checked) {
-						if(time.tv_sec - time_begin.tv_sec >= 25 && !DEBUG_ALL) {
-							cout << "Giving up 25 seconds and no solution\n";
+						if(time.tv_sec - time_begin.tv_sec >= 60 && !DEBUG_ALL) {
+							cout << "Giving up 60 seconds and no solution\n";
 							exit(1);
 						}
 						second_checked = time.tv_sec;
@@ -1071,7 +1078,11 @@ bool board::reachableBoardVisited() {
 	hashType backup_hash = thehash;
 #endif
 
-	if(currentBoardVisited())
+#if USE_HASHTABLE
+			if(checkVisitedState())
+#else
+			if(currentBoardVisited())
+#endif
 		return 1; //check current pos first
 
 	DEBUG(cout << "current pos checked, need also to check 3 reachable states......\n");
