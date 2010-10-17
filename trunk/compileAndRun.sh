@@ -1,1 +1,1 @@
-make client && ./client 2
+make client && ./client 1
