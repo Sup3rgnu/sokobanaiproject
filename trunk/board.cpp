@@ -32,21 +32,28 @@ using namespace std;
 #define DEBUG_HASH(x)
 #endif
 
-string board::getHash() {
-	return theboardToString();
+#if USE_TR1_HASH
 
-	locale loc;                 // the "C" locale
+string board::getBoardString() {
 	string board_string;
 	int i, j;
-	const collate<char>& coll = use_facet<collate<char> >(loc);
-
 	for(i = 0; i < theboard.size(); i++) {
 		for(j = 0; j < theboard[i].size(); j++) {
 			board_string += theboard[i][j];
 		}
 	}
-//	return coll.hash(board_string.data(),board_string.data()+board_string.length());
+	return board_string;
 }
+
+long board::getHash() {
+//	return theboardToString();
+	string board_string;
+	locale loc;                 // the "C" locale
+	const collate<char>& coll = use_facet<collate<char> >(loc);
+	board_string = getBoardString();
+	return coll.hash(board_string.data(),board_string.data()+board_string.length());
+}
+#endif
 
 board::board (string board1){
 
@@ -93,7 +100,7 @@ board::board (string board1){
 	thehash = getHash();
 #endif
 }
-
+#if USE_HASHTABLE
 string board::theboardToString() {
 	string boardstr;
 	vector<char> vec;
@@ -108,6 +115,7 @@ string board::theboardToString() {
 
 	return boardstr;
 }
+#endif
 
 #if USE_HASHTABLE
 void board::addVisitedState() {
@@ -927,7 +935,7 @@ bool board::solve() {
 	visited_boards.push_back(theboard);
 #endif
 #if USE_TR1_HASH
-	hashTable.insert(myHash::value_type(thehash, 1));
+	hashTable.insert(hashTableType::value_type(thehash, 1));
 	visited_hashes.push_back(thehash);
 #endif
 	while(1) {
@@ -938,8 +946,8 @@ bool board::solve() {
 				if(!check_100) {
 					gettimeofday(&time, 0);
 					if(time.tv_sec > second_checked) {
-						if(time.tv_sec - time_begin.tv_sec >= 25 && !DEBUG_ALL) {
-							cout << "Giving up 25 seconds and no solution\n";
+						if(time.tv_sec - time_begin.tv_sec >= 10 && !DEBUG_ALL) {
+							cout << "Giving up 10 seconds and no solution\n";
 							exit(1);
 						}
 						second_checked = time.tv_sec;
@@ -966,7 +974,7 @@ bool board::solve() {
 #endif
 #if USE_TR1_HASH
 					visited_hashes.push_back(thehash);
-					hashTable.insert(myHash::value_type(thehash, 1));
+					hashTable.insert(hashTableType::value_type(thehash, 1));
 #endif
 					DEBUG(cout << "wrong move '" << moves[i] << "' made, board already visited, backtracking---------------------\n");
 					break; //backtrack
@@ -993,7 +1001,7 @@ bool board::solve() {
 #endif
 #if USE_TR1_HASH
 				visited_hashes.push_back(thehash);
-				hashTable.insert(myHash::value_type(thehash, 1));
+				hashTable.insert(hashTableType::value_type(thehash, 1));
 #endif
 				i = 0;
 				DEBUG(getline(cin, m, '\n'));
@@ -1031,7 +1039,7 @@ bool board::reachableBoardVisited() {
 	backup_board = theboard; //the board is yet not on the visited boards list
 
 #if USE_TR1_HASH
-	string backup_hash = thehash;
+	hashType backup_hash = thehash;
 #endif
 
 	if(currentBoardVisited())
@@ -1073,7 +1081,7 @@ bool board::reachableBoardVisited() {
 			visited_boards.push_back(theboard); //Just so that moveback can remove something..
 #endif
 #if USE_TR1_HASH
-			hashTable.insert(myHash::value_type(thehash, 1));
+			hashTable.insert(hashTableType::value_type(thehash, 1));
 			visited_hashes.push_back(thehash);
 #endif
 			DEBUG(cout << "pushing back this board:\n");
