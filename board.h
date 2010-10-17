@@ -56,25 +56,25 @@ public:
     void getLastState();
 private:
 
-    char currentMove;						// Det move vi just nu beaktar. Skall vara VERSAL.
-    pair<int, int> ppos;					// ppos h�ller spelarmark�rens aktuella position p� br�dan.
+    char currentMove;						// Current move, capital U/L/D/R.
+    pair<int, int> ppos;					// keeps player marker position on board.
     pair<int, int>  distance;
-    pair<char, bool> move_result;			// Varje move genererar en riktning U/D/L/R samt talar om ifall en l�da p�verkats.
-    vector< pair <char, bool> > solution;	// Vektorn h�ller samtliga aktuella move_result pairs.
-    vector< vector<char> > theboard;		// Arren blev en vektor.
+    pair<char, bool> move_result;			// Each move generates a direction U/D/L/R and stores a bool on if a box was affected.
+    vector< pair <char, bool> > solution;	// Vector that keeps all current move_result pairs.
+    vector< vector<char> > theboard;		// Vector of vector of char that holds the current board.
     vector< vector<char> > theboardLayer;
-    vector< vector< vector<char> > > visited_boards;
-    unsigned long long nodes_checked;
+    vector< vector< vector<char> > > visited_boards; 	// Holds visited states for our poor first implementation of repeated states detection.
+    unsigned long long nodes_checked;			// For timing and stats
     struct timeval time_begin, time;
     int second_checked;
     int check_100;
     int nodes_checked_last_time;
 #if USE_HASHTABLE
-    string theboardToString();
-    __gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > > visited_states;
-    vector<unsigned long int> hkey_history;
-    string boardstr;
-    unsigned long int hkey;
+    string theboardToString();				// returns string from board vector
+    __gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > > visited_states;	// hash map
+    vector<unsigned long int> hkey_history;	// keep track of hkeys added so we can backtrack when needed
+    string boardstr;						// keep a copy of the board as a string
+    unsigned long int hkey;					// current boards hkey
     vector< vector<char> > previousboard;
 #endif
 #if USE_TR1_HASH
