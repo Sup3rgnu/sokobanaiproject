@@ -595,6 +595,13 @@ pair<char, bool> board::move(char c) {
 				theboard[(ppos.first)-1][ppos.second] = '+';
 				theboard[ppos.first][ppos.second] = '.';
 			}
+                        if(theboard[(ppos.first)-2][ppos.second] == '.'  && theboard[(ppos.first)-1][ppos.second] == '$'
+					&& theboard[ppos.first][ppos.second] == '+') {
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box within goal square area." << endl); }
+				theboard[(ppos.first)-2][ppos.second] = '*';
+				theboard[(ppos.first)-1][ppos.second] = '@';
+				theboard[ppos.first][ppos.second] = '.';
+			}
 			// Kolla om spelaren skjuter en l�da inom goalsquare-omr�det
 			if(theboard[(ppos.first)-2][ppos.second] == ' '  && theboard[(ppos.first)-1][ppos.second] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
@@ -685,6 +692,13 @@ pair<char, bool> board::move(char c) {
 				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box within goal square area." << endl); }
 				theboard[(ppos.first)+2][ppos.second] = '*';
 				theboard[(ppos.first)+1][ppos.second] = '+';
+				theboard[ppos.first][ppos.second] = '.';
+			}
+			if(theboard[(ppos.first)+2][ppos.second] == '.'  && theboard[(ppos.first)+1][ppos.second] == '$'
+					&& theboard[ppos.first][ppos.second] == '+') {
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box within goal square area." << endl); }
+				theboard[(ppos.first)+2][ppos.second] = '*';
+				theboard[(ppos.first)+1][ppos.second] = '@';
 				theboard[ppos.first][ppos.second] = '.';
 			}
 			if(theboard[(ppos.first)+2][ppos.second] == ' '  && theboard[(ppos.first)+1][ppos.second] == '*'
@@ -779,6 +793,13 @@ pair<char, bool> board::move(char c) {
 				theboard[ppos.first][ppos.second-1] = '+';
 				theboard[ppos.first][ppos.second] = '.';
 			}
+                        if(theboard[(ppos.first)][ppos.second-2] == '.'  && theboard[(ppos.first)][ppos.second-1] == '$'
+					&& theboard[ppos.first][ppos.second] == '+') {
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box within goal square area." << endl); }
+				theboard[(ppos.first)][ppos.second-2] = '*';
+				theboard[(ppos.first)][ppos.second-1] = '@';
+				theboard[ppos.first][ppos.second] = '.';
+			}
 			// Kolla om spelaren skjuter en l�da ut fr�n goalsquare-omr�det
 			if(theboard[ppos.first][ppos.second-2] == ' '  && theboard[ppos.first][ppos.second-1] == '*'
 					&& theboard[ppos.first][ppos.second] == '+') {
@@ -871,6 +892,13 @@ pair<char, bool> board::move(char c) {
 				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "R: Player moves a box within goal square area." << endl); }
 				theboard[ppos.first][ppos.second+2] = '*';
 				theboard[ppos.first][ppos.second+1] = '+';
+				theboard[ppos.first][ppos.second] = '.';
+			}
+                        if(theboard[(ppos.first)][ppos.second+2] == '.'  && theboard[(ppos.first)][ppos.second+1] == '$'
+					&& theboard[ppos.first][ppos.second] == '+') {
+				if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "D: Player moves a box within goal square area." << endl); }
+				theboard[(ppos.first)][ppos.second+2] = '*';
+				theboard[(ppos.first)][ppos.second+1] = '@';
 				theboard[ppos.first][ppos.second] = '.';
 			}
 			// Kolla om spelaren skjuter en l�da ut fr�n goalsquare-omr�det

@@ -14,7 +14,7 @@
 #define USE_WALL		0
 #define USE_REACH		1
 #define USE_STICK		1
-#define USE_5SEC_LIMIT	0
+#define USE_5SEC_LIMIT	1
 
 #include <string>
 #include <vector>
