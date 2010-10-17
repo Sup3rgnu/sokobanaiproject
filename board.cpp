@@ -173,7 +173,7 @@ void board::moveBack(pair<char,bool> move)
 	if(visited_boards.size() == 1) {
 		cout << "trying to moveBack too far, exiting before getting segfault\n";
 		segfault = 1;
-		exit(1);
+		//exit(1);
 	}
 #if USE_HASHTABLE
 	getLastState();
@@ -1136,15 +1136,13 @@ bool board::currentBoardVisited() {
 	int i;
 
 #if USE_TR1_HASH
-	return hashTable.count(thehash) > 0;
-/*
-	long hash = thehash;
+//	return hashTable.count(thehash) > 0;
 
-	for(i = 0; i < visited_hashed_boards.size(); i++) {
-		if(hash == visited_hashed_boards[i])
+	for(i = 0; i < visited_hashes.size(); i++) {
+		if(thehash == visited_hashes[i])
 			return 1;
 	}
-*/
+
 #else
 	for(i = 0; i < visited_boards.size(); i++) {
 		if(theboard == visited_boards[i])

@@ -9,11 +9,11 @@
 
 #define DEBUG_ALL		0
 #define DEBUG_HASHTABLE 0
-#define USE_HASHTABLE	1
-#define USE_TR1_HASH	0
+#define USE_HASHTABLE	0
+#define USE_TR1_HASH	1
 #define USE_WALL		0
 #define USE_REACH		0
-#define USE_STICK		0
+#define USE_STICK		1
 
 #include <string>
 #include <vector>
