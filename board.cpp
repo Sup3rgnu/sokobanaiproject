@@ -217,8 +217,11 @@ void board::printBoard() {
 	DEBUG(cout << "player x=" << ppos.second << " ,y=" << ppos.first <<
 			", depth=" << solution.size() << ", nodes_checked = " << nodes_checked <<
 			", visited_boards.size() = " << visited_boards.size() <<
-			", (HT) visited_states.size() = " << visited_states.size() << endl);
-	DEBUG(cout << "solution = " << generate_answer_string() << endl);
+#if USE_HASHTABLE
+			", (HT) visited_states.size() = " << visited_states.size() <<
+#endif
+			 endl);
+			DEBUG(cout << "solution = " << generate_answer_string() << endl);
 
 }
 
