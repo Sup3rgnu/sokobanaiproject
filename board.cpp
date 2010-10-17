@@ -971,8 +971,9 @@ int board::printhash() {
 bool board::solve() {
 
 	char moves[]= {'D','R','U', 'L', 0};
-	int i=0;
+	int i=0, sec5 = 0;
 	string m;
+	int backtrack = 0, backtrack_to;
 
 	DEBUG(getline(cin, m, '\n'));
 #if	USE_HASHTABLE
@@ -985,13 +986,13 @@ bool board::solve() {
 	visited_hashes.push_back(thehash);
 #endif
 	while(1) {
-
 		for(i; moves[i];) {
 				nodes_checked++;
 				check_100 = (++check_100) % 100;
 				if(!check_100) {
 					gettimeofday(&time, 0);
 					if(time.tv_sec > second_checked) {
+						sec5 = (++sec5);
 						if(time.tv_sec - time_begin.tv_sec >= 60 && !DEBUG_ALL) {
 							cout << "Giving up 60 seconds and no solution\n";
 							exit(1);
@@ -1060,8 +1061,29 @@ bool board::solve() {
 			}
 
 		}
+
 		//backtracking
 		while(1) {
+#if USE_5SEC_LIMIT
+ #if !DEBUG
+			if(sec5 == 5) {
+				if(!backtrack) {
+					backtrack =1;
+					backtrack_to = solution.size() / 10;
+					cout << "backtrack after 5s, backtrack to depth " << backtrack_to << "\n";
+				}
+				if(solution.size() > backtrack_to) {
+					//cout << "backtracking.." << " solution.size() = " << solution.size() << "\n";
+					pair<char, bool> last_move = solution.back();
+					solution.pop_back();
+					moveBack(last_move);
+					continue;
+				} else {
+					sec5 = 0; backtrack = 0;
+				}
+			}
+ #endif
+#endif
 			pair<char, bool> last_move = solution.back();
 			solution.pop_back();
 			moveBack(last_move);
