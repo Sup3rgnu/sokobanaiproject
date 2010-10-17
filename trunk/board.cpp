@@ -22,10 +22,10 @@ const int DEBUG_VALIDATEMOVE = 1;
 #define DEBUG_ALL 0
 #define DEBUG_HASH 0
 #define USE_WALL  0
-#define USE_REACH 1
-#define USE_HASH  1
-#define USE_STICK 1 //stick to box
-#define USE_HASHTABLE 0
+#define USE_REACH 0
+#define USE_HASH  0
+#define USE_STICK 0 //stick to box
+#define USE_HASHTABLE 1
 
 using namespace std;
 
@@ -913,7 +913,7 @@ int board::printhash() {
 bool board::solve() {
 
 	char moves[]= {'D','R','U', 'L', 0};
-	int i=0, sec_diff;
+	int i=0;
 	string m;
 
 	DEBUG(getline(cin, m, '\n'));
@@ -938,7 +938,7 @@ bool board::solve() {
 							exit(1);
 						}
 						second_checked = time.tv_sec;
-						cout << "nodes checked last second: " << nodes_checked / sec_diff << " visited_boards.size(): " << visited_boards.size()
+						cout << "nodes checked last second: " << nodes_checked - nodes_checked_last_time << " visited_boards.size(): " << visited_boards.size()
 														<< " (HASH)visited_states.size(): " << visited_states.size()<< "\n";
 						nodes_checked_last_time = nodes_checked;
 					}
