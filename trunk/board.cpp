@@ -13,21 +13,32 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <ext/hash_map> // non STL
+#include <functional>
 
 const int DEBUG_MOVE = 1;
 const int DEBUG_VALIDATEMOVE = 1;
 
 #define DEBUG_ALL 0
+#define DEBUG_HASH 0
 #define USE_WALL  0
 #define USE_REACH 1
 #define USE_HASH  1
 #define USE_STICK 1 //stick to box
+#define USE_HASHTABLE 0
+
 using namespace std;
 
 #if DEBUG_ALL
 #define DEBUG(x) x
 #else
 #define DEBUG(x)
+#endif
+
+#if DEBUG_HASH
+#define DEBUG_HASH(x) x
+#else
+#define DEBUG_HASH(x)
 #endif
 
 long board::getHash() {
@@ -88,6 +99,73 @@ board::board (string board1){
 	thehash = getHash();
 }
 
+string board::theboardToString() {
+	string boardstr;
+	vector<char> vec;
+
+	for(int n = 0; n < theboard.size(); n++) {
+		vec = theboard[n];
+		for(int i = 0; i < vec.size(); i++) {
+			boardstr += vec[i];
+		}
+		boardstr += '\n';
+	}
+
+	return boardstr;
+}
+
+void board::addVisitedState() {
+	hash<string> HS;
+	unsigned long int hkey = HS(theboardToString());
+
+	visited_states.insert(make_pair(hkey,theboard));
+	hkey_history.push_back(hkey);
+	DEBUG_HASH(cout << "Added hkey: " << hkey << " visited_states.size(): " << visited_states.size() << endl);
+
+}
+
+void board::delVisitedState() {
+	hash<string> HS;
+	unsigned long int hkey = HS(theboardToString());
+
+	DEBUG_HASH(cout << "Before deleting state " << visited_states.size() << endl);
+	visited_states.erase(visited_states.find(hkey));
+	hkey_history.pop_back();
+	DEBUG_HASH(cout << "After deleting state " << visited_states.size() << endl);
+
+	DEBUG_HASH(cout << "Deleted hkey: " << hkey << " visited_states.size(): " << visited_states.size() << endl);
+
+}
+
+bool board::checkVisitedState() {
+
+	hash<string> HS;
+	unsigned long int hkey = HS(theboardToString());
+
+	if(visited_states.count(hkey) > 0) {
+		DEBUG_HASH(cout << "The board " << hkey << " is IN the visited_states table!" << endl);
+		return true;
+	}
+	else
+		DEBUG_HASH(cout << "The board " << hkey << " is NOT in the visited_states table!" << endl);
+		return false;
+}
+
+void board::getLastState() {
+	hash<string> HS;
+	unsigned long int hkey = HS(theboardToString());
+
+	hkey_history.pop_back();
+	pair<__gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > >::const_iterator , __gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > >::const_iterator > sit;
+		sit = visited_states.equal_range(hkey_history.back()); // iterator par som pekar ut range med hkey objekt.
+
+	DEBUG_HASH(cout << "getLastState before popping, visited_states.size(): " << visited_states.size() << endl);
+	theboard = sit.first -> second;
+	visited_states.erase(visited_states.find(hkey));
+
+	DEBUG_HASH(cout << "getLastState AFTER popping, visited_states.size(): " << visited_states.size() << endl);
+}
+
 void board::moveBack(pair<char,bool> move)
 {
 	int segfault = 0;
@@ -97,8 +175,12 @@ void board::moveBack(pair<char,bool> move)
 		segfault = 1;
 		exit(1);
 	}
+#if USE_HASHTABLE
+	getLastState();
+#else
 	visited_boards.pop_back();
 	theboard = visited_boards.back();
+#endif
 	if(segfault) {
 		cout << "after segfault\n";
 	}
@@ -136,7 +218,8 @@ void board::printBoard() {
 	}
 	DEBUG(cout << "player x=" << ppos.second << " ,y=" << ppos.first <<
 			", depth=" << solution.size() << ", nodes_checked = " << nodes_checked <<
-			", visited_boards.size() = " << visited_boards.size() << endl);
+			", visited_boards.size() = " << visited_boards.size() <<
+			", (HT) visited_states.size() = " << visited_states.size() << endl);
 	DEBUG(cout << "solution = " << generate_answer_string() << endl);
 
 }
@@ -830,11 +913,15 @@ int board::printhash() {
 bool board::solve() {
 
 	char moves[]= {'D','R','U', 'L', 0};
-	int i=0;
+	int i=0, sec_diff;
 	string m;
 
 	DEBUG(getline(cin, m, '\n'));
+#if	USE_HASHTABLE
+	addVisitedState();
+#else
 	visited_boards.push_back(theboard);
+#endif
 #if USE_HASH
 	visited_hashed_boards.push_back(thehash);
 #endif
@@ -846,12 +933,13 @@ bool board::solve() {
 				if(!check_100) {
 					gettimeofday(&time, 0);
 					if(time.tv_sec > second_checked) {
-						if(time.tv_sec - time_begin.tv_sec >= 10 && !DEBUG_ALL) {
-							cout << "Giving up 10 seconds and no solution\n";
+						if(time.tv_sec - time_begin.tv_sec >= 25 && !DEBUG_ALL) {
+							cout << "Giving up 25 seconds and no solution\n";
 							exit(1);
 						}
 						second_checked = time.tv_sec;
-						cout << "nodes checked last second: " << nodes_checked - nodes_checked_last_time << "\n";
+						cout << "nodes checked last second: " << nodes_checked / sec_diff << " visited_boards.size(): " << visited_boards.size()
+														<< " (HASH)visited_states.size(): " << visited_states.size()<< "\n";
 						nodes_checked_last_time = nodes_checked;
 					}
 				}
@@ -860,11 +948,17 @@ bool board::solve() {
 				printBoard();
 #if USE_REACH
 				if( reachableBoardVisited()) {
+#elif USE_HASHTABLE
+				if( checkVisitedState()) {
 #else
 				if( currentBoardVisited()) {
 #endif
 					//add the board just so we can remove a board in the backtracking step
+#if USE_HASHTABLE
+					addVisitedState(); /* testing testing */
+#else
 					visited_boards.push_back(theboard);
+#endif
 #if USE_HASH
 					visited_hashed_boards.push_back(thehash);
 #endif
@@ -886,7 +980,11 @@ bool board::solve() {
 					cout << "seconds: " << diff_sec << "." << diff_msec << "\n";
 					return true;
 				}
+#if USE_HASHTABLE
+				addVisitedState();
+#else
 				visited_boards.push_back(theboard);
+#endif
 #if USE_HASH
 				visited_hashed_boards.push_back(thehash);
 #endif
@@ -962,7 +1060,11 @@ bool board::reachableBoardVisited() {
 		if(validateMove(moves[i])) {
 			move(moves[i]);
 			result = currentBoardVisited();
+#if USE_HASHTABLE
+			addVisitedState();
+#else
 			visited_boards.push_back(theboard); //Just so that moveback can remove something..
+#endif
 #if USE_HASH
 			visited_hashed_boards.push_back(thehash);
 #endif
