@@ -1207,7 +1207,7 @@ void board::prepareBoard(){
                 if(theboard[j][i] != '#' && theboard[j-1][i] == '#'){
                     for(xl; theboard[j][xl-1] != '#' && xl >= 0; xl--);
                     for(xr; theboard[j][xr+1] != '#' && xr <= xsize; xr++);
-                    cout << "xl: " << xl << "xk: " << xr << endl;
+                    DEBUG(cout << "xl: " << xl << "xk: " << xr << endl);
                     for(int k = xl; k <= xr; k++) {
                         if(theboard[j-1][k] == '#' ){
                             if(theboard[j][k] == '.' || theboard[j][k] == '+')
