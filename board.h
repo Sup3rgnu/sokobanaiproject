@@ -45,7 +45,6 @@ public:
     bool reachableBoardVisited();
     bool compareBoardToCurrent(vector< vector<char> >);
     string generate_answer_string();
-    string getHash();
     void prepareBoard();
     pair<int, int> goalDistance();
     int printhash();
@@ -53,7 +52,6 @@ public:
     void addVisitedState();
     bool checkVisitedState();
     void delVisitedState();
-    string theboardToString();
     void getLastState();
 private:
 
@@ -71,15 +69,19 @@ private:
     int check_100;
     int nodes_checked_last_time;
 #if USE_HASHTABLE
+    string theboardToString();
     __gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > > visited_states;
     vector<unsigned long int> hkey_history;
 #endif
 #if USE_TR1_HASH
-    typedef std::unordered_map<string, int> myHash;
-    myHash hashTable;
-    vector< string > visited_hashes;
-    string thehash;
-#endif
+    typedef long hashType;
+    typedef std::unordered_map<hashType, int> hashTableType;
+    hashTableType hashTable;
+    vector< hashType > visited_hashes;
+    hashType thehash;
+    hashType getHash();
+    string getBoardString();
+    #endif
 };
 
 #endif	/* BOARD_H */
