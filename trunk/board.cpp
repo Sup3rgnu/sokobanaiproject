@@ -13,19 +13,10 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <ext/hash_map> // non STL
 #include <functional>
 
 const int DEBUG_MOVE = 1;
 const int DEBUG_VALIDATEMOVE = 1;
-
-#define DEBUG_ALL		0
-#define DEBUG_HASHTABLE 0
-#define USE_WALL		0
-#define USE_REACH		0
-#define USE_HASH		0
-#define USE_STICK		0
-#define USE_HASHTABLE	1
 
 using namespace std;
 
@@ -41,7 +32,9 @@ using namespace std;
 #define DEBUG_HASH(x)
 #endif
 
-long board::getHash() {
+string board::getHash() {
+	return theboardToString();
+
 	locale loc;                 // the "C" locale
 	string board_string;
 	int i, j;
@@ -52,7 +45,7 @@ long board::getHash() {
 			board_string += theboard[i][j];
 		}
 	}
-	return coll.hash(board_string.data(),board_string.data()+board_string.length());
+//	return coll.hash(board_string.data(),board_string.data()+board_string.length());
 }
 
 board::board (string board1){
@@ -96,7 +89,9 @@ board::board (string board1){
 		col = 0;
 	}
 	printBoard();
+#if USE_TR1_HASH
 	thehash = getHash();
+#endif
 }
 
 string board::theboardToString() {
@@ -114,6 +109,7 @@ string board::theboardToString() {
 	return boardstr;
 }
 
+#if USE_HASHTABLE
 void board::addVisitedState() {
 	hash<string> HS;
 	unsigned long int hkey = HS(theboardToString());
@@ -165,6 +161,7 @@ void board::getLastState() {
 
 	DEBUG_HASH(cout << "getLastState AFTER popping, visited_states.size(): " << visited_states.size() << endl);
 }
+#endif
 
 void board::moveBack(pair<char,bool> move)
 {
@@ -184,9 +181,10 @@ void board::moveBack(pair<char,bool> move)
 	if(segfault) {
 		cout << "after segfault\n";
 	}
-#if USE_HASH
-	visited_hashed_boards.pop_back();
-	thehash = visited_hashed_boards.back();
+#if USE_TR1_HASH
+	hashTable.erase(visited_hashes.back());
+	visited_hashes.pop_back();
+	thehash = visited_hashes.back();
 #endif
 	//opposite directions
 	switch (move.first) {
@@ -880,7 +878,7 @@ pair<char, bool> board::move(char c) {
 	solution.push_back(make_pair(c, boxaffected));
 
 	if(DEBUG_MOVE == 1 && true) { DEBUG(cout << "move() result:" << endl; /* printBoard() */); }
-#if USE_HASH
+#if USE_TR1_HASH
 	thehash = getHash();
 #endif
 	return make_pair(c, boxaffected);
@@ -899,16 +897,19 @@ void board::updateBoard(pair<char, bool> m) {
 	}
 }
 
+#if USE_TR1_HASH
 int board::printhash() {
 	int i;
 
 	cout << "thehash = " << thehash << "\n";
 	cout << "gethash() = " << getHash() << "\n";
 	cout << "hash_vector:\n";
-	for(i = 0; i < visited_hashed_boards.size(); i++) {
-		cout << "hash[ " << i << "] = " << visited_hashed_boards[i] << "\n";
+	for(i = 0; i < visited_hashes.size(); i++) {
+		cout << "hash[ " << i << "] = " << visited_hashes[i] << "\n";
 	}
 }
+#endif
+
 
 bool board::solve() {
 
@@ -922,8 +923,9 @@ bool board::solve() {
 #else
 	visited_boards.push_back(theboard);
 #endif
-#if USE_HASH
-	visited_hashed_boards.push_back(thehash);
+#if USE_TR1_HASH
+	hashTable.insert(myHash::value_type(thehash, 1));
+	visited_hashes.push_back(thehash);
 #endif
 	while(1) {
 
@@ -939,7 +941,7 @@ bool board::solve() {
 						}
 						second_checked = time.tv_sec;
 						cout << "nodes checked last second: " << nodes_checked - nodes_checked_last_time << " visited_boards.size(): " << visited_boards.size()
-														<< " (HASH)visited_states.size(): " << visited_states.size()<< "\n";
+														<< DEBUG_HASH(" (HASH)visited_states.size(): " << visited_states.size() <<) "\n";
 						nodes_checked_last_time = nodes_checked;
 					}
 				}
@@ -959,8 +961,9 @@ bool board::solve() {
 #else
 					visited_boards.push_back(theboard);
 #endif
-#if USE_HASH
-					visited_hashed_boards.push_back(thehash);
+#if USE_TR1_HASH
+					visited_hashes.push_back(thehash);
+					hashTable.insert(myHash::value_type(thehash, 1));
 #endif
 					DEBUG(cout << "wrong move '" << moves[i] << "' made, board already visited, backtracking---------------------\n");
 					break; //backtrack
@@ -985,8 +988,9 @@ bool board::solve() {
 #else
 				visited_boards.push_back(theboard);
 #endif
-#if USE_HASH
-				visited_hashed_boards.push_back(thehash);
+#if USE_TR1_HASH
+				visited_hashes.push_back(thehash);
+				hashTable.insert(myHash::value_type(thehash, 1));
 #endif
 				i = 0;
 				DEBUG(getline(cin, m, '\n'));
@@ -1023,8 +1027,8 @@ bool board::reachableBoardVisited() {
 	vector< vector<char> > backup_board;
 	backup_board = theboard; //the board is yet not on the visited boards list
 
-#if USE_HASH
-	long backup_hash = thehash;
+#if USE_TR1_HASH
+	string backup_hash = thehash;
 #endif
 
 	if(currentBoardVisited())
@@ -1065,8 +1069,9 @@ bool board::reachableBoardVisited() {
 #else
 			visited_boards.push_back(theboard); //Just so that moveback can remove something..
 #endif
-#if USE_HASH
-			visited_hashed_boards.push_back(thehash);
+#if USE_TR1_HASH
+			hashTable.insert(myHash::value_type(thehash, 1));
+			visited_hashes.push_back(thehash);
 #endif
 			DEBUG(cout << "pushing back this board:\n");
 			printBoard();
@@ -1074,7 +1079,7 @@ bool board::reachableBoardVisited() {
 			solution.pop_back();
 			moveBack(last_move2);
 			theboard = backup_board;
-#if USE_HASH
+#if USE_TR1_HASH
 			thehash = backup_hash;
 #endif
 			DEBUG(cout << "result of checking reachable state " << moves[i] << " was " << result << '\n');
@@ -1090,13 +1095,16 @@ bool board::reachableBoardVisited() {
 bool board::currentBoardVisited() {
 	int i;
 
-#if USE_HASH
+#if USE_TR1_HASH
+	return hashTable.count(thehash) > 0;
+/*
 	long hash = thehash;
 
 	for(i = 0; i < visited_hashed_boards.size(); i++) {
 		if(hash == visited_hashed_boards[i])
 			return 1;
 	}
+*/
 #else
 	for(i = 0; i < visited_boards.size(); i++) {
 		if(theboard == visited_boards[i])

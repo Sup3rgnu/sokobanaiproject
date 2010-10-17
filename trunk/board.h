@@ -7,11 +7,22 @@
 #ifndef BOARD_H
 #define	BOARD_H
 
+#define DEBUG_ALL		0
+#define DEBUG_HASHTABLE 0
+#define USE_HASHTABLE	0
+#define USE_TR1_HASH	0
+#define USE_WALL		0
+#define USE_REACH		0
+#define USE_STICK		0
+
 #include <string>
 #include <vector>
 #include <utility>
 #include <sys/time.h>
+#if USE_HASHTABLE
 #include <ext/hash_map> // non STL
+#endif
+#include <unordered_map>
 
 using namespace std;
 
@@ -32,7 +43,7 @@ public:
     bool reachableBoardVisited();
     bool compareBoardToCurrent(vector< vector<char> >);
     string generate_answer_string();
-    long getHash();
+    string getHash();
     void prepareBoard();
     pair<int, int> goalDistance();
     int printhash();
@@ -52,15 +63,21 @@ private:
     vector< vector<char> > theboard;		// Arren blev en vektor.
     vector< vector<char> > theboardLayer;
     vector< vector< vector<char> > > visited_boards;
-    vector< long > visited_hashed_boards;
-    long thehash;
     unsigned long long nodes_checked;
     struct timeval time_begin, time;
     int second_checked;
     int check_100;
     int nodes_checked_last_time;
+#if USE_HASHTABLE
     __gnu_cxx::hash_multimap<unsigned long int, vector < vector< char > > > visited_states;
     vector<unsigned long int> hkey_history;
+#endif
+#if USE_TR1_HASH
+    typedef std::unordered_map<string, int> myHash;
+    myHash hashTable;
+    vector< string > visited_hashes;
+    string thehash;
+#endif
 };
 
 #endif	/* BOARD_H */
